@@ -51,8 +51,8 @@ loadDeveloperData(){
     this.developers = data;
   });
 }
-addDevelopers(){
-  this.databaseProvider.addDevelopers(this.developer['name'], this.developer['skill'],this.developer['yearOfExperience'])
+addDeveloper(){
+  this.databaseProvider.addDeveloper(this.developer['name'], this.developer['skill'],this.developer['yearOfExperience'])
     .then(data =>{
       this.loadDeveloperData();
     });

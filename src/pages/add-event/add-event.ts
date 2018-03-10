@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
-import {DatabaseProvider} from "../../providers/database/database";
+// import {DatabaseProvider} from "../../providers/database/database";
 /**
  * Generated class for the AddEventPage page.
  *
@@ -23,8 +23,8 @@ export class AddEventPage {
   constructor(public alertCtrl: AlertController,
               public navCtrl: NavController,
               public navParams: NavParams,
-              private calendar: Calendar,
-              private databaseProvider: DatabaseProvider)
+              private calendar: Calendar
+              /*,private databaseProvider: DatabaseProvider*/)
   {
   //   this.databaseProvider.getDatabaseState().subscribe(rdy => {
   //   if(rdy){

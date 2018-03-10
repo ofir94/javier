@@ -87,7 +87,7 @@
       <ion-input type="text" [(ngModel)]="developer.yearsOfExperience" ></ion-input>
     </ion-item>
     <ion-item>
-      <button ion-button full (click)="addDevelopers()">Save</button>
+      <button ion-button full (click)="addDeveloper()">Save</button>
     </ion-item>
     <ion-item *ngFor="let dev of developers">
       <h2>{{dev.name}}</h2>

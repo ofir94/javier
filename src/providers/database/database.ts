@@ -24,11 +24,11 @@ export class DatabaseProvider {
     this.platform.ready().then(() =>{
       this.sqlite.create({
         name: 'developers.db',
-        location: 'defoult'
+        location: 'default'
       })
         .then((db: SQLiteObject) => {
         this.database = db;
-        this.storage.get('database_foilled').then(val =>{
+        this.storage.get('database_filled').then(val =>{
           if(val) {
             this.databaseReady.next(true);
           }
@@ -41,7 +41,7 @@ export class DatabaseProvider {
   }
 
   fillDatabase(){
-    this.http.get('assets/dummyDumb.sq;')
+    this.http.get('assets/dummyDumb.sql')
       .map(res => res.text())
       .subscribe(sql =>{
         this.sqlitePorter.importSqlToDb(this.database, sql)
@@ -49,13 +49,13 @@ export class DatabaseProvider {
             this.databaseReady.next(true);
             this.storage.set('database_filled', true);
           })
-          .catch(e =>console.log(e));
+          .catch(e =>console.log("Error llenando la bd"));
       })
   }
 
-  addDevelopers(name, skill, year){
+  addDeveloper(name, skill, year){
     let  data = [name,skill,year];
-    return this.database.executeSql("INSERT INTO developer (name, skill, yearsOfExperience VLUES (?,?,?))",data).then( res=> {
+    return this.database.executeSql("INSERT INTO developer (name, skill, yearsOfExperience VALUES (?,?,?)",data).then( res=> {
 
       return res;
 
@@ -63,7 +63,7 @@ export class DatabaseProvider {
   }
 
   getAllDevelopers(){
-    return this.database.executeSql("SELECT * FROM devoloper",[]).then(data=> {
+    return this.database.executeSql("SELECT * FROM developer",[]).then(data=> {
       let developers = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
