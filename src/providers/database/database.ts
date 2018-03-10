@@ -57,6 +57,9 @@ export class DatabaseProvider {
   addDeveloper(name, skill, year){
     let  data = [name,skill,year];
     alert(data);
+    alert(name);
+    alert(skill);
+    alert(year);
     return this.database.executeSql("INSERT INTO developer (name, skill, yearsOfExperience VALUES (?,?,?)",data).then( res=> {
       alert(res);
       return res;
