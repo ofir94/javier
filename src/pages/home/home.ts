@@ -25,11 +25,11 @@ export class HomePage {
   selectedEvent: any;
   isSelected: any;
 
-  persona = {
-    name: "Javier",
-    yearsOfExperience: 4,
-    skill: "Awesomness"
-  };
+  // persona = {
+  //   name: "Javier",
+  //   yearsOfExperience: 4,
+  //   skill: "Awesomness"
+  // };
   developers = [];
   developer = {};
 
@@ -41,7 +41,7 @@ export class HomePage {
     this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
     this.getDaysOfMonth();
     this.eventList = new Array();
-    this.developers = new Array(this.persona);
+    // this.developers = new Array(this.persona);
 
 
 
