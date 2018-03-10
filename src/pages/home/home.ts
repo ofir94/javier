@@ -25,6 +25,11 @@ export class HomePage {
   selectedEvent: any;
   isSelected: any;
 
+  persona = {
+    name: "Javier",
+    yearsOfExperience: 4,
+    skill: "Awesomness"
+  };
   developers = [];
   developer = {};
 
@@ -36,6 +41,9 @@ export class HomePage {
     this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
     this.getDaysOfMonth();
     this.eventList = new Array();
+    this.developers = new Array(this.persona);
+
+
 
   this.databaseProvider.getDatabaseState().subscribe(rdy => {
       if(rdy){
@@ -58,8 +66,11 @@ addDeveloper(){
     });
   this.developer = {};
 }
+addDeveloperPrueba(){
+  this.developers.push(this.developer);
+}
   getDaysOfMonth() {
-    alert("DayOfMonth");
+
     this.daysInThisMonth = new Array();
     this.daysInLastMonth = new Array();
     this.daysInNextMonth = new Array();

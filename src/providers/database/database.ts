@@ -19,7 +19,8 @@ import {Platform} from "ionic-angular";
 export class DatabaseProvider {
   database: SQLiteObject; //Para la conexion de la bd
   private  databaseReady: BehaviorSubject<boolean>;
-  constructor(public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform) { //Aqui en el video ponen Hrrp pq es otro import
+  constructor(public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform)//Aqui en el video ponen Http pq es otro import
+  {
     this.databaseReady = new BehaviorSubject(false);
     this.platform.ready().then(() =>{
       this.sqlite.create({
@@ -41,7 +42,7 @@ export class DatabaseProvider {
   }
 
   fillDatabase(){
-    this.http.get('assets/dummyDumb.sql')
+    this.http.get('assets/dummyDump.sql')
       .map(res => res.text())
       .subscribe(sql =>{
         this.sqlitePorter.importSqlToDb(this.database, sql)
