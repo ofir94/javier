@@ -21,7 +21,7 @@ export class HomePage {
   @ViewChild(Content)
   content:Content;
 
-
+day: any;
   date: any;
   daysInThisMonth: any;
   daysInLastMonth: any;
@@ -349,7 +349,7 @@ addDeveloperPrueba(){
   }
 
   asd(dayA){
-  alert('mosue');
+ // alert('mosue');
     this.currentMonth = this.monthNames[dayA.getMonth()];
     this.currentYear = dayA.getFullYear();
   }

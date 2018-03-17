@@ -9,3 +9,6 @@ function swipe2(event, phase, direction, distance) {
 }
 */
 
+$('#foo').appear(function() {
+  $(this).text('Hello world');
+});

@@ -28,7 +28,7 @@
   <div id="container1">
     <div id="container2" >
 
-      <ion-grid on-swipe="swipeEvent($event)">
+      <ion-grid  >
 
         <ion-row nowrap style="
         word-wrap: break-word;
@@ -36,14 +36,14 @@
         font-weight:300;
         " >
 
-          <ion-col col-1 *ngFor="let week of weekDayNames">{{week}}</ion-col>
+          <ion-col col-1 *ngFor="let week of weekDayNames">{{week}} </ion-col>
         </ion-row>
         <ion-row nowrap style="
         word-wrap: break-word;
         font-size:0.8em;
         font-weight:300;
         "  >
-          <ion-col col-1  *ngFor="let day of daysInThisMonth" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" (click)="asd(day)">
+          <ion-col on-swipe="asd(day)" col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" (click)="asd(day)">
 
             <div >
               {{day.getDate()}}
@@ -56,7 +56,7 @@
   </div>
 
   <button (mousedown)="asda()"  >
-    Button 1
+huygt
   </button>
   <button (blur)="asda()">
     Button 2
