@@ -11,6 +11,8 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 
 import * as $ from "jquery";
 
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -68,7 +70,7 @@ export class HomePage {
     });
 */
 
-  var cant = 7300;
+  var cant = 3650;
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
 
@@ -94,7 +96,7 @@ export class HomePage {
    let g =  new Date();
     g.setDate(g.getDate()+2);
     $(document).ready(function(){
-     window.location.href = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
+    // window.location.href = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
 
     });
 
@@ -326,7 +328,7 @@ addDeveloperPrueba(){
   }
 
   public transition(e):void {
-  alert(e);
+ // alert(e);
     let options: NativeTransitionOptions = {
       direction:this.getAnimationDirection(e.index),
       duration: 250,
@@ -352,9 +354,19 @@ addDeveloperPrueba(){
     this.currentYear = dayA.getFullYear();
   }
   asda(){
-  alert('button');
+  console.log('button');
+
+  }
+  asda1(asd){
+  console.log(asd);
+
+
 
   }
 
+  swipeEvent(e){
+    console.log(e.velocityY);
+    this.currentMonth = e.velocityY;
+  }
 
 }

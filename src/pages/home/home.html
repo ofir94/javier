@@ -26,9 +26,9 @@
     </ion-row>
   </div>
   <div id="container1">
-    <div id="container2">
+    <div id="container2" >
 
-      <ion-grid  >
+      <ion-grid on-swipe="swipeEvent($event)">
 
         <ion-row nowrap style="
         word-wrap: break-word;
@@ -42,14 +42,12 @@
         word-wrap: break-word;
         font-size:0.8em;
         font-weight:300;
-        " >
+        "  >
           <ion-col col-1  *ngFor="let day of daysInThisMonth" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" (click)="asd(day)">
-            <a src=".." (focus)="asd(day)" (blur)="asd(day)" (mouseover)="asd(day)" alt="">{{day.getDate()}}
-            </a>
-            <button (mousedown)="asda()" (blur)="asda()" (focus)="asda()" (show)="asda()" (click)="asda()" (mouseleave)="asda()"
-                    (mousemove)="asda()" (mouseover)="asda()" (mouseout)="asda()">
-              Button 0
-            </button>
+
+            <div >
+              {{day.getDate()}}
+            </div>
           </ion-col>
         </ion-row>
 
@@ -57,7 +55,7 @@
     </div>
   </div>
 
-  <button (mousedown)="asda()" >
+  <button (mousedown)="asda()"  >
     Button 1
   </button>
   <button (blur)="asda()">
@@ -84,6 +82,13 @@
   </button>
   <button   (mouseout)="asda()">
     Button 9
+  </button>
+  <br>
+  <br>
+  <br>
+  <br>
+  <button class="button"  on-swipe="asda()">
+    Button 10
   </button>
 
 <!--
