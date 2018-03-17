@@ -12,17 +12,84 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content >
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <div class="calendar-header">
+    <ion-row class="calendar-month">
 
+      <ion-col col-12>{{currentMonth}} {{currentYear}}</ion-col>
+
+    </ion-row>
+  </div>
+  <div id="container1">
+    <div id="container2">
+
+      <ion-grid  >
+
+        <ion-row nowrap style="
+        word-wrap: break-word;
+        font-size:0.8em;
+        font-weight:300;
+        " >
+
+          <ion-col col-1 *ngFor="let week of weekDayNames">{{week}}</ion-col>
+        </ion-row>
+        <ion-row nowrap style="
+        word-wrap: break-word;
+        font-size:0.8em;
+        font-weight:300;
+        " >
+          <ion-col col-1  *ngFor="let day of daysInThisMonth" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" (click)="asd(day)">
+            <a src=".." (focus)="asd(day)" (blur)="asd(day)" (mouseover)="asd(day)" alt="">{{day.getDate()}}
+            </a>
+            <button (mousedown)="asda()" (blur)="asda()" (focus)="asda()" (show)="asda()" (click)="asda()" (mouseleave)="asda()"
+                    (mousemove)="asda()" (mouseover)="asda()" (mouseout)="asda()">
+              Button 0
+            </button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+  </div>
+
+  <button (mousedown)="asda()" >
+    Button 1
+  </button>
+  <button (blur)="asda()">
+    Button 2
+  </button>
+  <button (focus)="asda()" >
+    Button 3
+  </button>
+  <button  (show)="asda()" >
+    Button 4
+  </button>
+  <button  (click)="asda()" >
+    Button 5
+  </button>
+  <button (mouseleave)="asda()">
+    Button 6
+  </button>
+  <button
+          (mousemove)="asda()" >
+    Button 7
+  </button>
+  <button  (mouseover)="asda()" >
+    Button 8
+  </button>
+  <button   (mouseout)="asda()">
+    Button 9
+  </button>
+
+<!--
+
+ <a id="start" href="#19-2">asd
+  </a>
 
   <div class="calendar-header">
     <ion-row class="calendar-month">
@@ -31,28 +98,29 @@
       <ion-col col-2 (click)="goToNextMonth()"><ion-icon name="arrow-forward"></ion-icon></ion-col>
     </ion-row>
   </div>
-  <div class="calendar-body">
+  <div class="calendar-body" (swipe)="swipe($event)" >
     <ion-grid>
       <ion-row class="calendar-weekday">
-        <ion-col>Su</ion-col>
-        <ion-col>Mo</ion-col>
-        <ion-col>Tu</ion-col>
-        <ion-col>We</ion-col>
-        <ion-col>Th</ion-col>
-        <ion-col>Fr</ion-col>
-        <ion-col>Sa</ion-col>
+
+        <ion-col  col-1 *ngFor="let weekDay of weekDayNames" >
+          {{weekDay}}<br>
+
+        </ion-col>
+
       </ion-row>
-      <ion-row class="calendar-date">
-        <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month" (click)="goToLastMonth()">{{lastDay}}</ion-col>
-        <ion-col col-1 *ngFor="let day of daysInThisMonth" (click)="selectDate(day)">
-          <span class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
-          <ng-template #otherDate class="otherDate">
+
+      <ion-row class="calendar-date" >
+        <ion-col  col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month" (click)="goToLastMonth()">{{lastDay}}</ion-col>
+        <ion-col  col-1 *ngFor="let day of daysInThisMonth"  (click)="selectDate(day)">
+          <span (ionChange)="transition($event)"class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
+          <ng-template  #otherDate class="otherDate">
             {{day}}<br>
             <div class="event-bullet" *ngIf="checkEvent(day)"></div>
           </ng-template>
         </ion-col>
         <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month" (click)="goToNextMonth()">{{nextDay}}</ion-col>
       </ion-row>
+
     </ion-grid>
   </div>
   <div class="selected-event" *ngIf="isSelected">
@@ -95,6 +163,7 @@
     </ion-item>
   </ion-list>
 
+-->
 
 
 

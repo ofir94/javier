@@ -19,6 +19,10 @@ import {HttpModule} from "@angular/http";
 import {SQLitePorter} from "@ionic-native/sqlite-porter";
 import {SQLite} from "@ionic-native/sqlite";
 
+import { IonicSwipeAllModule } from 'ionic-swipe-all';
+
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +35,7 @@ import {SQLite} from "@ionic-native/sqlite";
     HttpModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
+    IonicSwipeAllModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,6 +52,7 @@ import {SQLite} from "@ionic-native/sqlite";
     DatabaseProvider,
     SQLite,
     SQLitePorter,
+    NativePageTransitions,
 
   ]
 })
