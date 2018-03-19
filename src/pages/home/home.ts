@@ -7,8 +7,9 @@ import { AddEventPage } from '../add-event/add-event';
 
 import {DatabaseProvider} from "../../providers/database/database";
 
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
+
+import { ScrollService } from 'angular2-viewport';
 import * as $ from "jquery";
 
 
@@ -52,8 +53,11 @@ day: any;
               public navCtrl: NavController,
               private calendar: Calendar,
               private databaseProvider: DatabaseProvider,
-              private nativePageTransitions: NativePageTransitions
-                                                                      ) {
+
+              scrollService: ScrollService
+                                 ) {
+
+
     this.date = new Date();
     this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
     this.weekDayNames = ["Lu","Ma","Mi", "Ju","Vi","Sa","Do"];
@@ -70,7 +74,7 @@ day: any;
     });
 */
 
-  var cant = 3650;
+  var cant = 30;
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
 
@@ -93,15 +97,16 @@ day: any;
   }
 
 
-   let g =  new Date();
+   /*let g =  new Date();
     g.setDate(g.getDate()+2);
     $(document).ready(function(){
     // window.location.href = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
 
     });
-
+*/
 
   }
+
 
 
 loadDeveloperData(){
@@ -327,46 +332,21 @@ addDeveloperPrueba(){
     }
   }
 
-  public transition(e):void {
- // alert(e);
-    let options: NativeTransitionOptions = {
-      direction:this.getAnimationDirection(e.index),
-      duration: 250,
-      slowdownfactor: -1,
-      slidePixels: 0,
-      iosdelay: 20,
-      androiddelay: 0,
-      fixedPixelsTop: 0,
-      fixedPixelsBottom: 48
-    };
-
-    if (!this.loaded) {
-      this.loaded = true;
-      return;
-    }
-
-    this.nativePageTransitions.slide(options);
-  }
-
-  asd(dayA){
+  updateDate(dayA){
  // alert('mosue');
     this.currentMonth = this.monthNames[dayA.getMonth()];
     this.currentYear = dayA.getFullYear();
+    console.log(dayA.getDate());
   }
-  asda(){
-  console.log('button');
-
-  }
-  asda1(asd){
-  console.log(asd);
 
 
-
+  ofir(e){
+    console.log(e);
   }
 
   swipeEvent(e){
-    console.log(e.velocityY);
-    this.currentMonth = e.velocityY;
+    console.log(e);
+
   }
 
 }

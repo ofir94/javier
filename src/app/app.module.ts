@@ -23,6 +23,9 @@ import { IonicSwipeAllModule } from 'ionic-swipe-all';
 
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 
+import { ViewportModule } from 'angular2-viewport';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -36,6 +39,8 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
     IonicSwipeAllModule,
+    ViewportModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +58,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     SQLite,
     SQLitePorter,
     NativePageTransitions,
-
+    ViewportModule
   ]
 })
 export class AppModule {}

@@ -26,7 +26,7 @@
     </ion-row>
   </div>
   <div id="container1">
-    <div id="container2" >
+    <div id="container2" vp-scrollable-content >
 
       <ion-grid  >
 
@@ -36,60 +36,40 @@
         font-weight:300;
         " >
 
-          <ion-col col-1 *ngFor="let week of weekDayNames">{{week}} </ion-col>
+          <ion-col  col-1 *ngFor="let week of weekDayNames">{{week}} </ion-col>
         </ion-row>
         <ion-row nowrap style="
         word-wrap: break-word;
         font-size:0.8em;
         font-weight:300;
-        "  >
-          <ion-col on-swipe="asd(day)" col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" (click)="asd(day)">
-
-            <div >
+        ">
+          <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" >
+            <!--(touchmove)="swipeEvent($event)"-->
+            <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
               {{day.getDate()}}
             </div>
           </ion-col>
+
+        </ion-row>
+
+        <ion-row nowrap style="
+        word-wrap: break-word;
+        font-size:0.8em;
+        font-weight:300;
+        ">
+          <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" >
+            <!--(touchmove)="swipeEvent($event)"-->
+            <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
+              {{day.getDate()}}
+            </div>
+          </ion-col>
+
         </ion-row>
 
       </ion-grid>
     </div>
   </div>
 
-  <button (mousedown)="asda()"  >
-huygt
-  </button>
-  <button (blur)="asda()">
-    Button 2
-  </button>
-  <button (focus)="asda()" >
-    Button 3
-  </button>
-  <button  (show)="asda()" >
-    Button 4
-  </button>
-  <button  (click)="asda()" >
-    Button 5
-  </button>
-  <button (mouseleave)="asda()">
-    Button 6
-  </button>
-  <button
-          (mousemove)="asda()" >
-    Button 7
-  </button>
-  <button  (mouseover)="asda()" >
-    Button 8
-  </button>
-  <button   (mouseout)="asda()">
-    Button 9
-  </button>
-  <br>
-  <br>
-  <br>
-  <br>
-  <button class="button"  on-swipe="asda()">
-    Button 10
-  </button>
 
 <!--
 
