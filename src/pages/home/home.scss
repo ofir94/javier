@@ -1,15 +1,24 @@
 page-home {
+
+
   [col-1] {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 8.33333%;
-    -ms-flex: 0 0 8.33333%;
-    flex: 0 0 14.285714285714286%;
-    width: 14.285714285714286%;
-    max-width: 14.285714285714286%;
+  /*  -ms-flex: 0 0 8.33333%;
+    flex: 0 0 24%;
+   -webkit-flex-grow: 0;
+    width: 21%;
+    max-width: 21%;*/
+
+
   }
+
+
   .col {
     text-align: center;
-    padding: 5px;
+    padding: 0px;
+
+
   }
   .last-month, .next-month {
     color: #999999;
@@ -90,7 +99,81 @@ page-home {
     background: #ffffff;
   }
 
+  .calendar-col{
+    min-width: 37.78px;
+    max-width: 37.78px;
+    border-left: groove;
+    text-align: center;
+    border-width: thin;
+
+    min-height: 1cm;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
+    color: #cccccc;
+    font-size: 14px;
+    height: 1cm;
+
+    border-bottom: groove;
+    border-width: thin;
+    border-color: #EEEEEE;
+  }
+
+  .fixed-col{
 
 
+    text-align: center;
+    min-height: 1cm;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
+    color: #5b5e5a;
+    font-size: 14px;
+    height: 1cm;
+width: 100px;
 
+    border-bottom: groove;
+    border-width: thin;
+    border-color: #EEEEEE;
+
+  }
+  .fixed-col-noborder{
+
+    text-align: center;
+    min-height: 1cm;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
+    color: #5b5e5a;
+    font-size: 14px;
+    height: 1cm;
+    width: 100px;
+    border-bottom: groove;
+    border-width: thin;
+    border-color: #EEEEEE;
+  }
+
+  .row1{
+    padding: 1px;
+   /* border-bottom: groove;
+    border-width: thin;
+    border-color: #EEEEEE;*/
+    word-wrap: break-word; font-size:0.8em; font-weight:300;
+
+  }
+  .row2{
+    padding: 1px;
+   /* border-bottom: groove;
+    border-width: thin;
+    border-color: #EEEEEE;*/
+    word-wrap: break-word; font-size:0.8em; font-weight:300;
+  }
+
+
+  .weeknames{
+    padding-bottom: 10%;
+    font-size: 9px;
+  }
+
+  .grid{
+    padding: 0px;
+  }
+
+  #hab1-1{
+    background: red;
+  }
 }

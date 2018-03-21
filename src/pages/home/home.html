@@ -18,57 +18,110 @@
 <ion-content >
 
 
-  <div class="calendar-header">
-    <ion-row class="calendar-month">
 
-      <ion-col col-12>{{currentMonth}} {{currentYear}}</ion-col>
 
-    </ion-row>
-  </div>
-  <div id="container1">
-    <div id="container2" vp-scrollable-content >
 
-      <ion-grid  >
+      <h4 style="text-align: center">{{currentMonth}} {{currentYear}}</h4>
 
-        <ion-row nowrap style="
-        word-wrap: break-word;
-        font-size:0.8em;
-        font-weight:300;
-        " >
 
-          <ion-col  col-1 *ngFor="let week of weekDayNames">{{week}} </ion-col>
-        </ion-row>
-        <ion-row nowrap style="
+
+
+  <div class="row" nowrap style="
         word-wrap: break-word;
         font-size:0.8em;
         font-weight:300;
         ">
-          <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" >
-            <!--(touchmove)="swipeEvent($event)"-->
-            <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
-              {{day.getDate()}}
-            </div>
+
+    <div >
+      <div id="container3">
+        <div id="container4"  >
+      <ion-grid  >
+
+        <ion-row  class="row2" nowrap style="
+        word-wrap: break-word;
+        font-size:0.8em;
+        font-weight:300;
+        ">
+
+
+          <ion-col class="fixed-col-noborder"   >
+
+          <p style="font-size:0.8em;">Filtros</p>
           </ion-col>
 
         </ion-row>
 
-        <ion-row nowrap style="
-        word-wrap: break-word;
-        font-size:0.8em;
-        font-weight:300;
-        ">
-          <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" >
-            <!--(touchmove)="swipeEvent($event)"-->
-            <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
-              {{day.getDate()}}
-            </div>
+        <ion-row class="row2" nowrap >
+          <ion-col   class="fixed-col" >
+            <p style="font-size:0.8em;">Habitación 1</p>
+          </ion-col>
+
+        </ion-row>
+        <ion-row class="row2" nowrap  >
+          <ion-col   class="fixed-col"  >
+            <p style="font-size:0.8em;">Habitación 2</p>
           </ion-col>
 
         </ion-row>
 
       </ion-grid>
+        </div>
+      </div>
     </div>
+
+    <div id="container1">
+      <div id="container2" vp-scrollable-content >
+
+        <ion-grid  >
+
+          <ion-row  class="row1" nowrap>
+
+
+            <ion-col  class="calendar-col" col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" >
+              <!--(touchmove)="swipeEvent($event)"-->
+              <div class="weeknames">
+                {{weekDayNames[i]}}<br>
+
+              </div>
+              <div   (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
+
+                {{day.getDate()}}
+
+              </div>
+            </ion-col>
+
+          </ion-row>
+
+          <ion-row class="row1" nowrap >
+
+
+            <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" class="calendar-col event"  id="hab1-{{i}}">
+
+              <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
+
+              </div>
+            </ion-col>
+
+          </ion-row>
+
+          <ion-row class="row1" nowrap  >
+
+
+            <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" class="calendar-col" >
+
+              <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
+
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+
   </div>
+
 
 
 <!--

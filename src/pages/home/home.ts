@@ -22,7 +22,7 @@ export class HomePage {
   @ViewChild(Content)
   content:Content;
 
-day: any;
+  day: any;
   date: any;
   daysInThisMonth: any;
   daysInLastMonth: any;
@@ -54,14 +54,14 @@ day: any;
               private calendar: Calendar,
               private databaseProvider: DatabaseProvider,
 
-              scrollService: ScrollService
+
                                  ) {
 
 
     this.date = new Date();
     this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
     this.weekDayNames = ["Lu","Ma","Mi", "Ju","Vi","Sa","Do"];
-    this.weekDayNamesDefault = ["Do","Lu","Ma","Mi", "Ju","Vi","Sa"];
+    this.weekDayNamesDefault = ["DO","LU","MA","MI", "JU","VI","SÁ"];
     this.getDaysOfMonth();
     this.eventList = new Array();
     // this.developers = new Array(this.persona);
@@ -74,7 +74,7 @@ day: any;
     });
 */
 
-  var cant = 30;
+  var cant = 75;
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
 
@@ -83,6 +83,7 @@ day: any;
     let f = new Date(fecha.setDate(fecha.getDate() - i))
     this.daysInThisMonth.push(f);
     this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+
 
   }
 
@@ -97,13 +98,13 @@ day: any;
   }
 
 
-   /*let g =  new Date();
+   let g =  new Date();
     g.setDate(g.getDate()+2);
     $(document).ready(function(){
-    // window.location.href = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
+      window.location.href = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
 
     });
-*/
+
 
   }
 
