@@ -75,39 +75,34 @@
         <ion-grid  >
 
           <ion-row  class="row1" nowrap>
-
-
-            <ion-col  class="calendar-col" col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}" >
-              <!--(touchmove)="swipeEvent($event)"-->
+            <ion-col  class="calendar-col" col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last"
+                      id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}">
               <div class="weeknames">
                 {{weekDayNames[i]}}<br>
-
               </div>
-              <div   (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
-
+              <div  class="days" (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
                 {{day.getDate()}}
-
               </div>
             </ion-col>
 
-          </ion-row>
 
+
+          </ion-row>
           <ion-row class="row1" nowrap >
-
-
-            <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" class="calendar-col event"  id="hab1-{{i}}">
-
-              <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
-
-              </div>
+            <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last"
+                      class="calendar-col event" (click) = "crear_evento($event,day,i)">
+              <ion-row class="row3" >
+              <ion-col class="" id = 'hab1-{{i}}'>
+                <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
+                </div>
+              </ion-col>
+              </ion-row>
             </ion-col>
 
           </ion-row>
-
           <ion-row class="row1" nowrap  >
-
-
-            <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" class="calendar-col" >
+            <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" class="calendar-col"
+                      id = 'hab2-{{i}}'>
 
               <div (vp-in-view)="updateDate(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
 

@@ -163,17 +163,63 @@ width: 100px;
     word-wrap: break-word; font-size:0.8em; font-weight:300;
   }
 
+  .row3{
+    height: 37.78px;
+  }
 
   .weeknames{
     padding-bottom: 10%;
     font-size: 9px;
+  }
+  .days{
+
+    font-family: "SansSerif", serif;
+    //font-weight: bold;
+  }
+
+  .finsemana{
+    background: lightgrey;
   }
 
   .grid{
     padding: 0px;
   }
 
-  #hab1-1{
-    background: red;
+
+  /*  javier */
+  .triangulo-equilatero-bottom-fin {
+
+    width: 0;
+    height: 0;
+    border-right: 19px solid transparent;
+    border-top: 19px solid #f0ad4e;
+    border-left: 18px solid #f0ad4e;
+    border-bottom: 18px solid transparent;
   }
+  .triangulo-equilatero-bottom-inicio{
+    width: 0;
+    height: 0;
+    border-right: 18px solid #f0ad4e;
+    border-top: 18px solid transparent;
+    border-left: 19px solid transparent;
+    border-bottom: 19px solid #f0ad4e;
+
+  }
+  .cuadrado {
+    width: 19px;
+    height: 37px;
+    background: #f0ad4e;
+  }
+
+  .rightborder{
+    border-right: groove;
+    border-width: thin;
+  }
+  .leftbordernone{
+    border-left: none;
+    border-width: thin;
+  }
+
+  /*  javier fin */
+
 }

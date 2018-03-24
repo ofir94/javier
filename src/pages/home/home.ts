@@ -97,11 +97,16 @@ export class HomePage {
 
   }
 
-
-   let g =  new Date();
+    let g =  new Date();
     g.setDate(g.getDate()+2);
     $(document).ready(function(){
-      window.location.href = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
+      // window.location.href = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
+      //  window.location.hash = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
+      let id =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
+      //  console.log(id);
+      // console.log( document.getElementById(id));
+      document.getElementById(id).scrollIntoView();
+
 
     });
 
@@ -350,4 +355,15 @@ addDeveloperPrueba(){
 
   }
 
+  crear_evento(e,day,i){
+    alert(day);
+    $("#hab1-" + i).addClass('triangulo-equilatero-bottom-inicio');
+    $("#hab1-" + (i+1)).addClass('cuadrado');
+    $("#hab1-" + (i+2)).addClass('triangulo-equilatero-bottom-fin');
+
+
+
+
+
+  }
 }
