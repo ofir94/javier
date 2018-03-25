@@ -28,7 +28,7 @@ export class HomePage {
   daysInLastMonth: any;
   daysInNextMonth: any;
   monthNames: string[];
-  weekDayNames: string[];
+  weekDayNames: any;
   weekDayNamesDefault: string[];
   currentMonth: any;
   currentYear: any;
@@ -37,6 +37,14 @@ export class HomePage {
   eventList: any;
   selectedEvent: any;
   isSelected: any;
+
+  todayToAdd: any
+  lessAt: any;
+  addAt:any;
+  endDate: any;
+  startDate: any;
+  canLess: boolean;
+
 
   // persona = {
   //   name: "Javier",
@@ -48,7 +56,7 @@ export class HomePage {
 
   loaded:   boolean = false;
   tabIndex: number  = 0;
-
+  cant: number;
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
               private calendar: Calendar,
@@ -58,7 +66,16 @@ export class HomePage {
                                  ) {
 
 
+    this.canLess = false;
     this.date = new Date();
+
+    //Saber cuando tengo que añadir mas o menos
+    this.todayToAdd = this.date;
+    this.lessAt = new Date(this.date.getTime()+1000*60*60*24*2)
+    this.startDate = new Date(this.date.getTime()-1000*60*60*24*1)
+    this.addAt = new Date(this.date.getTime()+1000*60*60*24*60)
+
+
     this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
     this.weekDayNames = ["Lu","Ma","Mi", "Ju","Vi","Sa","Do"];
     this.weekDayNamesDefault = ["DO","LU","MA","MI", "JU","VI","SÁ"];
@@ -74,44 +91,66 @@ export class HomePage {
     });
 */
 
-  var cant = 75;
+
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
 
-  for (let i = cant; i > 0; i--){
-    let fecha = new Date();
-    let f = new Date(fecha.setDate(fecha.getDate() - i))
-    this.daysInThisMonth.push(f);
-    this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+  this.cant = 75;
 
+  let once = true;
+  //Add days at start
+    for (let i = this.cant; i > 0; i--){
+      let fecha = new Date();
+      let f = new Date(fecha.setDate(fecha.getDate() - i));
 
-  }
+      if(once){
+        this.startDate = f;
+        once = false;
+      }
+      this.daysInThisMonth.push(f);
+      this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+    }
+    //Add days at end
+    for (let i = 0; i < this.cant ; i++){
+      let fecha = new Date();
+      let f = new Date(fecha.setDate(fecha.getDate() + i));
+      this.endDate = f;
+      this.daysInThisMonth.push(f);
+      this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+    }
 
-
-  for (let i = 0; i < cant ; i++){
-    let fecha = new Date();
-    let f = new Date(fecha.setDate(fecha.getDate() + i))
-    this.daysInThisMonth.push(f);
-    this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
-
-
-  }
-
-    let g =  new Date();
-    g.setDate(g.getDate()+2);
-    $(document).ready(function(){
-      // window.location.href = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
-      //  window.location.hash = '#'+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
-      let id =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
-      //  console.log(id);
-      // console.log( document.getElementById(id));
-      document.getElementById(id).scrollIntoView();
-
-
-    });
 
 
   }
+
+  addDaysAtStart(day){
+    day = this.startDate;
+
+    console.log(this.daysInThisMonth)
+
+    let f;
+    for (let i = 0; i < 30; i++){
+        f = new Date(day.getTime()-1000*60*60*24*i)
+      this.daysInThisMonth.unshift(f);
+      this.weekDayNames.unshift(this.weekDayNamesDefault[f.getDay()]);
+    }
+    this.startDate = f;
+
+    console.log(this.daysInThisMonth)
+  }
+
+  addDaysAtEnd(day){
+
+    day = this.endDate;
+    for (let i = 1; i < this.cant ; i++){
+      let f = new Date(day.getTime()+1000*60*60*24*i) // doing it with seconds
+      this.endDate = f;
+      this.daysInThisMonth.push(f);
+      this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+    }
+
+  }
+
 
 
 
@@ -243,7 +282,7 @@ addDeveloperPrueba(){
   }
 
   loadEventThisMonth() {
-    this.eventList = new Array();
+   /* this.eventList = new Array();
     var startDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
     var endDate = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0);
     this.calendar.listEventsInRange(startDate, endDate).then(
@@ -255,7 +294,7 @@ addDeveloperPrueba(){
       (err) => {
         console.log(err);
       }
-    );
+    );*/
   }
 
   checkEvent(day) {
@@ -338,22 +377,37 @@ addDeveloperPrueba(){
     }
   }
 
-  updateDate(dayA){
+  updateDate(dayA,first,last){
  // alert('mosue');
     this.currentMonth = this.monthNames[dayA.getMonth()];
     this.currentYear = dayA.getFullYear();
     console.log(dayA.getDate());
+
+
+    if(first){
+        this.addDaysAtStart(dayA)
+
+    }
+
+   if(dayA >= this.addAt ){
+     this.addAt = new Date(dayA.getTime()+1000*60*60*24*60);
+     console.log(this.addAt)
+
+     this.addDaysAtEnd(dayA)
+   }
+
+   let topLessAt = new Date(this.lessAt.getTime()+1000*60*60*24*10);
+
+
+    if(dayA > this.lessAt && dayA < topLessAt){
+    this.lessAt = new Date(dayA.getTime()-1000*60*60*24*25);
+
+  //   this.addDaysAtStart(dayA)
+
+   }
+
   }
 
-
-  ofir(e){
-    console.log(e);
-  }
-
-  swipeEvent(e){
-    console.log(e);
-
-  }
 
   crear_evento(e,day,i){
     alert(day);
@@ -361,9 +415,20 @@ addDeveloperPrueba(){
     $("#hab1-" + (i+1)).addClass('cuadrado');
     $("#hab1-" + (i+2)).addClass('triangulo-equilatero-bottom-fin');
 
+  }
+
+  ngAfterViewInit() {
+    console.log('Initialized');
+    var g =  new Date();
+    g.setDate(g.getDate()+2);
+      let id =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
+      document.getElementById(id).scrollIntoView();
+  }
 
 
-
-
+  ngOnPageScrollStop() {
+    console.log('They see me scrolling...');
   }
 }
+
+
