@@ -70,7 +70,8 @@
     </div>
 
     <div id="container1">
-      <div id="container2" vp-scrollable-content >
+      <div id="container2" vp-scrollable-content
+      >
 
         <ion-grid  >
 
@@ -80,7 +81,7 @@
               <div class="weeknames {{first}}">
                 {{weekDayNames[i]}}<br>
               </div>
-              <div  class="days" (vp-in-view)="updateDate(day,first,last)" [vp-in-view-config]="{infinite: true, marginHorizontal: 0}" >
+              <div  class="days" (vp-in-view)="addmore(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
                 {{day.getDate()}}
 
               </div>
@@ -115,7 +116,59 @@
 
   </div>
 
-<!--
+ <!-- New Test
+  <h4 style="text-align: center">{{currentMonth}} {{currentYear}}</h4>
+
+  <div class="search-results"
+       infinite-scroll
+       [scrollWindow]="false"
+       [horizontal]="true"
+       [infiniteScrollUpDistance]="2"
+       (scrolled)="addDaysAtEnds()"
+       (scrolledUp)="addDaysAtStarts()"
+      >
+    <ion-grid    style="width: 1000px">
+
+      <ion-row  class="row1" nowrap>
+        <ion-col  class="calendar-col" col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last; let third = third"
+                  id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()+'1'}}">
+          <div class="weeknames {{first}}">
+            {{weekDayNames[i]}}<br>
+          </div>
+          <div  class="days" >
+            {{day.getDate()}}
+
+          </div>
+        </ion-col>
+
+
+
+      </ion-row>
+      <ion-row class="row1" nowrap >
+        <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last"
+                  class="calendar-col event " (click) = "crear_evento($event,day,i)">
+          <ion-row class="row3" >
+            <ion-col class="" id = 'haba1-{{i}}'>
+
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+      </ion-row>
+      <ion-row class="row1" nowrap  >
+        <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" class="calendar-col"
+                  id = 'haba2-{{i}}'>
+
+
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+
+&lt;!&ndash;
 
  <a id="start" href="#19-2">asd
   </a>
@@ -192,9 +245,69 @@
     </ion-item>
   </ion-list>
 
--->
+&ndash;&gt;
+
+  <div class="search-results"
+       infinite-scroll
+       [scrollWindow]="false"
+       [horizontal]="true"
+       [infiniteScrollDistance]="2"
+       [infiniteScrollUpDistance]="1.5"
+       [infiniteScrollThrottle]="10"
+       (scrolled)="onScrollDown()"
+       (scrolledUp)="onScrollUp('a11')"
+
+  >
+
+
+    <ion-row nowrap class="" >
+      <ion-col   class="" col-1 *ngFor="let i of array" id="a{{i}}"
+               >
+        <div class=" {{i}}">
+          {{i}}<br>
+        </div>
+        <div  class="" >
+          {{i}}
+
+        </div>
+      </ion-col>
 
 
 
+    </ion-row>
+
+  </div>
+
+asdasd
+  <div  class="search-results"
+       infinite-scroll
+       [scrollWindow]="false"
+[horizontal]="true"
+       [infiniteScrollDistance]="2"
+       [infiniteScrollUpDistance]="1.5"
+       [infiniteScrollThrottle]="10"
+       (scrolled)="onScrollDown()"
+       (scrolledUp)="onScrollUp()">
+
+    <p *ngFor="let i of array">
+      {{i}}
+    </p>
+
+
+     &lt;!&ndash; <ion-col nowrap col-1 style="display: inline;overflow: auto" *ngFor="let i of array">
+         {{i}}
+      </ion-col>&ndash;&gt;
+
+
+  </div>
+
+  <ion-scroll scrollX="true" style="width:100vw; height:50px" >
+    <ion-row nowrap class="headerChip">
+      <div *ngFor="let i of array">
+        <p  (click)="onScrollUp()">{{i}}</p>
+        <div></div>
+      </div>
+    </ion-row>
+  </ion-scroll>-->
 
 </ion-content>

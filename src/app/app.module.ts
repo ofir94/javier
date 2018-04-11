@@ -25,7 +25,8 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 
 import { ViewportModule } from 'angular2-viewport';
 
-
+import { InfiniteListModule } from 'angular-infinite-list'
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 @NgModule({
   declarations: [
     MyApp,
@@ -40,7 +41,8 @@ import { ViewportModule } from 'angular2-viewport';
     IonicModule.forRoot(MyApp),
     IonicSwipeAllModule,
     ViewportModule,
-
+    InfiniteListModule,
+    InfiniteScrollModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

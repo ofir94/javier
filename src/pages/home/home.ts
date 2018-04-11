@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Content} from 'ionic-angular';
+import {Content, LoadingController} from 'ionic-angular';
 import { NavController, AlertController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 
@@ -14,6 +14,7 @@ import * as $ from "jquery";
 
 
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -22,7 +23,6 @@ export class HomePage {
   @ViewChild(Content)
   content:Content;
 
-  day: any;
   date: any;
   daysInThisMonth: any;
   daysInLastMonth: any;
@@ -32,19 +32,18 @@ export class HomePage {
   weekDayNamesDefault: string[];
   currentMonth: any;
   currentYear: any;
-  currentDate: any;
-
   eventList: any;
-  selectedEvent: any;
-  isSelected: any;
-
   todayToAdd: any
   lessAt: any;
   addAt:any;
   endDate: any;
   startDate: any;
   canLess: boolean;
-
+  dateToRepositionView: any;
+  dateToReloadViewStart: any;
+  dateToReloadViewEnd: any;
+  reloadView: boolean;
+  asd: boolean;
 
   // persona = {
   //   name: "Javier",
@@ -55,18 +54,30 @@ export class HomePage {
   developer = {};
 
   loaded:   boolean = false;
-  tabIndex: number  = 0;
   cant: number;
+
+
+  array = [];
+  sum = 1000;
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
               private calendar: Calendar,
               private databaseProvider: DatabaseProvider,
-
-
+              public scrollService: ScrollService,
+              public loadingCtrl: LoadingController
                                  ) {
+    scrollService.onScroll.subscribe(e => {
 
+        // Para una de las formas
+
+    });
+
+    for (let i = 0; i < this.sum; ++i) {
+      this.array.push(i);
+    }
 
     this.canLess = false;
+    this.asd = true;
     this.date = new Date();
 
     //Saber cuando tengo que añadir mas o menos
@@ -74,12 +85,12 @@ export class HomePage {
     this.lessAt = new Date(this.date.getTime()+1000*60*60*24*2)
     this.startDate = new Date(this.date.getTime()-1000*60*60*24*1)
     this.addAt = new Date(this.date.getTime()+1000*60*60*24*60)
-
+    this.reloadView = false;
 
     this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
     this.weekDayNames = ["Lu","Ma","Mi", "Ju","Vi","Sa","Do"];
     this.weekDayNamesDefault = ["DO","LU","MA","MI", "JU","VI","SÁ"];
-    this.getDaysOfMonth();
+
     this.eventList = new Array();
     // this.developers = new Array(this.persona);
 
@@ -91,22 +102,18 @@ export class HomePage {
     });
 */
 
-
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
 
   this.cant = 75;
 
-  let once = true;
+    this.dateToReloadViewStart =  new Date(this.date.getTime()-1000*60*60*24*70);
+    this.dateToReloadViewEnd =  new Date(this.date.getTime()+1000*60*60*24*70);
+
   //Add days at start
     for (let i = this.cant; i > 0; i--){
       let fecha = new Date();
       let f = new Date(fecha.setDate(fecha.getDate() - i));
-
-      if(once){
-        this.startDate = f;
-        once = false;
-      }
       this.daysInThisMonth.push(f);
       this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
     }
@@ -122,36 +129,6 @@ export class HomePage {
 
 
   }
-
-  addDaysAtStart(day){
-    day = this.startDate;
-
-    console.log(this.daysInThisMonth)
-
-    let f;
-    for (let i = 0; i < 30; i++){
-        f = new Date(day.getTime()-1000*60*60*24*i)
-      this.daysInThisMonth.unshift(f);
-      this.weekDayNames.unshift(this.weekDayNamesDefault[f.getDay()]);
-    }
-    this.startDate = f;
-
-    console.log(this.daysInThisMonth)
-  }
-
-  addDaysAtEnd(day){
-
-    day = this.endDate;
-    for (let i = 1; i < this.cant ; i++){
-      let f = new Date(day.getTime()+1000*60*60*24*i) // doing it with seconds
-      this.endDate = f;
-      this.daysInThisMonth.push(f);
-      this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
-    }
-
-  }
-
-
 
 
 loadDeveloperData(){
@@ -171,242 +148,87 @@ addDeveloperPrueba(){
 }
 
 
-  getDaysOfMonth() {
-    //  alert("DayOfMonth");
-    this.daysInThisMonth = new Array();
-    this.daysInLastMonth = new Array();
-    this.daysInNextMonth = new Array();
-
-    this.weekDayNames = new Array();
-
-    this.currentMonth = this.monthNames[this.date.getMonth()];
-    this.currentYear = this.date.getFullYear();
-
-
-    var firstDayThisMonth = this.date.getDate();
-    var lastDayThisMonth = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0).getDate() ;
-
-    var daysBefore = 40;
-    var daysAfter = 40;
-
-    var k = true;
-    for (var j = daysBefore; j >= 1; j--) {
-
-      if(firstDayThisMonth-j <= 0) {
-
-        if(firstDayThisMonth==2 && k) {
-          this.daysInThisMonth.push(new Date(this.date.getFullYear(), this.date.getMonth(), 0).getDate());
-          k=false;
-
-        } if(firstDayThisMonth==1 && k) {
-          this.daysInThisMonth.push(new Date(this.date.getFullYear(), this.date.getMonth(), 0).getDate()-1);
-          this.daysInThisMonth.push(new Date(this.date.getFullYear(), this.date.getMonth(), 0).getDate());
-          k=false;
-        }
-        this.weekDayNames.push(this.weekDayNamesDefault[this.date.getDay() - (j)]);
-
-      }
-
-      else {
-
-        this.daysInThisMonth.push(firstDayThisMonth - (j));
-
-        if(this.date.getDay() - (j) < 0 ){
-          this.weekDayNames.push(this.weekDayNamesDefault[this.date.getDay() + 7-(j)]);
-
-        }
-        else {
-          this.weekDayNames.push(this.weekDayNamesDefault[this.date.getDay() - (j)]);
-
-
-        }
-
-      }
-
-    }
-
-    this.daysInThisMonth.push(firstDayThisMonth);
-    this.weekDayNames.push(this.weekDayNamesDefault[this.date.getDay()]);
-
-    for (var h = 1; h <= daysAfter; h++) {
-
-      if(firstDayThisMonth+h > lastDayThisMonth){ //Fin de mes
-        this.daysInThisMonth.push(firstDayThisMonth +h-lastDayThisMonth);
-          if(h+this.date.getDay()>6){ //Cuando llegue al final, iniciar desde el sabado
-           this.weekDayNames.push(this.weekDayNamesDefault[this.date.getDay() -(7-h)]);
-
-          }
-          else {
-            this.weekDayNames.push(this.weekDayNamesDefault[this.date.getDay() + (h)]);
-          }
-
-      }
-      else {
-        this.daysInThisMonth.push(firstDayThisMonth + h);
-
-        if( this.date.getDay()+ h > 6){
-        this.weekDayNames.push(this.weekDayNamesDefault[this.date.getDay()+ (h-7)]);
-
-        }
-        else{
-          this.weekDayNames.push(this.weekDayNamesDefault[this.date.getDay()+ h]);
-
-        }
-      }
-    }
-
-
-  }
-
-
-
-  goToLastMonth() {
-    // console.log("LastMonth");
-
-    this.date.setDate(this.date.getDate() - 5);
-    this.getDaysOfMonth();
-  }
-
-
-
-  goToNextMonth() {
-    this.date.setDate(this.date.getDate() + 5);
-    this.getDaysOfMonth();
-  }
-
-
-
 
   addEvent() {
     this.navCtrl.push(AddEventPage);
   }
 
-  loadEventThisMonth() {
-   /* this.eventList = new Array();
-    var startDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
-    var endDate = new Date(this.date.getFullYear(), this.date.getMonth()+1, 0);
-    this.calendar.listEventsInRange(startDate, endDate).then(
-      (msg) => {
-        msg.forEach(item => {
-          this.eventList.push(item);
-        });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );*/
-  }
 
-  checkEvent(day) {
-    var hasEvent = false;
-    var thisDate1 = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day+" 00:00:00";
-    var thisDate2 = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day+" 23:59:59";
-    this.eventList.forEach(event => {
-      if(((event.startDate >= thisDate1) && (event.startDate <= thisDate2)) || ((event.endDate >= thisDate1) && (event.endDate <= thisDate2))) {
-        hasEvent = true;
-      }
-    });
-    return hasEvent;
-  }
-  selectDate(day) {
-    this.isSelected = false;
-    this.selectedEvent = new Array();
-    var thisDate1 = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day+" 00:00:00";
-    var thisDate2 = this.date.getFullYear()+"-"+(this.date.getMonth()+1)+"-"+day+" 23:59:59";
-    this.eventList.forEach(event => {
-      if(((event.startDate >= thisDate1) && (event.startDate <= thisDate2)) || ((event.endDate >= thisDate1) && (event.endDate <= thisDate2))) {
-        this.isSelected = true;
-        this.selectedEvent.push(event);
-      }
-    });
-  }
-  deleteEvent(evt) {
-    // console.log(new Date(evt.startDate.replace(/\s/, 'T')));
-    // console.log(new Date(evt.endDate.replace(/\s/, 'T')));
-    let alert = this.alertCtrl.create({
-      title: 'Confirm Delete',
-      message: 'Are you sure want to delete this event?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Ok',
-          handler: () => {
-            this.calendar.deleteEvent(evt.title, evt.location, evt.notes, new Date(evt.startDate.replace(/\s/, 'T')), new Date(evt.endDate.replace(/\s/, 'T'))).then(
-              (msg) => {
-                console.log(msg);
-                this.loadEventThisMonth();
-                this.selectDate(new Date(evt.startDate.replace(/\s/, 'T')).getDate());
-              },
-              (err) => {
-                console.log(err);
-              }
-            )
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
 
-  swipe(event) {
+  /*swipe(event) {
     if(event.direction === 2) {
         this.goToNextMonth()
     }
     if(event.direction === 4) {
         this.goToLastMonth()
     }
+  }*/
+
+
+
+  addAtStart(){
+
+   let firstDate = this.daysInThisMonth[0];
+   firstDate =  new Date(firstDate.getTime()-1000*60*60*24*60)
+    this.daysInThisMonth = new Array();
+    this.weekDayNames = new Array();
+
+    for (let i = 1; i < 120 ; i++){
+      let fecha = firstDate;
+      let f = new Date(fecha.getTime() + 1000*60*60*24*i);
+      this.endDate = f;
+      this.daysInThisMonth.push(f);
+      this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+    }
+    this.dateToReloadViewStart =  new Date(this.daysInThisMonth[0].getTime()+1000*60*60*24*10);
+    this.dateToReloadViewEnd =  new Date(this.daysInThisMonth[this.daysInThisMonth.length-1].getTime()-1000*60*60*24*10);
+
+    console.log(this.dateToReloadViewStart)
+
+  }
+  addAtEnd(){
+
+   let lastDate = this.daysInThisMonth[this.daysInThisMonth.length-1];
+       lastDate =  new Date(lastDate.getTime()-1000*60*60*24*60);
+    this.daysInThisMonth = new Array();
+    this.weekDayNames = new Array();
+
+    for (let i = 1; i < 120 ; i++){
+      let fecha = lastDate;
+      let f = new Date(fecha.getTime() + 1000*60*60*24*i);
+      this.endDate = f;
+      this.daysInThisMonth.push(f);
+      this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+    }
+    this.dateToReloadViewEnd =  new Date(this.daysInThisMonth[this.daysInThisMonth.length-1].getTime()-1000*60*60*24*10);
+    this.dateToReloadViewStart =  new Date(this.daysInThisMonth[0].getTime()+1000*60*60*24*10);
+    console.log(this.dateToReloadViewEnd)
+
   }
 
+  addmore(day){
+    this.currentMonth = this.monthNames[day.getMonth()];
+    this.currentYear = day.getFullYear();
+ /*   console.log(day.getDate())
+    console.log(day.getMonth())*/
 
-  private getAnimationDirection(index):string {
-    var currentIndex = this.tabIndex;
+    if(day.getDate() < this.dateToReloadViewStart.getDate() && day.getMonth() == this.dateToReloadViewStart.getMonth() ){
+      this.presentLoadingDefault();
+      this.asd = false;
+      this.addAtStart();
+      this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
+      this.reloadView = true;
+    }
 
-    this.tabIndex = index;
-
-    switch (true){
-      case (currentIndex < index):
-        return('left');
-      case (currentIndex > index):
-        return ('right');
+    if(day.getDate() > this.dateToReloadViewEnd.getDate() && day.getMonth() == this.dateToReloadViewEnd.getMonth() ){
+      this.presentLoadingDefault();
+      this.asd = false;
+      this.addAtEnd();
+      this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
+      this.reloadView = true;
     }
   }
 
-  updateDate(dayA,first,last){
- // alert('mosue');
-    this.currentMonth = this.monthNames[dayA.getMonth()];
-    this.currentYear = dayA.getFullYear();
-    console.log(dayA.getDate());
-
-
-    if(first){
-        this.addDaysAtStart(dayA)
-
-    }
-
-   if(dayA >= this.addAt ){
-     this.addAt = new Date(dayA.getTime()+1000*60*60*24*60);
-     console.log(this.addAt)
-
-     this.addDaysAtEnd(dayA)
-   }
-
-   let topLessAt = new Date(this.lessAt.getTime()+1000*60*60*24*10);
-
-
-    if(dayA > this.lessAt && dayA < topLessAt){
-    this.lessAt = new Date(dayA.getTime()-1000*60*60*24*25);
-
-  //   this.addDaysAtStart(dayA)
-
-   }
-
-  }
 
 
   crear_evento(e,day,i){
@@ -417,18 +239,40 @@ addDeveloperPrueba(){
 
   }
 
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando más...'
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+    }, 250);
+  }
+
   ngAfterViewInit() {
     console.log('Initialized');
-    var g =  new Date();
+    let g =  new Date();
     g.setDate(g.getDate()+2);
       let id =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear();
-      document.getElementById(id).scrollIntoView();
+     // let id1 =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear()+'1';
+      document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
+  //    document.getElementById(id1).scrollIntoView();
   }
 
+  ngAfterViewChecked(){
 
-  ngOnPageScrollStop() {
-    console.log('They see me scrolling...');
+    if(this.reloadView){
+      this.reloadView = false;
+      let id =+this.dateToRepositionView.getDate()+'-'+this.dateToRepositionView.getMonth()+'-'+this.dateToRepositionView.getFullYear();
+    /*  alert("id reload")
+      alert(id)*/
+      document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
+    }
+
   }
+
 }
 
 

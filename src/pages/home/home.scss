@@ -222,4 +222,13 @@ width: 100px;
 
   /*  javier fin */
 
+  .search-results {
+    height: 100px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+
+     p {
+        display: inline;
+      }
 }
