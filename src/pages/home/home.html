@@ -94,7 +94,7 @@
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last"
                       class="calendar-col event " (click) = "crear_evento($event,day,i)">
               <ion-row class="row3" >
-              <ion-col class="" id = 'hab1-{{i}}'>
+              <ion-col class="" id = 'hab1-{{day.getFullYear()+"-"+day.getMonth()+"-"+day.getDate()}}'>
 
               </ion-col>
               </ion-row>

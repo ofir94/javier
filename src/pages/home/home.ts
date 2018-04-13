@@ -82,9 +82,9 @@ export class HomePage {
 
     //Saber cuando tengo que añadir mas o menos
     this.todayToAdd = this.date;
-    this.lessAt = new Date(this.date.getTime()+1000*60*60*24*2)
-    this.startDate = new Date(this.date.getTime()-1000*60*60*24*1)
-    this.addAt = new Date(this.date.getTime()+1000*60*60*24*60)
+    this.lessAt = new Date(this.date.getTime()+1000*60*60*24*2);
+    this.startDate = new Date(this.date.getTime()-1000*60*60*24*1);
+    this.addAt = new Date(this.date.getTime()+1000*60*60*24*60);
     this.reloadView = false;
 
     this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
@@ -232,11 +232,63 @@ addDeveloperPrueba(){
 
 
   crear_evento(e,day,i){
-    alert(day);
-    $("#hab1-" + i).addClass('triangulo-equilatero-bottom-inicio');
-    $("#hab1-" + (i+1)).addClass('cuadrado');
-    $("#hab1-" + (i+2)).addClass('triangulo-equilatero-bottom-fin');
+    alert(new Date(day).toISOString());
+    let IOSday= new Date(day);
+    // let IOSday= new Date(new Date(day).getTime() - 1*24*60*60*1000).toISOString();
+    this.navCtrl.push(AddEventPage,{'startDate':'2018-03-30'});
 
+
+  }
+  static prueba(startDate,endDate,status){//OFIR NO BORRES ESTA FUNCION!!!!
+
+    // let start = startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay();
+    // let end = endDate.getFullYear()+"-"+endDate.getMonth()+"-"+endDate.getDay();
+
+    let start = new Date(new Date(startDate).getTime()+1*24*60*60*1000);
+    let end = new Date(new Date(endDate).getTime()+1*24*60*60*1000);
+    let idStart = start.getFullYear()+"-"+start.getMonth()+"-"+start.getDate();
+    let idEnd = end.getFullYear()+"-"+end.getMonth()+"-"+end.getDate();
+    let currentDay;
+    let idCurrentDay;
+
+    if( $("#hab1-" + idStart).hasClass('triangulo-equilatero-bottom-fin') ){
+
+      $("#hab1-" + idStart).addClass('dos-reservas-inicio');
+
+    }
+    if( $("#hab1-" + idEnd).hasClass('triangulo-equilatero-bottom-inicio') ){
+
+      $("#hab1-" + idEnd).addClass('dos-reservas-fin');
+
+    }
+
+    let cantDias = Math.ceil((end.getTime() - start.getTime()) / (1000 * 3600 * 24));
+
+
+
+
+    for(let i = 0; i < cantDias+1;i++){
+      if( i == 0 && !($("#hab1-" + idStart).hasClass('triangulo-equilatero-bottom-fin')) ){
+        // alert("Start Day:"+startDate);
+        $("#hab1-" + idStart).addClass('triangulo-equilatero-bottom-inicio-'+status);
+      }
+      if( i == cantDias){
+        // alert("End Day:"+endDate);
+        $("#hab1-" + idEnd).addClass('triangulo-equilatero-bottom-fin-'+status);
+      }
+      if( i != 0 && i != cantDias){
+        // alert("i:"+i);
+        // let currentDay = start.getFullYear()+"-"+(end.getMonth())+"-"+(start.getDate()+i);
+        currentDay = new Date(new Date(startDate).getTime() + (i+1)*24*60*60*1000);//la i es para sumar los dias intermedios del evento
+        idCurrentDay =  currentDay.getFullYear()+"-"+currentDay.getMonth()+"-"+currentDay.getDate();
+        // alert(currentDay);
+        $("#hab1-" + idCurrentDay).addClass('cuadrado-'+status);
+      }
+    }
+
+    // $("#hab1-" + start.toLocaleDateString()).addClass('triangulo-equilatero-bottom-inicio');
+    // $("#hab1-" + (i+1)).addClass('cuadrado');
+    // $("#hab1-" + (i+2)).addClass('triangulo-equilatero-bottom-fin');
   }
 
   presentLoadingDefault() {

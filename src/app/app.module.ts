@@ -27,12 +27,15 @@ import { ViewportModule } from 'angular2-viewport';
 
 import { InfiniteListModule } from 'angular-infinite-list'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import {ServicioProvider} from "../providers/servicio/servicio";
+import {HttpClientModule} from "@angular/common/http";
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    AddEventPage
+    AddEventPage,
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ViewportModule,
     InfiniteListModule,
     InfiniteScrollModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -60,7 +64,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     SQLite,
     SQLitePorter,
     NativePageTransitions,
-    ViewportModule
+    ViewportModule,
+    ServicioProvider,
+
   ]
 })
 export class AppModule {}

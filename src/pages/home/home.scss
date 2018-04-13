@@ -187,29 +187,124 @@ width: 100px;
 
 
   /*  javier */
-  .triangulo-equilatero-bottom-fin {
+  .triangulo-equilatero-bottom-fin-falta_pago {
 
     width: 0;
     height: 0;
     border-right: 19px solid transparent;
-    border-top: 19px solid #f0ad4e;
-    border-left: 18px solid #f0ad4e;
+    border-top: 19px solid #ff9886;
+    border-left: 18px solid #ff9886;
     border-bottom: 18px solid transparent;
   }
-  .triangulo-equilatero-bottom-inicio{
+  .triangulo-equilatero-bottom-fin-deposito_pagado {
+
     width: 0;
     height: 0;
-    border-right: 18px solid #f0ad4e;
+    border-right: 19px solid transparent;
+    border-top: 19px solid #a19513;
+    border-left: 18px solid #a19513;
+    border-bottom: 18px solid transparent;
+  }
+  .triangulo-equilatero-bottom-fin-secondary {
+
+    width: 0;
+    height: 0;
+    border-right: 19px solid transparent;
+    border-top: 19px solid #32db64;
+    border-left: 18px solid #32db64;
+    border-bottom: 18px solid transparent;
+  }
+  .triangulo-equilatero-bottom-fin-cancelado {
+
+    width: 0;
+    height: 0;
+    border-right: 19px solid transparent;
+    border-top: 19px solid #84607f;
+    border-left: 18px solid #84607f;
+    border-bottom: 18px solid transparent;
+  }
+  .triangulo-equilatero-bottom-fin-danger {
+
+    width: 0;
+    height: 0;
+    border-right: 19px solid transparent;
+    border-top: 19px solid #f53d3d;
+    border-left: 18px solid #f53d3d;
+    border-bottom: 18px solid transparent;
+  }
+
+  .triangulo-equilatero-bottom-inicio-falta_pago{
+    width: 0;
+    height: 0;
+    border-right: 18px solid #ff9886;
     border-top: 18px solid transparent;
     border-left: 19px solid transparent;
-    border-bottom: 19px solid #f0ad4e;
+    border-bottom: 19px solid #ff9886;
 
   }
-  .cuadrado {
+  .triangulo-equilatero-bottom-inicio-deposito_pagado{
+    width: 0;
+    height: 0;
+    border-right: 18px solid #a19513;
+    border-top: 18px solid transparent;
+    border-left: 19px solid transparent;
+    border-bottom: 19px solid #a19513;
+
+  }
+  .triangulo-equilatero-bottom-inicio-secondary{
+    width: 0;
+    height: 0;
+    border-right: 18px solid #32db64;
+    border-top: 18px solid transparent;
+    border-left: 19px solid transparent;
+    border-bottom: 19px solid #32db64;
+
+  }
+  .triangulo-equilatero-bottom-inicio-cancelado{
+    width: 0;
+    height: 0;
+    border-right: 18px solid #84607f;
+    border-top: 18px solid transparent;
+    border-left: 19px solid transparent;
+    border-bottom: 19px solid #84607f;
+
+  }
+  .triangulo-equilatero-bottom-inicio-danger{
+    width: 0;
+    height: 0;
+    border-right: 18px solid #f53d3d;
+    border-top: 18px solid transparent;
+    border-left: 19px solid transparent;
+    border-bottom: 19px solid #f53d3d;
+
+  }
+
+  .cuadrado-falta_pago {
     width: 19px;
     height: 37px;
-    background: #f0ad4e;
+    background: #ff9886;
   }
+  .cuadrado-deposito_pagado {
+    width: 19px;
+    height: 37px;
+    background: #a19513;
+  }
+  .cuadrado-secondary {
+    width: 19px;
+    height: 37px;
+    background: #32db64;
+  }
+  .cuadrado-cancelado {
+    width: 19px;
+    height: 37px;
+    background: #84607f;
+  }
+  .cuadrado-danger {
+    width: 19px;
+    height: 37px;
+    background: #f53d3d;
+   }
+
 
   .rightborder{
     border-right: groove;
@@ -218,6 +313,25 @@ width: 100px;
   .leftbordernone{
     border-left: none;
     border-width: thin;
+  }
+
+  .dos-reservas-inicio{
+    width: 0;
+    height: 0;
+    border-right: 18px solid #f0ad4e;
+    border-top: 18px solid #1a732d;
+    border-left: 19px solid #1a732d;;
+    border-bottom: 19px solid #f0ad4e;
+
+  }
+  .dos-reservas-fin-{
+    width: 0;
+    height: 0;
+    border-right: 18px solid #1a732d;
+    border-top: 18px solid #f0ad4e;
+    border-left: 19px solid #f0ad4e;
+    border-bottom: 19px solid #1a732d;
+
   }
 
   /*  javier fin */

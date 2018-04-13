@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>AddEvent</ion-title>
+  <ion-navbar id="navbar_evento" color="falta_pago">
+    <ion-title>{{rooms.location}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,28 +17,87 @@
   <form (ngSubmit)="save()">
     <ion-list>
       <ion-item>
-        <ion-label floating>Title</ion-label>
-        <ion-input type="text" [(ngModel)]="event.title" name="event.title"></ion-input>
+        <ion-label floating>Desde</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY" pickerFormat="DD/MM/YYYY" max="2118-12-31" doneText="Aceptar" cancelText="Cancelar" [(ngModel)]="event.startDate" name="event.startDate" ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Hasta</ion-label>
+        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="event.endDate" name="event.endDate" id="endDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Cantidad de niños</ion-label>
+        <ion-select  [(ngModel)]="event.countChild" name="event.countChild" [selectOptions]="selectOptions">
+          <ion-option value="1" >1</ion-option>
+          <ion-option value="2" >2</ion-option>
+          <ion-option value="3" >3</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Cantidad de adultos</ion-label>
+        <ion-select  [(ngModel)]="event.countAdult" name="event.countAdult" [selectOptions]="selectOptions">
+          <ion-option value="1" >1</ion-option>
+          <ion-option value="2" >2</ion-option>
+          <ion-option value="3" >3</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Donde</ion-label>
+        <ion-select  [(ngModel)]="event.location" name="event.location" [selectOptions]="selectOptions">
+          <ion-option value="1" >Habitación 1</ion-option>
+          <ion-option value="2" >Habitación 2</ion-option>
+        </ion-select>
       </ion-item>
 
+      <!--<button ion-item *ngFor="let item of items" (click)="itemSelected(item)">-->
+        <!--{{ item }}-->
+      <!--</button>-->
+
+      <ion-list radio-group>
+        <ion-list-header>
+         <h2>Estado de la reserva</h2>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Falta de pago</ion-label>
+          <ion-radio value="falta_pago" color="falta_pago" checked (click)="pintar_nav('falta_pago')" ></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Depósito Pagado</ion-label>
+          <ion-radio value="deposito_pagado" color="deposito_pagado" (click)="pintar_nav('deposito_pagado')" ></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Totalmente pagada</ion-label>
+          <ion-radio value="totalmente_pagada" color="secondary" (click)="pintar_nav('secondary')" ></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Cancelado</ion-label>
+          <ion-radio value="Cancelado" color="cancelado" (click)="pintar_nav('cancelado')" ></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>No disponible</ion-label>
+          <ion-radio value="no_disponible" color="danger" (click)="pintar_nav('danger')" ></ion-radio>
+        </ion-item>
+      </ion-list>
+      <!--<ion-item>-->
+        <!--<ion-label floating>Title</ion-label>-->
+        <!--<ion-input type="text" [(ngModel)]="event.title" name="event.title"></ion-input>-->
+      <!--</ion-item>-->
+
+      <!--<ion-item>-->
+        <!--<ion-label floating>Location</ion-label>-->
+        <!--<ion-input type="text" [(ngModel)]="event.location" name="event.location"></ion-input>-->
+      <!--</ion-item>-->
+      <!--<ion-item>-->
+        <!--<ion-label floating>Notes</ion-label>-->
+        <!--<ion-input type="text" [(ngModel)]="event.message" name="event.message"></ion-input>-->
+      <!--</ion-item>-->
+
       <ion-item>
-        <ion-label floating>Location</ion-label>
-        <ion-input type="text" [(ngModel)]="event.location" name="event.location"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Notes</ion-label>
-        <ion-input type="text" [(ngModel)]="event.message" name="event.message"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Start Date</ion-label>
-        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="event.startDate" name="event.startDate"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>End Date</ion-label>
-        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="event.endDate" name="event.endDate"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <button ion-button type="submit" full round>Save</button>
+        <button ion-button type="submit" full round >Save</button>
       </ion-item>
 
 
