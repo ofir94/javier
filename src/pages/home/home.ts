@@ -25,8 +25,6 @@ export class HomePage {
 
   date: any;
   daysInThisMonth: any;
-  daysInLastMonth: any;
-  daysInNextMonth: any;
   monthNames: string[];
   weekDayNames: any;
   weekDayNamesDefault: string[];
@@ -57,6 +55,8 @@ export class HomePage {
   cant: number;
 
   today: any;
+  endweek: any;
+  srtarweek: any;
 
   array = [];
   sum = 1000;
@@ -180,8 +180,8 @@ addDeveloperPrueba(){
       this.daysInThisMonth.push(f);
       this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
     }
-    this.dateToReloadViewStart =  new Date(this.daysInThisMonth[0].getTime()+1000*60*60*24*10);
-    this.dateToReloadViewEnd =  new Date(this.daysInThisMonth[this.daysInThisMonth.length-1].getTime()-1000*60*60*24*10);
+    this.dateToReloadViewStart =  new Date(this.daysInThisMonth[0].getTime()+1000*60*60*24*20);
+    this.dateToReloadViewEnd =  new Date(this.daysInThisMonth[this.daysInThisMonth.length-1].getTime()-1000*60*60*24*20);
 
     console.log(this.dateToReloadViewStart)
 
@@ -200,8 +200,8 @@ addDeveloperPrueba(){
       this.daysInThisMonth.push(f);
       this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
     }
-    this.dateToReloadViewEnd =  new Date(this.daysInThisMonth[this.daysInThisMonth.length-1].getTime()-calc*10);
-    this.dateToReloadViewStart =  new Date(this.daysInThisMonth[0].getTime()+calc*10);
+    this.dateToReloadViewEnd =  new Date(this.daysInThisMonth[this.daysInThisMonth.length-1].getTime()-calc*20);
+    this.dateToReloadViewStart =  new Date(this.daysInThisMonth[0].getTime()+calc*20);
     console.log(this.dateToReloadViewEnd)
 
   }
@@ -209,8 +209,8 @@ addDeveloperPrueba(){
   addmore(day){
     this.currentMonth = this.monthNames[day.getMonth()];
     this.currentYear = day.getFullYear();
- /*   console.log(day.getDate())
-    console.log(day.getMonth())*/
+    console.log(day)
+    /*   console.log(day.getMonth())*/
 
     if(day <= this.dateToReloadViewStart && !this.reloadView){
      // this.presentLoadingDefault();
@@ -300,7 +300,7 @@ addDeveloperPrueba(){
 
     setTimeout(() => {
       loading.dismiss();
-    }, 10);
+    }, 250);
   }
 
   ngAfterViewInit() {
