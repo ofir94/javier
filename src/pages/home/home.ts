@@ -176,7 +176,6 @@ addDeveloperPrueba(){
     for (let i = 1; i < 120 ; i++){
       let fecha = firstDate;
       let f = new Date(fecha.getTime() + 1000*60*60*24*i);
-      this.endDate = f;
       this.daysInThisMonth.push(f);
       this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
     }
@@ -188,20 +187,20 @@ addDeveloperPrueba(){
   }
   addAtEnd(){
 
+    let calc = 1000*60*60*24;
    let lastDate = this.daysInThisMonth[this.daysInThisMonth.length-1];
-       lastDate =  new Date(lastDate.getTime()-1000*60*60*24*60);
+       lastDate =  new Date(lastDate.getTime()-calc*60);
     this.daysInThisMonth = new Array();
     this.weekDayNames = new Array();
 
-    for (let i = 1; i < 120 ; i++){
+    for (let i = 1; i < 240 ; i++){
       let fecha = lastDate;
-      let f = new Date(fecha.getTime() + 1000*60*60*24*i);
-      this.endDate = f;
+      let f = new Date(fecha.getTime() + calc*i);
       this.daysInThisMonth.push(f);
       this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
     }
-    this.dateToReloadViewEnd =  new Date(this.daysInThisMonth[this.daysInThisMonth.length-1].getTime()-1000*60*60*24*10);
-    this.dateToReloadViewStart =  new Date(this.daysInThisMonth[0].getTime()+1000*60*60*24*10);
+    this.dateToReloadViewEnd =  new Date(this.daysInThisMonth[this.daysInThisMonth.length-1].getTime()-calc*10);
+    this.dateToReloadViewStart =  new Date(this.daysInThisMonth[0].getTime()+calc*10);
     console.log(this.dateToReloadViewEnd)
 
   }
@@ -212,19 +211,19 @@ addDeveloperPrueba(){
  /*   console.log(day.getDate())
     console.log(day.getMonth())*/
 
-    if(day.getDate() < this.dateToReloadViewStart.getDate() && day.getMonth() == this.dateToReloadViewStart.getMonth() ){
-      this.presentLoadingDefault();
+    if(day/*.getDate()*/ <= this.dateToReloadViewStart/*.getDate() && day.getMonth() <= this.dateToReloadViewStart.getMonth()*/  && !this.reloadView){
+     // this.presentLoadingDefault();
       this.asd = false;
       this.addAtStart();
       this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
       this.reloadView = true;
     }
 
-    if(day.getDate() > this.dateToReloadViewEnd.getDate() && day.getMonth() == this.dateToReloadViewEnd.getMonth() ){
-      this.presentLoadingDefault();
+    if(day/*.getDate()*/ >= this.dateToReloadViewEnd/*.getDate() && day.getMonth() >= this.dateToReloadViewEnd.getMonth()*/ && !this.reloadView){
+    //  this.presentLoadingDefault();
       this.asd = false;
-      this.addAtEnd();
       this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
+      this.addAtEnd();
       this.reloadView = true;
     }
   }
@@ -300,7 +299,7 @@ addDeveloperPrueba(){
 
     setTimeout(() => {
       loading.dismiss();
-    }, 250);
+    }, 1);
   }
 
   ngAfterViewInit() {
@@ -316,8 +315,10 @@ addDeveloperPrueba(){
   ngAfterViewChecked(){
 
     if(this.reloadView){
+      this.presentLoadingDefault();
       this.reloadView = false;
       let id =+this.dateToRepositionView.getDate()+'-'+this.dateToRepositionView.getMonth()+'-'+this.dateToRepositionView.getFullYear();
+      console.log(id);
     /*  alert("id reload")
       alert(id)*/
       document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
