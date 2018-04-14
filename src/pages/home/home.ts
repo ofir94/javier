@@ -56,6 +56,7 @@ export class HomePage {
   loaded:   boolean = false;
   cant: number;
 
+  today: any;
 
   array = [];
   sum = 1000;
@@ -79,7 +80,7 @@ export class HomePage {
     this.canLess = false;
     this.asd = true;
     this.date = new Date();
-
+    this.today =this.date.getDate()+'-'+this.date.getMonth()+'-'+this.date.getFullYear();
     //Saber cuando tengo que añadir mas o menos
     this.todayToAdd = this.date;
     this.lessAt = new Date(this.date.getTime()+1000*60*60*24*2);
@@ -173,7 +174,7 @@ addDeveloperPrueba(){
     this.daysInThisMonth = new Array();
     this.weekDayNames = new Array();
 
-    for (let i = 1; i < 120 ; i++){
+    for (let i = 1; i < 240 ; i++){
       let fecha = firstDate;
       let f = new Date(fecha.getTime() + 1000*60*60*24*i);
       this.daysInThisMonth.push(f);
@@ -211,7 +212,7 @@ addDeveloperPrueba(){
  /*   console.log(day.getDate())
     console.log(day.getMonth())*/
 
-    if(day/*.getDate()*/ <= this.dateToReloadViewStart/*.getDate() && day.getMonth() <= this.dateToReloadViewStart.getMonth()*/  && !this.reloadView){
+    if(day <= this.dateToReloadViewStart && !this.reloadView){
      // this.presentLoadingDefault();
       this.asd = false;
       this.addAtStart();
@@ -219,7 +220,7 @@ addDeveloperPrueba(){
       this.reloadView = true;
     }
 
-    if(day/*.getDate()*/ >= this.dateToReloadViewEnd/*.getDate() && day.getMonth() >= this.dateToReloadViewEnd.getMonth()*/ && !this.reloadView){
+    if(day >= this.dateToReloadViewEnd && !this.reloadView){
     //  this.presentLoadingDefault();
       this.asd = false;
       this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
@@ -315,7 +316,7 @@ addDeveloperPrueba(){
   ngAfterViewChecked(){
 
     if(this.reloadView){
-      this.presentLoadingDefault();
+   //   this.presentLoadingDefault();
       this.reloadView = false;
       let id =+this.dateToRepositionView.getDate()+'-'+this.dateToRepositionView.getMonth()+'-'+this.dateToRepositionView.getFullYear();
       console.log(id);

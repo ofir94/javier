@@ -52,27 +52,7 @@ page-home {
   .unselected-date {
     border: none;
   }
-  .calendar-body {
-    .grid {
-      padding: 0;
-    }
-    .col:last-child {
-      border-right: none;
-    }
-    .calendar-weekday, .calendar-date {
-      text-align: center;
-      margin: 0;
-    }
-    .calendar-weekday {
-      font-weight: bold;
-      border-bottom: solid 1px #1a732d;
-      background-color: #26ab56;
-    }
-    .calendar-date {
-      border-top: solid 1px #1a732d;
-      border-bottom: solid 1px #1a732d;
-    }
-  }
+
 
   #parent{
     height: 100%;
@@ -108,9 +88,9 @@ page-home {
 
     min-height: 1cm;
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
-    color: #cccccc;
+    color: #000000;
     font-size: 14px;
-    height: 1cm;
+    height: 42px;
 
     border-bottom: groove;
     border-width: thin;
@@ -125,7 +105,7 @@ page-home {
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
     color: #5b5e5a;
     font-size: 14px;
-    height: 1cm;
+    height: 42px;
 width: 100px;
 
     border-bottom: groove;
@@ -140,7 +120,7 @@ width: 100px;
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
     color: #5b5e5a;
     font-size: 14px;
-    height: 1cm;
+    height: 42px;
     width: 100px;
     border-bottom: groove;
     border-width: thin;
@@ -168,23 +148,36 @@ width: 100px;
   }
 
   .weeknames{
-    padding-bottom: 10%;
-    font-size: 9px;
+    font-size: 10px;
   }
   .days{
-
-    font-family: "SansSerif", serif;
-    //font-weight: bold;
+    font-size: 17px;
   }
 
-  .finsemana{
-    background: lightgrey;
+  .finsemana-true{
+    background: #a7a4a41c;
+  }
+  .finsemana-header-true{
+    background: #a7a4a41c;
+    border-top:solid;
+    font-size: 15px;
+    padding: 0px;
   }
 
   .grid{
     padding: 0px;
   }
 
+  .today-header-true{
+    background: #09a60a;
+    -webkit-text-fill-color: #ffffff;
+
+  }
+
+  .today-body-true{
+    background: rgba(97, 255, 120, 0.47);
+
+  }
 
   /*  javier */
   .triangulo-equilatero-bottom-fin-falta_pago {

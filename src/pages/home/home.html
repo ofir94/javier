@@ -37,11 +37,7 @@
         <div id="container4"  >
       <ion-grid  >
 
-        <ion-row  class="row2" nowrap style="
-        word-wrap: break-word;
-        font-size:0.8em;
-        font-weight:300;
-        ">
+        <ion-row  class="row2" nowrap>
 
 
           <ion-col class="fixed-col-noborder"   >
@@ -75,9 +71,12 @@
 
         <ion-grid  >
 
+          <!--Encabezado-->
           <ion-row  class="row1" nowrap>
-            <ion-col  class="calendar-col" col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last; let third = third"
-                      id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}">
+            <ion-col   col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last; let third = third"
+                      id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}"
+                       class="calendar-col finsemana-header-{{day.getDay()==0 || day.getDay()==6}} today-header-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}} ">
+
               <div class="weeknames {{first}}">
                 {{weekDayNames[i]}}<br>
               </div>
@@ -87,28 +86,32 @@
               </div>
             </ion-col>
 
-
-
           </ion-row>
+
+
+          <!--Hab 1-->
           <ion-row class="row1" nowrap >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last"
-                      class="calendar-col event " (click) = "crear_evento($event,day,i)">
+                      class="calendar-col event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
+                      (click) = "crear_evento($event,day,i)">
               <ion-row class="row3" >
               <ion-col class="" id = 'hab1-{{day.getFullYear()+"-"+day.getMonth()+"-"+day.getDate()}}'>
 
               </ion-col>
               </ion-row>
             </ion-col>
-
           </ion-row>
+
+
+          <!--Hab 2-->
           <ion-row class="row1" nowrap  >
-            <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" class="calendar-col"
-                      id = 'hab2-{{i}}'>
-
-
+            <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last"
+                      class="calendar-col finsemana-{{day.getDay()==0 || day.getDay()==6}}
+                              today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}" id = 'hab2-{{i}}'>
             </ion-col>
-
           </ion-row>
+
+
         </ion-grid>
       </div>
     </div>
