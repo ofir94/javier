@@ -300,7 +300,7 @@ addDeveloperPrueba(){
 
     setTimeout(() => {
       loading.dismiss();
-    }, 1);
+    }, 10);
   }
 
   ngAfterViewInit() {
@@ -316,7 +316,7 @@ addDeveloperPrueba(){
   ngAfterViewChecked(){
 
     if(this.reloadView){
-   //   this.presentLoadingDefault();
+      this.presentLoadingDefault();
       this.reloadView = false;
       let id =+this.dateToRepositionView.getDate()+'-'+this.dateToRepositionView.getMonth()+'-'+this.dateToRepositionView.getFullYear();
       console.log(id);
