@@ -239,7 +239,7 @@ export class HomePage {
   crear_evento(day){
 
      let fechaTransformada = this.tranformarFecha(day);
-    // alert(fechaTransformada);
+    // alert(day);
     this.navCtrl.push(AddEventPage,{'startDate':fechaTransformada});
 
 

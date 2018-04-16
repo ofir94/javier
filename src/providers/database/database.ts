@@ -21,24 +21,24 @@ export class DatabaseProvider {
   private  databaseReady: BehaviorSubject<boolean>;
   constructor(public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform)//Aqui en el video ponen Http pq es otro import
   {
-    // this.databaseReady = new BehaviorSubject(false);
-    // this.platform.ready().then(() =>{
-    //   this.sqlite.create({
-    //     name: 'bedApp.db',
-    //     location: 'default'   //aqui podemos decirle q se cree la bd en um lugar específico
-    //   })
-    //     .then((db: SQLiteObject) => {
-    //     this.database = db;
-    //     this.storage.get('database_filled').then(val =>{
-    //       if(val) {
-    //         this.databaseReady.next(true);
-    //       }
-    //       else {
-    //         this.fillDatabase();
-    //       }
-    //     })
-    //   });
-    // });
+    this.databaseReady = new BehaviorSubject(false);
+    this.platform.ready().then(() =>{
+      this.sqlite.create({
+        name: 'bedapp.db',
+        location: 'default'   //aqui podemos decirle q se cree la bd en um lugar específico
+      })
+        .then((db: SQLiteObject) => {
+        this.database = db;
+        this.storage.get('database_filled').then(val =>{
+          if(val) {
+            this.databaseReady.next(true);
+          }
+          else {
+            this.fillDatabase();
+          }
+        })
+      });
+    });
   }
 
   fillDatabase(){
