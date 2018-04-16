@@ -105,8 +105,8 @@ export class HomePage {
       }
     });
 
-    this.estados = new Array();
-    this.estados = ['Falta de pago','Deposito pagado','Totalmente pagado','Cancelado','No disponoble'];
+    // this.estados = new Array();
+    // this.estados = ['Falta de pago','Deposito pagado','Totalmente pagado','Cancelado','No disponoble'];
 
 
   this.daysInThisMonth = new Array();
