@@ -131,11 +131,11 @@ export class HomePage {
   }
 
 
-loadDeveloperData(){
-  this.databaseProvider.getAllReservation().then(data => {
-    this.developers = data;
-  });
-}
+  loadReservationData(){
+    this.databaseProvider.getAllReservation().then(data => {
+      this.reservas = data;
+    });
+  }
 
 
 
