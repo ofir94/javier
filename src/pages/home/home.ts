@@ -60,7 +60,7 @@ export class HomePage {
   reserva = {};
   reservas = [];
   //Fin para cargar lista de tuplas de tabla reservation
-  
+
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
               private calendar: Calendar,
@@ -132,7 +132,7 @@ export class HomePage {
 
 
 loadDeveloperData(){
-  this.databaseProvider.getAllDevelopers().then(data => {
+  this.databaseProvider.getAllReservation().then(data => {
     this.developers = data;
   });
 }
@@ -314,7 +314,7 @@ loadDeveloperData(){
       document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
     }
   }
-  
+
   tranformarFecha(day){
    let fecha = new Date(new Date(day).getTime()).toISOString();
    let split = fecha.toString().split('T')[0];
