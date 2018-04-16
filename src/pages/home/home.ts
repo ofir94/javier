@@ -146,10 +146,10 @@ export class HomePage {
   }
 
   loadStatusData(){
-    this.databaseProvider.getAllStatus().then(data => {
+   /* this.databaseProvider.getAllStatus().then(data => {
       alert("status");
       this.estados = data;
-    });
+    });*/
   }
 
 
