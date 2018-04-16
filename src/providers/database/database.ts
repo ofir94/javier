@@ -21,11 +21,11 @@ export class DatabaseProvider {
   private  databaseReady: BehaviorSubject<boolean>;
   constructor(public http: Http, private sqlitePorter: SQLitePorter, private storage: Storage, private sqlite: SQLite, private platform: Platform)//Aqui en el video ponen Http pq es otro import
   {
-   /* this.databaseReady = new BehaviorSubject(false);
+    this.databaseReady = new BehaviorSubject(false);
     this.platform.ready().then(() =>{
       this.sqlite.create({
-        name: 'developers.db',
-        location: 'default'
+        name: 'bedApp.db',
+        location: 'default'   //aqui podemos decirle q se cree la bd en um lugar específico
       })
         .then((db: SQLiteObject) => {
         this.database = db;
@@ -38,11 +38,11 @@ export class DatabaseProvider {
           }
         })
       });
-    });*/
+    });
   }
 
   fillDatabase(){
-    this.http.get('assets/dummyDump.sql')
+    this.http.get('assets/bedbooking.sql')
       .map(res => res.text())
       .subscribe(sql =>{
         this.sqlitePorter.importSqlToDb(this.database, sql)
@@ -54,32 +54,29 @@ export class DatabaseProvider {
       })
   }
 
-  addDeveloper(name, skill, year){
-    let  data = [name,skill,year];
-    alert(data);
-    alert(name);
-    alert(skill);
-    alert(year);
-    return this.database.executeSql("INSERT INTO developer (name, skill, yearsOfExperience) VALUES (?,?,?)",data).then( res=> {
-      alert(res);
-      return res;
+  addReservation(from_date, to_date, cant_adult, cant_kid, /*price, deposit, comment, id_room,*/ status, /*id_client*/){
+    let  data = [from_date, to_date, cant_adult, cant_kid, /*price, deposit, comment, id_room,*/ status, /*id_client*/];
+    return this.database.executeSql("INSERT INTO bedbooking (from_date, to_date, cant_adult, cant_kid, status ) VALUES (?,?,?,?,?)",data).then( res=> {
+    return res;
 
     });
   }
 
-  getAllDevelopers(){
-    return this.database.executeSql("SELECT * FROM developer",[]).then(data=> {
-      let developers = [];
+  getAllReservation(){
+    return this.database.executeSql("SELECT * FROM bedbooking",[]).then(data=> {
+      let bedbooking = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
-          developers.push({
-            name: data.rows.item(i).name,
-            skill: data.rows.item(i).skill,
-            yearsOfExperience: data.rows.item(i).yearsOfExperience
+          bedbooking.push({
+            from_date: data.rows.item(i).from_date,
+            to_date: data.rows.item(i).to_date,
+            cant_adult: data.rows.item(i).cant_adult,
+            cant_kid: data.rows.item(i).cant_kid,
+            status: data.rows.item(i).status,
           });
         }
       }
-      return developers;
+      return bedbooking;
     },err =>{
       console.log('Error',err);
       return [];

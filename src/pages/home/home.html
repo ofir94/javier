@@ -118,7 +118,14 @@
 
 
   </div>
+  <ion-list>
+    <ion-item *ngFor="let reserva of reservas">
+      <h2>
+        {{reserva.status}}
+      </h2>
 
+    </ion-item>
+  </ion-list>
  <!-- New Test
   <h4 style="text-align: center">{{currentMonth}} {{currentYear}}</h4>
 

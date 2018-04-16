@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 import {HomePage} from "../home/home";
+import {DatabaseProvider} from "../../providers/database/database";
 
 import * as $ from "jquery";
 import {getLocaleDateFormat, Time} from "@angular/common";
@@ -23,21 +24,21 @@ export class AddEventPage {
   developers = [];
   developer = {};
 
+
   startDate;
-  event = { /*title: "", message: "",*/ startDate: this.startDate, endDate: "", status: "falta_pago",  location: "", countChild: "", countAdult: ""};
+  event = { /*title: "", message: "",*/ startDate: this.startDate, endDate: "", status: "falta_pago",  location: "", cantKid: "", cantAdult: "", price: ''};
   rooms= {location:"Habitacion 1"};
   selectOptions;
   constructor(public alertCtrl: AlertController,
               public navCtrl: NavController,
               public navParams: NavParams,
               private calendar: Calendar,
-
-
-
-              /*,private databaseProvider: DatabaseProvider*/)
+              private databaseProvider: DatabaseProvider)
   {
 
     this.event.startDate = navParams.get('startDate');
+
+    //Esto es para ver tuplas de la tabla reservation, para invocar la funcion loadDeveloperData, pero no hace falta en add-event
   //   this.databaseProvider.getDatabaseState().subscribe(rdy => {
   //   if(rdy){
   //     this.loadDeveloperData();
@@ -48,6 +49,7 @@ export class AddEventPage {
 
       mode: 'md'
     };
+    // Esto me parece q se puede borrar
     // if(navParams.data != null){
     // this.startDate = navParams.data.startDate;
     // $('#startDate').set(this.startDate);
@@ -55,22 +57,30 @@ export class AddEventPage {
   //Llenar rooms desde la bd
   }
 
+  //Esto es para ver las tuplas de la tabla reservation y lo voy a probar en home
   // loadDeveloperData(){
-  //   this.databaseProvider.getAllDevelopers().then(data => {
+  //   this.databaseProvider.getAllReservation().then(data => {
   //     this.developers = data;
   //   });
   // }
-  // addDeveloper(){
-  //   this.databaseProvider.addDevelopers(this.developer['name'], this.developer['skill'],this.developer['yearOfExperience'])
-  //     .then(data =>{
-  //       this.loadDeveloperData();
-  //     });
-  //   this.developer = {};
-  // }
+
+  addReservation(){
+    // let precio = Number(this.event.price);   //Hacer esto con todos los numeros???
+    this.databaseProvider.addReservation(this.event['startDate'], this.event['endDate'],this.event['cantAdult'], this.event['cantKid'], this.event['status'])
+
+    //Esto no se hace aqui pq no cargo las tuplas de reservation en add-event,
+    // cuando regrese home supongo q se resuelva con la llamada a addReservationData q hay en el constructor
+    // .then(data =>{
+      //   this.loadReservationData();
+      // });
+    // this.developer = {};
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddEventPage');
   }
+
+
 
   // save() {
   //   this.calendar.createEvent(this.event.title, this.event.location, this.event.message, new Date(this.event.startDate), new Date(this.event.endDate)).then(
@@ -102,21 +112,16 @@ export class AddEventPage {
   save(){
     let day = this.event.startDate;
     //INICIO NUEVA FORMA DE TRATAR LAS FECHAS
+    //
+    //
+    // let test = new Date(new Date(day).getTime()+1*24*60*60*1000);
+    // alert(test.getFullYear()+"-"+test.getMonth()+"-"+test.getDate());
 
-
-    let test = new Date(new Date(day).getTime()+1*24*60*60*1000);
-    alert(test.getFullYear()+"-"+test.getMonth()+"-"+test.getDate());
 
     //INICIO NUEVA FORMA DE TRATAR LAS FECHAS
-
-
-
-
-
-
-
     // alert(day);//pq pone un dia de menos cuando crea la fecha?
 
+    this.addReservation();    //Esto es para anadirlo a la bd
     HomePage.prueba(this.event.startDate,this.event.endDate,this.event.status);
     this.navCtrl.pop();
 

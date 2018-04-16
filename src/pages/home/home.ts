@@ -43,11 +43,7 @@ export class HomePage {
   reloadView: boolean;
   asd: boolean;
 
-  // persona = {
-  //   name: "Javier",
-  //   yearsOfExperience: 4,
-  //   skill: "Awesomness"
-  // };
+
   developers = [];
   developer = {};
 
@@ -60,6 +56,11 @@ export class HomePage {
 
   array = [];
   sum = 1000;
+  //Inicio para cargar lista de tuplas de tabla reservation
+  reserva = {};
+  reservas = [];
+  //Fin para cargar lista de tuplas de tabla reservation
+  
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
               private calendar: Calendar,
@@ -93,15 +94,13 @@ export class HomePage {
     this.weekDayNamesDefault = ["DO","LU","MA","MI", "JU","VI","SÁ"];
 
     this.eventList = new Array();
-    // this.developers = new Array(this.persona);
 
 
- /* this.databaseProvider.getDatabaseState().subscribe(rdy => {
+	this.databaseProvider.getDatabaseState().subscribe(rdy => {
       if(rdy){
-        this.loadDeveloperData();
+        this.loadReservationData();
       }
     });
-*/
 
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
@@ -137,16 +136,7 @@ loadDeveloperData(){
     this.developers = data;
   });
 }
-addDeveloper(){
-  this.databaseProvider.addDeveloper(this.developer['name'], this.developer['skill'],this.developer['yearOfExperience'])
-    .then(data =>{
-      this.loadDeveloperData();
-    });
-  this.developer = {};
-}
-addDeveloperPrueba(){
-  this.developers.push(this.developer);
-}
+
 
 
 
@@ -232,10 +222,9 @@ addDeveloperPrueba(){
 
 
   crear_evento(e,day,i){
-    alert(new Date(day).toISOString());
-    let IOSday= new Date(day);
-    // let IOSday= new Date(new Date(day).getTime() - 1*24*60*60*1000).toISOString();
-    this.navCtrl.push(AddEventPage,{'startDate':'2018-03-30'});
+     let fechaTransformada = this.tranformarFecha(day);
+    // alert(fechaTransformada);
+    this.navCtrl.push(AddEventPage,{'startDate':fechaTransformada});
 
 
   }
@@ -324,7 +313,12 @@ addDeveloperPrueba(){
       alert(id)*/
       document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
     }
-
+  }
+  
+  tranformarFecha(day){
+   let fecha = new Date(new Date(day).getTime()).toISOString();
+   let split = fecha.toString().split('T')[0];
+   return split;
   }
 
 }

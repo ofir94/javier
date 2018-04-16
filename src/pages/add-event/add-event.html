@@ -26,7 +26,7 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Cantidad de niños</ion-label>
-        <ion-select  [(ngModel)]="event.countChild" name="event.countChild" [selectOptions]="selectOptions">
+        <ion-select interface="popover" [(ngModel)]="event.cantKid" name="event.cantKid" [selectOptions]="selectOptions">
           <ion-option value="1" >1</ion-option>
           <ion-option value="2" >2</ion-option>
           <ion-option value="3" >3</ion-option>
@@ -34,7 +34,7 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Cantidad de adultos</ion-label>
-        <ion-select  [(ngModel)]="event.countAdult" name="event.countAdult" [selectOptions]="selectOptions">
+        <ion-select interface="popover" [(ngModel)]="event.cantAdult" name="event.cantAdult" [selectOptions]="selectOptions">
           <ion-option value="1" >1</ion-option>
           <ion-option value="2" >2</ion-option>
           <ion-option value="3" >3</ion-option>
@@ -42,7 +42,7 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Donde</ion-label>
-        <ion-select  [(ngModel)]="event.location" name="event.location" [selectOptions]="selectOptions">
+        <ion-select interface="popover" [(ngModel)]="event.location" name="event.location" [selectOptions]="selectOptions">
           <ion-option value="1" >Habitación 1</ion-option>
           <ion-option value="2" >Habitación 2</ion-option>
         </ion-select>
