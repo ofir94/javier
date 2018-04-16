@@ -24,7 +24,9 @@ page-home {
     color: #999999;
     font-size: 90%;
   }
-
+  .currentDate, .otherDate {
+    padding: 5px;
+  }
   .currentDate {
     font-weight: bold;
     background-color: red;
@@ -93,6 +95,7 @@ page-home {
     border-bottom: groove;
     border-width: thin;
     border-color: #EEEEEE;
+    padding: 0px;
   }
 
   .fixed-col{
@@ -184,117 +187,117 @@ page-home {
 
     width: 0;
     height: 0;
-    border-right: 19px solid transparent;
-    border-top: 19px solid #ff9886;
-    border-left: 18px solid #ff9886;
+    border-right: 23px solid transparent;
+    border-top: 30px solid #ff9886;
+    border-left: 14px solid #ff9886;
     border-bottom: 18px solid transparent;
   }
   .triangulo-equilatero-bottom-fin-2 {
 
     width: 0;
     height: 0;
-    border-right: 19px solid transparent;
-    border-top: 19px solid #a19513;
-    border-left: 18px solid #a19513;
+    border-right: 23px solid transparent;
+    border-top: 30px solid #c2c33e;
+    border-left: 14px solid #c2c33e;
     border-bottom: 18px solid transparent;
   }
   .triangulo-equilatero-bottom-fin-3 {
 
     width: 0;
     height: 0;
-    border-right: 19px solid transparent;
-    border-top: 19px solid #32db64;
-    border-left: 18px solid #32db64;
+    border-right: 23px solid transparent;
+    border-top: 30px solid #32db64;
+    border-left: 14px solid #32db64;
     border-bottom: 18px solid transparent;
   }
   .triangulo-equilatero-bottom-fin-4 {
 
     width: 0;
     height: 0;
-    border-right: 19px solid transparent;
-    border-top: 19px solid #84607f;
-    border-left: 18px solid #84607f;
+    border-right: 23px solid transparent;
+    border-top: 30px solid #84607f;
+    border-left: 14px solid #84607f;
     border-bottom: 18px solid transparent;
   }
   .triangulo-equilatero-bottom-fin-5 {
 
     width: 0;
     height: 0;
-    border-right: 19px solid transparent;
-    border-top: 19px solid #f53d3d;
-    border-left: 18px solid #f53d3d;
+    border-right: 23px solid transparent;
+    border-top: 30px solid #f53d3d;
+    border-left: 14px solid #f53d3d;
     border-bottom: 18px solid transparent;
   }
 
   .triangulo-equilatero-bottom-inicio-1{
     width: 0;
     height: 0;
-    border-right: 18px solid #ff9886;
+    border-right: 14px solid #ff9886;
     border-top: 18px solid transparent;
-    border-left: 19px solid transparent;
-    border-bottom: 19px solid #ff9886;
+    border-left: 23px solid transparent;
+    border-bottom: 30px solid #ff9886;
 
   }
   .triangulo-equilatero-bottom-inicio-2{
     width: 0;
     height: 0;
-    border-right: 18px solid #a19513;
+    border-right: 14px solid #c2c33e;
     border-top: 18px solid transparent;
-    border-left: 19px solid transparent;
-    border-bottom: 19px solid #a19513;
+    border-left: 23px solid transparent;
+    border-bottom: 30px solid #c2c33e;
 
   }
   .triangulo-equilatero-bottom-inicio-3{
     width: 0;
     height: 0;
-    border-right: 18px solid #32db64;
+    border-right: 14px solid #32db64;
     border-top: 18px solid transparent;
-    border-left: 19px solid transparent;
-    border-bottom: 19px solid #32db64;
+    border-left: 23px solid transparent;
+    border-bottom: 30px solid #32db64;
 
   }
   .triangulo-equilatero-bottom-inicio-4{
     width: 0;
     height: 0;
-    border-right: 18px solid #84607f;
+    border-right: 14px solid #84607f;
     border-top: 18px solid transparent;
-    border-left: 19px solid transparent;
-    border-bottom: 19px solid #84607f;
+    border-left: 23px solid transparent;
+    border-bottom: 30px solid #84607f;
 
   }
   .triangulo-equilatero-bottom-inicio-5{
     width: 0;
     height: 0;
-    border-right: 18px solid #f53d3d;
+    border-right: 14px solid #f53d3d;
     border-top: 18px solid transparent;
-    border-left: 19px solid transparent;
-    border-bottom: 19px solid #f53d3d;
+    border-left: 23px solid transparent;
+    border-bottom: 30px solid #f53d3d;
 
   }
 
   .cuadrado-1 {
     width: 19px;
-    height: 37px;
+    height: 48px;
     background: #ff9886;
   }
   .cuadrado-2 {
     width: 19px;
-    height: 37px;
-    background: #a19513;
+    height: 48px;
+    background: #c2c33e;
   }
   .cuadrado-3 {
     width: 19px;
-    height: 37px;
+    height: 48px;
     background: #32db64;
   }
   .cuadrado-4 {
     width: 19px;
-    height: 37px;
+    height: 48px;
     background: #84607f;
   }
   .cuadrado-5 {
     width: 19px;
-    height: 37px;
+    height: 48px;
     background: #f53d3d;
   }
 

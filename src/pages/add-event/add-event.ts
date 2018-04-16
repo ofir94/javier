@@ -58,7 +58,7 @@ export class AddEventPage {
     $("#navbar_evento").attr('class','toolbar toolbar-md');
     $("#navbar_evento").addClass('toolbar-md-'+style);
     this.event.status=value;
-    alert("Sltatus:"+this.event.status);
+  //  alert("Sltatus:"+this.event.status);
   }
   save(){
     let day = this.event.startDate;
