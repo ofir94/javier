@@ -1,6 +1,5 @@
 
-DROP TABLE IF EXISTS reservation;
-CREATE TABLE reservation (
+CREATE TABLE IF NOT EXISTS reservation (
 id_reservation  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 from_date  TEXT,
 to_date  TEXT,
@@ -15,9 +14,7 @@ id_client  INTEGER,
 
 );
 
-
-DROP TABLE IF EXISTS reservation_status;
-CREATE TABLE reservation_status (
+CREATE TABLE IF NOT EXISTS reservation_status (
 id_status  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 status  TEXT,
 color  TEXT,
