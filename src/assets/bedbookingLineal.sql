@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS  frequency (id_frequency  INTEGER PRIMARY KEY AUTOINC
 
 CREATE TABLE IF NOT EXISTS  profile (id_profile  TEXT,name_business  TEXT,country  TEXT,postal_code  TEXT,city  TEXT,street  TEXT,phone  TEXT,email  TEXT,web  TEXT,facebook  TEXT);
 
-CREATE TABLE IF NOT EXISTS  reservation (id_reservation  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,from_date  TEXT,to_date  TEXT,cant_adult  INTEGER,cant_kid  INTEGER,price  REAL,deposit  REAL,comment  TEXT,id_room  INTEGER,status  INTEGER,id_client  INTEGER);
+CREATE TABLE IF NOT EXISTS  reservation (id_reservation  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,from_date  TEXT,to_date  TEXT,cant_adult  INTEGER,cant_kid  INTEGER,price  REAL,deposit  REAL,comment  TEXT,id_room  INTEGER,status  INTEGER,id_client  INTEGER,CONSTRAINT fkey0 FOREIGN KEY (id_room) REFERENCES room (id_room) ON DELETE CASCADE ON UPDATE CASCADE,CONSTRAINT fkey1 FOREIGN KEY (status) REFERENCES reservation_status (id_status),FOREIGN KEY (id_client) REFERENCES client (id_client));
 
 CREATE TABLE IF NOT EXISTS  reservation_status (id_status  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,status  TEXT,color  TEXT,default  INTEGER);
 
