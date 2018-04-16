@@ -213,7 +213,7 @@ addDeveloperPrueba(){
     /*   console.log(day.getMonth())*/
 
     if(day <= this.dateToReloadViewStart && !this.reloadView){
-     // this.presentLoadingDefault();
+      this.presentLoadingDefault();
       this.asd = false;
       this.addAtStart();
       this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
@@ -221,7 +221,7 @@ addDeveloperPrueba(){
     }
 
     if(day >= this.dateToReloadViewEnd && !this.reloadView){
-    //  this.presentLoadingDefault();
+      this.presentLoadingDefault();
       this.asd = false;
       this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
       this.addAtEnd();
@@ -316,7 +316,7 @@ addDeveloperPrueba(){
   ngAfterViewChecked(){
 
     if(this.reloadView){
-      this.presentLoadingDefault();
+     // this.presentLoadingDefault();
       this.reloadView = false;
       let id =+this.dateToRepositionView.getDate()+'-'+this.dateToRepositionView.getMonth()+'-'+this.dateToRepositionView.getFullYear();
       console.log(id);
