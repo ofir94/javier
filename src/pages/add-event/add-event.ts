@@ -38,23 +38,13 @@ export class AddEventPage {
 
     this.event.startDate = navParams.get('startDate');
 
-    //Esto es para ver tuplas de la tabla reservation, para invocar la funcion loadDeveloperData, pero no hace falta en add-event
-  //   this.databaseProvider.getDatabaseState().subscribe(rdy => {
-  //   if(rdy){
-  //     this.loadDeveloperData();
-  //   }
-  // });
+
 
     this.selectOptions = {//para poder ponerle un evento al ok del alert para poner habitacionn1 como titulo
 
       mode: 'md'
     };
-    // Esto me parece q se puede borrar
-    // if(navParams.data != null){
-    // this.startDate = navParams.data.startDate;
-    // $('#startDate').set(this.startDate);
-    // }
-  //Llenar rooms desde la bd
+
   }
 
   //Esto es para ver las tuplas de la tabla reservation y lo voy a probar en home
@@ -65,8 +55,7 @@ export class AddEventPage {
   // }
 
   addReservation(){
-    // let precio = Number(this.event.price);   //Hacer esto con todos los numeros???
-    this.databaseProvider.addReservation(this.event['startDate'], this.event['endDate'],this.event['cantAdult'], this.event['cantKid'], this.event['status'])
+    this.databaseProvider.addReservation(this.event['startDate'], this.event['endDate'],this.event['cantAdult'], this.event['cantKid'], this.event['status']);
 
     //Esto no se hace aqui pq no cargo las tuplas de reservation en add-event,
     // cuando regrese home supongo q se resuelva con la llamada a addReservationData q hay en el constructor

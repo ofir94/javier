@@ -59,6 +59,7 @@ export class HomePage {
   //Inicio para cargar lista de tuplas de tabla reservation
   reserva = {};
   reservas = [];
+  estados: any;
   //Fin para cargar lista de tuplas de tabla reservation
 
   constructor(private alertCtrl: AlertController,
@@ -96,11 +97,17 @@ export class HomePage {
     this.eventList = new Array();
 
 
-	this.databaseProvider.getDatabaseState().subscribe(rdy => {
+    this.databaseProvider.getDatabaseState().subscribe(rdy => {
       if(rdy){
+
         this.loadReservationData();
+        this.loadStatusData();
       }
     });
+
+    this.estados = new Array();
+    this.estados = ['Falta de pago','Deposito pagado','Totalmente pagado','Cancelado','No disponoble'];
+
 
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
@@ -135,6 +142,13 @@ export class HomePage {
     this.databaseProvider.getAllReservation().then(data => {
       alert("database");
       this.reservas = data;
+    });
+  }
+
+  loadStatusData(){
+    this.databaseProvider.getAllStatus().then(data => {
+      alert("status");
+      this.estados = data;
     });
   }
 
@@ -280,6 +294,8 @@ export class HomePage {
     // $("#hab1-" + start.toLocaleDateString()).addClass('triangulo-equilatero-bottom-inicio');
     // $("#hab1-" + (i+1)).addClass('cuadrado');
     // $("#hab1-" + (i+2)).addClass('triangulo-equilatero-bottom-fin');
+    // this.loadReservationData();
+
   }
 
   presentLoadingDefault() {

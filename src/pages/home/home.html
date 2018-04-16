@@ -121,7 +121,18 @@
   <ion-list>
     <ion-item *ngFor="let reserva of reservas">
       <h2>
+        {{reserva.from_date}}
         {{reserva.status}}
+
+      </h2>
+
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let estado of estados">
+      <h2>
+        {{estado.id_status}}
+        {{estado.status}}
       </h2>
 
     </ion-item>

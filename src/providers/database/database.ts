@@ -50,7 +50,7 @@ export class DatabaseProvider {
             this.databaseReady.next(true);
             this.storage.set('database_filled', true);
           })
-          .catch(e =>console.log("Error llenando la bd"));
+          .catch(e =>alert("Error llenando la bd"));
       })
   }
 
@@ -63,11 +63,11 @@ export class DatabaseProvider {
   }
 
   getAllReservation(){
-    return this.database.executeSql("SELECT * FROM bedbooking",[]).then(data=> {
-      let bedbooking = [];
+    return this.database.executeSql("SELECT * FROM reservation",[]).then(data=> {
+      let reservation = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
-          bedbooking.push({
+          reservation.push({
             from_date: data.rows.item(i).from_date,
             to_date: data.rows.item(i).to_date,
             cant_adult: data.rows.item(i).cant_adult,
@@ -76,15 +76,34 @@ export class DatabaseProvider {
           });
         }
       }
-      return bedbooking;
+      return reservation;
     },err =>{
-      console.log('Error',err);
+      alert(err);
       return [];
     });
   }
 
   getDatabaseState(){
     return this.databaseReady.asObservable();
+  }
+
+  getAllStatus(){
+    return this.database.executeSql("SELECT * FROM reservation_status",[]).then(data=> {
+      let reservation_status = [];
+      if (data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          reservation_status.push({
+            id_status: data.rows.item(i).id_status,
+            status: data.rows.item(i).status,
+
+          });
+        }
+      }
+      return reservation_status;
+    },err =>{
+      alert(err);
+      return [];
+    });
   }
 
 }
