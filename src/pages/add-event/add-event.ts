@@ -7,7 +7,7 @@ import {DatabaseProvider} from "../../providers/database/database";
 import * as $ from "jquery";
 import {getLocaleDateFormat, Time} from "@angular/common";
 
-// import {DatabaseProvider} from "../../providers/database/database";
+
 /**
  * Generated class for the AddEventPage page.
  *
@@ -21,7 +21,7 @@ import {getLocaleDateFormat, Time} from "@angular/common";
   templateUrl: 'add-event.html',
 })
 export class AddEventPage {
-  developers = [];
+
   developer = {};
 
 
@@ -38,8 +38,6 @@ export class AddEventPage {
 
     this.event.startDate = navParams.get('startDate');
 
-
-
     this.selectOptions = {//para poder ponerle un evento al ok del alert para poner habitacionn1 como titulo
 
       mode: 'md'
@@ -47,30 +45,14 @@ export class AddEventPage {
 
   }
 
-  //Esto es para ver las tuplas de la tabla reservation y lo voy a probar en home
-  // loadDeveloperData(){
-  //   this.databaseProvider.getAllReservation().then(data => {
-  //     this.developers = data;
-  //   });
-  // }
 
   addReservation(){
     this.databaseProvider.addReservation(this.event['startDate'], this.event['endDate'],this.event['cantAdult'], this.event['cantKid'], this.event['status']);
-
-    //Esto no se hace aqui pq no cargo las tuplas de reservation en add-event,
-    // cuando regrese home supongo q se resuelva con la llamada a addReservationData q hay en el constructor
-    // .then(data =>{
-      //   this.loadReservationData();
-      // });
-    // this.developer = {};
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddEventPage');
   }
-
-
-
 
   pintar_nav(style,value){
     $("#navbar_evento").attr('class','toolbar toolbar-md');
@@ -80,17 +62,9 @@ export class AddEventPage {
   }
   save(){
     let day = this.event.startDate;
-    //INICIO NUEVA FORMA DE TRATAR LAS FECHAS
-    //
-    //
-    // let test = new Date(new Date(day).getTime()+1*24*60*60*1000);
-    // alert(test.getFullYear()+"-"+test.getMonth()+"-"+test.getDate());
 
 
-    //INICIO NUEVA FORMA DE TRATAR LAS FECHAS
-    // alert(day);//pq pone un dia de menos cuando crea la fecha?
-
-   // this.addReservation();    //Esto es para anadirlo a la bd
+    this.addReservation();    //Esto es para anadirlo a la bd
     HomePage.prueba(this.event.startDate,this.event.endDate,this.event.status);
     this.navCtrl.pop();
 
