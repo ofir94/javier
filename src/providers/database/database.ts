@@ -50,7 +50,7 @@ export class DatabaseProvider {
             this.databaseReady.next(true);
             this.storage.set('database_filled', true);
           })
-          .catch(e =>alert(e));
+          .catch(e =>alert(e.getMessages()));
       })
   }
 

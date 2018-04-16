@@ -10,16 +10,10 @@ CREATE TABLE IF NOT EXISTS  reservation (id_reservation  INTEGER PRIMARY KEY AUT
 
 CREATE TABLE IF NOT EXISTS  reservation_status (id_status  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,status  TEXT,color  TEXT);
 
-INSERT INTO reservation_status VALUES (1, 'Falta de Pago', null);
-INSERT INTO reservation_status VALUES (2, 'Depósito Pagado', null);
-INSERT INTO reservation_status VALUES (3, 'Totalmente Pagada', null);
-INSERT INTO reservation_status VALUES (4, 'Cancelado', null);
-INSERT INTO reservation_status VALUES (5, 'No disponible', null);
+INSERT INTO reservation_status (id_status,status,color) VALUES (1, 'Falta de Pago', null);
+INSERT INTO reservation_status (id_status,status,color) VALUES (2, 'Depósito Pagado', null);
+INSERT INTO reservation_status (id_status,status,color) VALUES (3, 'Totalmente Pagada', null);
+INSERT INTO reservation_status (id_status,status,color) VALUES (4, 'Cancelado', null);
+INSERT INTO reservation_status (id_status,status,color) VALUES (5, 'No disponible', null);
 
 CREATE TABLE IF NOT EXISTS  room (id_room  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,name  TEXT,cant_people  INTEGER,cant_bed_aditional  INTEGER,cant_bed_single  INTEGER,cant_bed_double  INTEGER,view_order  INTEGER);
-
-CREATE TABLE IF NOT EXISTS sqlite_sequence(name,seq);
-
-INSERT INTO sqlite_sequence VALUES ('room', 1);
-INSERT INTO sqlite_sequence VALUES ('reservation', 2);
-INSERT INTO sqlite_sequence VALUES ('reservation_status', 5);
