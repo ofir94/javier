@@ -26,7 +26,7 @@ export class AddEventPage {
 
 
   startDate;
-  event = { /*title: "", message: "",*/ startDate: this.startDate, endDate: "", status: "falta_pago",  location: "", cantKid: "", cantAdult: "", price: ''};
+  event = { /*title: "", message: "",*/ startDate: this.startDate, endDate: "", status: "1",  location: "", cantKid: "", cantAdult: "", price: ''};
   rooms= {location:"Habitacion 1"};
   selectOptions;
   constructor(public alertCtrl: AlertController,
