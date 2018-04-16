@@ -97,13 +97,13 @@ export class HomePage {
     this.eventList = new Array();
 
 
-    this.databaseProvider.getDatabaseState().subscribe(rdy => {
-      if(rdy){
-
-        this.loadReservationData();
-        this.loadStatusData();
-      }
-    });
+    // this.databaseProvider.getDatabaseState().subscribe(rdy => {
+    //   if(rdy){
+    //
+    //     this.loadReservationData();
+    //     this.loadStatusData();
+    //   }
+    // });
 
     // this.estados = new Array();
     // this.estados = ['Falta de pago','Deposito pagado','Totalmente pagado','Cancelado','No disponoble'];
@@ -140,7 +140,7 @@ export class HomePage {
 
   loadReservationData(){
     this.databaseProvider.getAllReservation().then(data => {
-      alert("database");
+      alert("loadReservationData");
       this.reservas = data;
     });
   }

@@ -76,7 +76,7 @@ export class AddEventPage {
     $("#navbar_evento").attr('class','toolbar toolbar-md');
     $("#navbar_evento").addClass('toolbar-md-'+style);
     this.event.status=value;
-    alert(this.event.status);
+    alert("Status:"+this.event.status);
   }
   save(){
     let day = this.event.startDate;
@@ -90,7 +90,7 @@ export class AddEventPage {
     //INICIO NUEVA FORMA DE TRATAR LAS FECHAS
     // alert(day);//pq pone un dia de menos cuando crea la fecha?
 
-   this.addReservation();    //Esto es para anadirlo a la bd
+   // this.addReservation();    //Esto es para anadirlo a la bd
     HomePage.prueba(this.event.startDate,this.event.endDate,this.event.status);
     this.navCtrl.pop();
 
