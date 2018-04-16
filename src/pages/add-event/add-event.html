@@ -59,27 +59,27 @@
 
         <ion-item>
           <ion-label>Falta de pago</ion-label>
-          <ion-radio value="falta_pago" color="falta_pago" checked (click)="pintar_nav('falta_pago')" ></ion-radio>
+          <ion-radio value="1" color="falta_pago" checked (click)="pintar_nav('falta_pago','1')" ></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Depósito Pagado</ion-label>
-          <ion-radio value="deposito_pagado" color="deposito_pagado" (click)="pintar_nav('deposito_pagado')" ></ion-radio>
+          <ion-radio value="2" color="deposito_pagado" (click)="pintar_nav('deposito_pagado','2')" ></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Totalmente pagada</ion-label>
-          <ion-radio value="totalmente_pagada" color="secondary" (click)="pintar_nav('secondary')" ></ion-radio>
+          <ion-radio value="3" color="secondary" (click)="pintar_nav('secondary','3')" ></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Cancelado</ion-label>
-          <ion-radio value="Cancelado" color="cancelado" (click)="pintar_nav('cancelado')" ></ion-radio>
+          <ion-radio value="4" color="cancelado" (click)="pintar_nav('cancelado','4')" ></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>No disponible</ion-label>
-          <ion-radio value="no_disponible" color="danger" (click)="pintar_nav('danger')" ></ion-radio>
+          <ion-radio value="5" color="danger" (click)="pintar_nav('danger','5')" ></ion-radio>
         </ion-item>
       </ion-list>
       <!--<ion-item>-->

@@ -181,8 +181,8 @@ page-home {
 
   }
 
-  /*  javier */
-  .triangulo-equilatero-bottom-fin-falta_pago {
+ /*  javier */
+  .triangulo-equilatero-bottom-fin-1 {
 
     width: 0;
     height: 0;
@@ -191,7 +191,7 @@ page-home {
     border-left: 18px solid #ff9886;
     border-bottom: 18px solid transparent;
   }
-  .triangulo-equilatero-bottom-fin-deposito_pagado {
+  .triangulo-equilatero-bottom-fin-2 {
 
     width: 0;
     height: 0;
@@ -200,7 +200,7 @@ page-home {
     border-left: 18px solid #a19513;
     border-bottom: 18px solid transparent;
   }
-  .triangulo-equilatero-bottom-fin-secondary {
+  .triangulo-equilatero-bottom-fin-3 {
 
     width: 0;
     height: 0;
@@ -209,7 +209,7 @@ page-home {
     border-left: 18px solid #32db64;
     border-bottom: 18px solid transparent;
   }
-  .triangulo-equilatero-bottom-fin-cancelado {
+  .triangulo-equilatero-bottom-fin-4 {
 
     width: 0;
     height: 0;
@@ -218,7 +218,7 @@ page-home {
     border-left: 18px solid #84607f;
     border-bottom: 18px solid transparent;
   }
-  .triangulo-equilatero-bottom-fin-danger {
+  .triangulo-equilatero-bottom-fin-5 {
 
     width: 0;
     height: 0;
@@ -228,7 +228,7 @@ page-home {
     border-bottom: 18px solid transparent;
   }
 
-  .triangulo-equilatero-bottom-inicio-falta_pago{
+  .triangulo-equilatero-bottom-inicio-1{
     width: 0;
     height: 0;
     border-right: 18px solid #ff9886;
@@ -237,7 +237,7 @@ page-home {
     border-bottom: 19px solid #ff9886;
 
   }
-  .triangulo-equilatero-bottom-inicio-deposito_pagado{
+  .triangulo-equilatero-bottom-inicio-2{
     width: 0;
     height: 0;
     border-right: 18px solid #a19513;
@@ -246,7 +246,7 @@ page-home {
     border-bottom: 19px solid #a19513;
 
   }
-  .triangulo-equilatero-bottom-inicio-secondary{
+  .triangulo-equilatero-bottom-inicio-3{
     width: 0;
     height: 0;
     border-right: 18px solid #32db64;
@@ -255,7 +255,7 @@ page-home {
     border-bottom: 19px solid #32db64;
 
   }
-  .triangulo-equilatero-bottom-inicio-cancelado{
+  .triangulo-equilatero-bottom-inicio-4{
     width: 0;
     height: 0;
     border-right: 18px solid #84607f;
@@ -264,7 +264,7 @@ page-home {
     border-bottom: 19px solid #84607f;
 
   }
-  .triangulo-equilatero-bottom-inicio-danger{
+  .triangulo-equilatero-bottom-inicio-5{
     width: 0;
     height: 0;
     border-right: 18px solid #f53d3d;
@@ -274,31 +274,31 @@ page-home {
 
   }
 
-  .cuadrado-falta_pago {
+  .cuadrado-1 {
     width: 19px;
     height: 37px;
     background: #ff9886;
   }
-  .cuadrado-deposito_pagado {
+  .cuadrado-2 {
     width: 19px;
     height: 37px;
     background: #a19513;
   }
-  .cuadrado-secondary {
+  .cuadrado-3 {
     width: 19px;
     height: 37px;
     background: #32db64;
   }
-  .cuadrado-cancelado {
+  .cuadrado-4 {
     width: 19px;
     height: 37px;
     background: #84607f;
   }
-  .cuadrado-danger {
+  .cuadrado-5 {
     width: 19px;
     height: 37px;
     background: #f53d3d;
-   }
+  }
 
 
   .rightborder{

@@ -82,31 +82,10 @@ export class AddEventPage {
 
 
 
-  // save() {
-  //   this.calendar.createEvent(this.event.title, this.event.location, this.event.message, new Date(this.event.startDate), new Date(this.event.endDate)).then(
-  //     (msg) => {
-  //       let alert = this.alertCtrl.create({
-  //         title: 'Success!',
-  //         subTitle: 'Event saved successfully',
-  //         buttons: ['OK']
-  //       });
-  //       alert.present();
-  //       this.navCtrl.pop();
-  //     },
-  //     (err) => {
-  //       let alert = this.alertCtrl.create({
-  //         title: 'Failed!',
-  //         subTitle: err,
-  //         buttons: ['OK']
-  //       });
-  //       alert.present();
-  //     }
-  //   );
-  // }
 
-  pintar_nav(value){
+  pintar_nav(style,value){
     $("#navbar_evento").attr('class','toolbar toolbar-md');
-    $("#navbar_evento").addClass('toolbar-md-'+value);
+    $("#navbar_evento").addClass('toolbar-md-'+style);
     this.event.status=value;
   }
   save(){
@@ -121,7 +100,7 @@ export class AddEventPage {
     //INICIO NUEVA FORMA DE TRATAR LAS FECHAS
     // alert(day);//pq pone un dia de menos cuando crea la fecha?
 
-    this.addReservation();    //Esto es para anadirlo a la bd
+   this.addReservation();    //Esto es para anadirlo a la bd
     HomePage.prueba(this.event.startDate,this.event.endDate,this.event.status);
     this.navCtrl.pop();
 

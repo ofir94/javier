@@ -133,6 +133,7 @@ export class HomePage {
 
   loadReservationData(){
     this.databaseProvider.getAllReservation().then(data => {
+      alert("database");
       this.reservas = data;
     });
   }
@@ -221,7 +222,8 @@ export class HomePage {
 
 
 
-  crear_evento(e,day,i){
+  crear_evento(day){
+
      let fechaTransformada = this.tranformarFecha(day);
     // alert(fechaTransformada);
     this.navCtrl.push(AddEventPage,{'startDate':fechaTransformada});

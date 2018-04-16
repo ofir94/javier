@@ -93,7 +93,7 @@
           <ion-row class="row1" nowrap >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
                       class="calendar-col event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
-                      (click) = "crear_evento($event,day,i)">
+                      (click) = "crear_evento(day)">
               <ion-row class="row3" >
               <ion-col class="" id = 'hab1-{{day.getFullYear()+"-"+day.getMonth()+"-"+day.getDate()}}'>
 
@@ -319,5 +319,12 @@ asdasd
       </div>
     </ion-row>
   </ion-scroll>-->
+
+  <ion-fab bottom right >
+    <button  ion-fab icon-only color="add" (click) = "crear_evento(date)">
+        <ion-icon name="add"></ion-icon>
+      </button>
+  </ion-fab>
+
 
 </ion-content>

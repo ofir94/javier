@@ -56,7 +56,7 @@ export class DatabaseProvider {
 
   addReservation(from_date, to_date, cant_adult, cant_kid, /*price, deposit, comment, id_room,*/ status, /*id_client*/){
     let  data = [from_date, to_date, cant_adult, cant_kid, /*price, deposit, comment, id_room,*/ status, /*id_client*/];
-    return this.database.executeSql("INSERT INTO bedbooking (from_date, to_date, cant_adult, cant_kid, status ) VALUES (?,?,?,?,?)",data).then( res=> {
+    return this.database.executeSql("INSERT INTO reservation (from_date, to_date, cant_adult, cant_kid, status ) VALUES (?,?,?,?,?)",data).then( res=> {
     return res;
 
     });

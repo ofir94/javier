@@ -5,7 +5,7 @@ PRAGMA foreign_keys = OFF;
 -- ----------------------------
 -- Table structure for celaning_object
 -- ----------------------------
-DROP TABLE IF EXISTS "main"."celaning_object";
+DROP TABLE IF EXISTS "celaning_object";
 CREATE TABLE "celaning_object" (
 "id_cleaning_object"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 "object"  TEXT
@@ -18,7 +18,7 @@ CREATE TABLE "celaning_object" (
 -- ----------------------------
 -- Table structure for client
 -- ----------------------------
-DROP TABLE IF EXISTS "main"."client";
+DROP TABLE IF EXISTS "client";
 CREATE TABLE "client" (
 "id_client"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 "name"  TEXT,
@@ -40,7 +40,7 @@ CREATE TABLE "client" (
 -- ----------------------------
 -- Table structure for frequency
 -- ----------------------------
-DROP TABLE IF EXISTS "main"."frequency";
+DROP TABLE IF EXISTS "frequency";
 CREATE TABLE "frequency" (
 "id_frequency"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 "fixed_day"  INTEGER,
@@ -56,7 +56,7 @@ CREATE TABLE "frequency" (
 -- ----------------------------
 -- Table structure for profile
 -- ----------------------------
-DROP TABLE IF EXISTS "main"."profile";
+DROP TABLE IF EXISTS "profile";
 CREATE TABLE "profile" (
 "id_profile"  TEXT,
 "name_business"  TEXT,
@@ -77,7 +77,7 @@ CREATE TABLE "profile" (
 -- ----------------------------
 -- Table structure for reservation
 -- ----------------------------
-DROP TABLE IF EXISTS "main"."reservation";
+DROP TABLE IF EXISTS "reservation";
 CREATE TABLE "reservation" (
 "id_reservation"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 "from_date"  TEXT,
@@ -102,7 +102,7 @@ FOREIGN KEY ("id_client") REFERENCES "client" ("id_client")
 -- ----------------------------
 -- Table structure for reservation_status
 -- ----------------------------
-DROP TABLE IF EXISTS "main"."reservation_status";
+DROP TABLE IF EXISTS "reservation_status";
 CREATE TABLE "reservation_status" (
 "id_status"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 "status"  TEXT,
@@ -113,16 +113,16 @@ CREATE TABLE "reservation_status" (
 -- ----------------------------
 -- Records of reservation_status
 -- ----------------------------
-INSERT INTO "main"."reservation_status" VALUES (1, 'Falta de Pago', null, null);
-INSERT INTO "main"."reservation_status" VALUES (2, 'Depósito Pagado', null, null);
-INSERT INTO "main"."reservation_status" VALUES (3, 'Totalmente Pagada', null, null);
-INSERT INTO "main"."reservation_status" VALUES (4, 'Cancelado', null, null);
-INSERT INTO "main"."reservation_status" VALUES (5, 'No disponible', null, null);
+INSERT INTO "reservation_status" VALUES (1, 'Falta de Pago', null, null);
+INSERT INTO "reservation_status" VALUES (2, 'Depósito Pagado', null, null);
+INSERT INTO "reservation_status" VALUES (3, 'Totalmente Pagada', null, null);
+INSERT INTO "reservation_status" VALUES (4, 'Cancelado', null, null);
+INSERT INTO "reservation_status" VALUES (5, 'No disponible', null, null);
 
 -- ----------------------------
 -- Table structure for room
 -- ----------------------------
-DROP TABLE IF EXISTS "main"."room";
+DROP TABLE IF EXISTS "room";
 CREATE TABLE "room" (
 "id_room"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 "name"  TEXT,
@@ -140,12 +140,12 @@ CREATE TABLE "room" (
 -- ----------------------------
 -- Table structure for sqlite_sequence
 -- ----------------------------
-DROP TABLE IF EXISTS "main"."sqlite_sequence";
+DROP TABLE IF EXISTS "sqlite_sequence";
 CREATE TABLE sqlite_sequence(name,seq);
 
 -- ----------------------------
 -- Records of sqlite_sequence
 -- ----------------------------
-INSERT INTO "main"."sqlite_sequence" VALUES ('room', 1);
-INSERT INTO "main"."sqlite_sequence" VALUES ('reservation', 2);
-INSERT INTO "main"."sqlite_sequence" VALUES ('reservation_status', 5);
+INSERT INTO "sqlite_sequence" VALUES ('room', 1);
+INSERT INTO "sqlite_sequence" VALUES ('reservation', 2);
+INSERT INTO "sqlite_sequence" VALUES ('reservation_status', 5);
