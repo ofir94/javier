@@ -47,9 +47,9 @@
 
         </ion-row>
 
-        <ion-row class="row2" nowrap *ngFor="let room of rooms">
+        <ion-row class="row2" nowrap >
           <ion-col   class="fixed-col" >
-            <p style="font-size:0.8em;">{{room.name}}</p>
+            <p style="font-size:0.8em;">Hab 1</p>
           </ion-col>
 
         </ion-row>
@@ -90,7 +90,7 @@
 
 
           <!--Hab 1-->
-          <ion-row class="row1" nowrap *ngFor="let room of rooms">
+          <ion-row class="row1" nowrap >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
                       class="calendar-col event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
                       (click) = "crear_evento(day)">
