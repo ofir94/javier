@@ -103,10 +103,10 @@ export class HomePage {
 
         this.loadReservationData();
         this.loadStatusData();
+        this.getAllRooms();
       }
     });
 
-    // this.getAllRooms();
 
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
@@ -392,11 +392,11 @@ export class HomePage {
    return split;
   }
 
- /* getAllRooms(){
+  getAllRooms(){
     this.databaseProvider.getAllRooms().then(data => {
       this.rooms = data;
     });
-  }*/
+  }
 
 }
 
