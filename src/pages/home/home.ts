@@ -103,9 +103,8 @@ export class HomePage {
     this.databaseProvider.getDatabaseState().subscribe(rdy => {
       if(rdy){
 
-        this.loadReservationData();
-        this.loadStatusData();
         this.getAllRooms();
+        this.loadReservationData();
       }
     });
 
