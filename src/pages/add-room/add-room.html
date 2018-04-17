@@ -121,6 +121,10 @@
         <ion-label floating >Secuencia de visualización</ion-label>
         <ion-input  type="number" [(ngModel)]="rooms.view_order" name="view_order"> </ion-input>
       </ion-item>
+      <ion-item>
+        <br>
+        <button ion-button (click)="save()" full round >Guardar</button>
+      </ion-item>
     </ion-list>
 
   </form>
