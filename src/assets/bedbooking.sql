@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS celaning_object (id_cleaning_object  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,object  TEXT);
+CREATE TABLE IF NOT EXISTS cleaning_object (id_cleaning_object  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,object  TEXT);
 
 CREATE TABLE IF NOT EXISTS  client (id_client  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,name  TEXT,address  TEXT,address2  TEXT,state  TEXT,postal_code  TEXT,country  TEXT,passport  TEXT,identification  TEXT,phone  TEXT,email  TEXT);
 

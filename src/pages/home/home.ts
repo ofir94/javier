@@ -142,7 +142,6 @@ export class HomePage {
       for(let reserva of this.reservas){
         this.initPaint(reserva.from_date,reserva.to_date, reserva.status);
       }
-
     });
   }
 
@@ -224,6 +223,7 @@ export class HomePage {
       this.addAtStart();
       this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
       this.reloadView = true;
+      this.loadReservationData()
     }
 
     if(day >= this.dateToReloadViewEnd && !this.reloadView){
@@ -232,10 +232,9 @@ export class HomePage {
       this.dateToRepositionView =new Date(day.getTime()+1000*60*60*24*2);
       this.addAtEnd();
       this.reloadView = true;
+      this.loadReservationData()
     }
   }
-
-
 
   crear_evento(day){
 
@@ -243,8 +242,8 @@ export class HomePage {
     // alert(day);
     this.navCtrl.push(AddEventPage,{'startDate':fechaTransformada});
 
-
   }
+
   static prueba(startDate,endDate,status){//OFIR NO BORRES ESTA FUNCION!!!!
 
     // let start = startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay();

@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { AddRoomPage} from "../pages/add-room/add-room";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,12 +30,15 @@ import { InfiniteListModule } from 'angular-infinite-list'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {ServicioProvider} from "../providers/servicio/servicio";
 import {HttpClientModule} from "@angular/common/http";
+
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
     AddEventPage,
+    AddRoomPage,
 
   ],
   imports: [
@@ -53,7 +57,8 @@ import {HttpClientModule} from "@angular/common/http";
     MyApp,
     HomePage,
     ListPage,
-    AddEventPage
+    AddEventPage,
+    AddRoomPage
   ],
   providers: [
     StatusBar,
@@ -66,6 +71,7 @@ import {HttpClientModule} from "@angular/common/http";
     NativePageTransitions,
     ViewportModule,
     ServicioProvider,
+
 
   ]
 })
