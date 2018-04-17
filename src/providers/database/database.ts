@@ -62,6 +62,14 @@ export class DatabaseProvider {
     });
   }
 
+  addRoom(name, cant_people, cant_bed_aditional, cant_bed_single, cant_bed_double,view_order){
+   let  data = [name, cant_people, cant_bed_aditional, cant_bed_single, cant_bed_double,view_order];
+    return this.database.executeSql("INSERT INTO room (name, cant_people, cant_bed_aditional, cant_bed_single, cant_bed_double,view_order ) VALUES (?,?,?,?,?,?)",data).then( res=> {
+    return res;
+
+    });
+  }
+
   getAllReservation(){
     return this.database.executeSql("SELECT * FROM reservation",[]).then(data=> {
       let reservation = [];
@@ -100,6 +108,28 @@ export class DatabaseProvider {
         }
       }
       return reservation_status;
+    },err =>{
+      alert(err);
+      return [];
+    });
+  }
+
+  getAllRooms(){
+    return this.database.executeSql("SELECT * FROM room ORDER BY view_order",[]).then(data=> {
+      let rooms = [];
+      if (data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          rooms.push({
+            name: data.rows.item(i).name,
+            cant_people: data.rows.item(i).cant_people,
+            cant_bed_aditional: data.rows.item(i).cant_bed_aditional,
+            cant_bed_single: data.rows.item(i).cant_bed_single,
+            cant_bed_double: data.rows.item(i).cant_bed_double,
+            view_order: data.rows.item(i).view_order
+          });
+        }
+      }
+      return rooms;
     },err =>{
       alert(err);
       return [];

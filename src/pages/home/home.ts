@@ -61,6 +61,7 @@ export class HomePage {
   reservas = [];
   estados: any;
   //Fin para cargar lista de tuplas de tabla reservation
+  rooms: any;
 
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
@@ -105,6 +106,7 @@ export class HomePage {
       }
     });
 
+    this.getAllRooms();
 
   this.daysInThisMonth = new Array();
   this.weekDayNames = new Array();
@@ -137,7 +139,6 @@ export class HomePage {
 
   loadReservationData(){
    this.databaseProvider.getAllReservation().then(data => {
-      alert("loadReservationData");
       this.reservas = data;
       for(let reserva of this.reservas){
         this.initPaint(reserva.from_date,reserva.to_date, reserva.status);
@@ -147,7 +148,6 @@ export class HomePage {
 
   loadStatusData(){
     this.databaseProvider.getAllStatus().then(data => {
-      alert("status");
       this.estados = data;
     });
   }
@@ -390,6 +390,12 @@ export class HomePage {
    let fecha = new Date(new Date(day).getTime()).toISOString();
    let split = fecha.toString().split('T')[0];
    return split;
+  }
+
+  getAllRooms(){
+    this.databaseProvider.getAllRooms().then(data => {
+      this.rooms = data;
+    });
   }
 
 }
