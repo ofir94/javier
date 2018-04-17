@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AddRoomPage} from "../pages/add-room/add-room";
+import {CleaningPage} from "../pages/cleaning/cleaning";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,6 +31,9 @@ import { InfiniteListModule } from 'angular-infinite-list'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {ServicioProvider} from "../providers/servicio/servicio";
 import {HttpClientModule} from "@angular/common/http";
+import {ClientePage} from "../pages/cliente/cliente";
+import {DetallesPage} from "../pages/detalles/detalles";
+import {TabPage} from "../pages/tab/tab";
 
 
 @NgModule({
@@ -39,7 +43,10 @@ import {HttpClientModule} from "@angular/common/http";
     ListPage,
     AddEventPage,
     AddRoomPage,
-
+    CleaningPage,
+    ClientePage,
+    DetallesPage,
+    TabPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,11 @@ import {HttpClientModule} from "@angular/common/http";
     HomePage,
     ListPage,
     AddEventPage,
-    AddRoomPage
+    AddRoomPage,
+    CleaningPage,
+    ClientePage,
+    DetallesPage,
+    TabPage
   ],
   providers: [
     StatusBar,

@@ -54,19 +54,23 @@ export class DatabaseProvider {
       })
   }
 
-  addReservation(from_date, to_date, cant_adult, cant_kid, /*price, deposit, comment, id_room,*/ status, /*id_client*/){
-    let  data = [from_date, to_date, cant_adult, cant_kid, /*price, deposit, comment, id_room,*/ status, /*id_client*/];
-    return this.database.executeSql("INSERT INTO reservation (from_date, to_date, cant_adult, cant_kid, status ) VALUES (?,?,?,?,?)",data).then( res=> {
+  addReservation(from_date, to_date, cant_adult, cant_kid, price, deposit,comment, cant_bed_single , cant_bed_double , id_room, status, id_client){
+    let  data = [from_date, to_date, cant_adult, cant_kid, price, deposit,comment, cant_bed_single , cant_bed_double , id_room, status, id_client];
+    return this.database.executeSql("INSERT INTO reservation (from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single , cant_bed_double , id_room, status, id_client) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",data).then( res=> {
     return res;
-
     });
   }
 
+  addClient(name, address, address2, state, postal_code, country, passport , identification ,phone, email){
+    let  data = [name, address, address2, state, postal_code, country, passport , identification ,phone, email];
+    return this.database.executeSql("INSERT INTO reservation (name, address, address2, state, postal_code, country, passport , identification ,phone, email) VALUES (?,?,?,?,?,?,?,?,?,?)",data).then( res=> {
+      return res;
+    });
+  }
   addRoom(name, cant_people, cant_bed_aditional, cant_bed_single, cant_bed_double,view_order){
    let  data = [name, cant_people, cant_bed_aditional, cant_bed_single, cant_bed_double,view_order];
     return this.database.executeSql("INSERT INTO room (name, cant_people, cant_bed_aditional, cant_bed_single, cant_bed_double,view_order ) VALUES (?,?,?,?,?,?)",data).then( res=> {
     return res;
-
     });
   }
 
@@ -120,6 +124,7 @@ export class DatabaseProvider {
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
           rooms.push({
+            id_room: data.rows.item(i).id_room,
             name: data.rows.item(i).name,
             cant_people: data.rows.item(i).cant_people,
             cant_bed_aditional: data.rows.item(i).cant_bed_aditional,

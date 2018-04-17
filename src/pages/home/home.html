@@ -6,11 +6,6 @@
     <ion-title>
       My Calendar App
     </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addEvent()">
-        <ion-icon name="add-circle"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -113,16 +108,7 @@
 
 
   </div>
-  <ion-list>
-    <ion-item *ngFor="let reserva of reservas">
-      <h2>
-        {{reserva.from_date}}
-        {{reserva.status}}
-
-      </h2>
-
-    </ion-item>
-  </ion-list>
+  <!--
   <ion-list>
     <ion-item *ngFor="let room of rooms">
       <h2>
@@ -131,7 +117,7 @@
       </h2>
 
     </ion-item>
-  </ion-list>
+  </ion-list>-->
  <!-- New Test
   <h4 style="text-align: center">{{currentMonth}} {{currentYear}}</h4>
 

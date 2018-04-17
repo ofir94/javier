@@ -1,0 +1,90 @@
+<!--
+  Generated template for the DetallesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+
+</ion-header>
+
+<ion-content padding>
+  <br>
+  <br>
+  <form >
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Comentarios</ion-label>
+        <ion-input type="text"   [(ngModel)]="detalles.comment" name="detalles.comment" >
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <div class="card">
+          <div class="card-header">
+            Número de camas
+          </div>
+          <div class="card-body">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-1 style="padding-top: 15px">
+                  <ion-icon name="person" ></ion-icon>
+                </ion-col>
+                <ion-col col-4  style="padding-top: 15px">
+
+                  <h4>Individuales</h4>
+
+                </ion-col>
+                <ion-col col-3  style="padding: 0px">
+                  <ion-list><ion-item>
+                    <ion-input type="number" [(ngModel)]="detalles.cant_bed_single" name="cant_bed_single"> </ion-input>
+                  </ion-item></ion-list>
+                </ion-col>
+                <ion-col col-2  style="padding-top: 15px">
+                  <button style="background: none" icon-only (click)="removeSingle()" >
+                    <ion-icon name="remove-circle" ></ion-icon>
+                  </button>
+                </ion-col>
+                <ion-col col-2  style="padding-top: 15px">
+                  <button  style="background: none" icon-only (click)="addSingle()">
+                    <ion-icon name="add-circle"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-1 style="padding-top: 15px">
+                  <ion-icon name="people" ></ion-icon>
+                </ion-col>
+                <ion-col col-4  style="padding-top: 15px">
+
+                  <h4>Dobles</h4>
+
+                </ion-col>
+                <ion-col col-3  style="padding: 0px">
+                  <ion-list><ion-item>
+                    <ion-input type="number" [(ngModel)]="detalles.cant_bed_double" name="cant_bed_double"> </ion-input>
+                  </ion-item></ion-list>
+                </ion-col>
+                <ion-col col-2  style="padding-top: 15px">
+                  <button style="background: none" icon-only (click)="removeDouble()">
+                    <ion-icon name="remove-circle"></ion-icon>
+                  </button>
+                </ion-col>
+                <ion-col col-2  style="padding-top: 15px">
+                  <button  style="background: none" icon-only (click)="addDouble()">
+                    <ion-icon name="add-circle"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </div>
+        </div>
+      </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>

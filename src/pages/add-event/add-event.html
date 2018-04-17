@@ -6,15 +6,30 @@
 -->
 <ion-header>
 
-  <ion-navbar id="navbar_evento" color="falta_pago">
-    <ion-title>{{rooms.location}}</ion-title>
-  </ion-navbar>
+  <!--<ion-navbar id="navbar_evento" color="falta_pago">-->
+    <!--<ion-title>{{rooms.location}}</ion-title>-->
+    <!--&lt;!&ndash;<button ion-button outline item-end icon-left>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<ion-icon name="arrow-back">&ndash;&gt;-->
+          <!--&lt;!&ndash;{{rooms.location}}&ndash;&gt;-->
+        <!--&lt;!&ndash;</ion-icon>&ndash;&gt;-->
+    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+    <!--<ion-buttons start>-->
+    <!--<button ion-button icon-only (click)="save()" >-->
+      <!--<ion-icon md="md-checkbox-outline"></ion-icon>-->
+    <!--</button>-->
+  <!--</ion-buttons>-->
+
+
+  <!--</ion-navbar>-->
 
 </ion-header>
 
 
 <ion-content padding>
-  <form (ngSubmit)="save()">
+  <br>
+  <br>
+  <form >
     <ion-list>
       <ion-item>
         <ion-label floating>Desde</ion-label>
@@ -25,16 +40,16 @@
         <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="event.endDate" name="event.endDate" id="endDate"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-label floating>Cantidad de niños</ion-label>
-        <ion-select interface="popover" [(ngModel)]="event.cantKid" name="event.cantKid" [selectOptions]="selectOptions">
+        <ion-label floating>Cantidad de adultos</ion-label>
+        <ion-select interface="popover" [(ngModel)]="event.cantAdult" name="event.cantAdult" [selectOptions]="selectOptions">
           <ion-option value="1" >1</ion-option>
           <ion-option value="2" >2</ion-option>
           <ion-option value="3" >3</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label floating>Cantidad de adultos</ion-label>
-        <ion-select interface="popover" [(ngModel)]="event.cantAdult" name="event.cantAdult" [selectOptions]="selectOptions">
+        <ion-label floating>Cantidad de niños</ion-label>
+        <ion-select interface="popover" [(ngModel)]="event.cantKid" name="event.cantKid" [selectOptions]="selectOptions">
           <ion-option value="1" >1</ion-option>
           <ion-option value="2" >2</ion-option>
           <ion-option value="3" >3</ion-option>
@@ -47,10 +62,6 @@
           <ion-option value="2" >Habitación 2</ion-option>
         </ion-select>
       </ion-item>
-
-      <!--<button ion-item *ngFor="let item of items" (click)="itemSelected(item)">-->
-        <!--{{ item }}-->
-      <!--</button>-->
 
       <ion-list radio-group>
         <ion-list-header>
@@ -82,22 +93,22 @@
           <ion-radio value="5" color="danger" (click)="pintar_nav('danger','5')" ></ion-radio>
         </ion-item>
       </ion-list>
-      <!--<ion-item>-->
-        <!--<ion-label floating>Title</ion-label>-->
-        <!--<ion-input type="text" [(ngModel)]="event.title" name="event.title"></ion-input>-->
-      <!--</ion-item>-->
-
-      <!--<ion-item>-->
-        <!--<ion-label floating>Location</ion-label>-->
-        <!--<ion-input type="text" [(ngModel)]="event.location" name="event.location"></ion-input>-->
-      <!--</ion-item>-->
-      <!--<ion-item>-->
-        <!--<ion-label floating>Notes</ion-label>-->
-        <!--<ion-input type="text" [(ngModel)]="event.message" name="event.message"></ion-input>-->
-      <!--</ion-item>-->
 
       <ion-item>
-        <button ion-button type="submit" full round >Save</button>
+        <ion-label floating>Precio final</ion-label>
+        <ion-input type="number"  [(ngModel)]="event.price" name="event.price" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Depósito</ion-label>
+        <ion-input type="number"  [(ngModel)]="event.deposit" name="event.deposit" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button (click)="siguiente()" full round >Siguiente</button>
+      </ion-item>
+      <ion-item>
+        <button ion-button type="submit" full round (click)="save()">Guardar</button>
       </ion-item>
 
 

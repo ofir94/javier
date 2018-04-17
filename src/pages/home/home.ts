@@ -11,6 +11,7 @@ import {DatabaseProvider} from "../../providers/database/database";
 
 import { ScrollService } from 'angular2-viewport';
 import * as $ from "jquery";
+import {TabPage} from "../tab/tab";
 
 
 
@@ -62,6 +63,7 @@ export class HomePage {
   estados: any;
   //Fin para cargar lista de tuplas de tabla reservation
   rooms: any;
+  static from_date;
 
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
@@ -156,7 +158,8 @@ export class HomePage {
 
 
   addEvent() {
-    this.navCtrl.push(AddEventPage);
+    let day =  this.tranformarFecha(this.date);
+    this.navCtrl.push(TabPage, {'from_date':day});
   }
 
 
@@ -238,13 +241,14 @@ export class HomePage {
 
   crear_evento(day){
 
-     let fechaTransformada = this.tranformarFecha(day);
-    // alert(day);
-    this.navCtrl.push(AddEventPage,{'startDate':fechaTransformada});
+
+     HomePage.from_date = this.tranformarFecha(day);
+
+    this.navCtrl.push(TabPage);
 
   }
 
-  static prueba(startDate,endDate,status){//OFIR NO BORRES ESTA FUNCION!!!!
+  static pintar(startDate,endDate,status){//OFIR NO BORRES ESTA FUNCION!!!!
 
     // let start = startDate.getFullYear()+"-"+startDate.getMonth()+"-"+startDate.getDay();
     // let end = endDate.getFullYear()+"-"+endDate.getMonth()+"-"+endDate.getDay();

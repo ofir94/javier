@@ -25,10 +25,11 @@ export class AddEventPage {
   developer = {};
 
 
-  startDate;
-  event = { /*title: "", message: "",*/ startDate: this.startDate, endDate: "", status: "1",  location: "", cantKid: "", cantAdult: "", price: ''};
-  rooms= {location:"Habitacion 1"};
+ startDate;
+  event = { startDate: HomePage.from_date, endDate: "", cantKid: "", cantAdult: "", location: "", status: "1", price: "",deposit: ""};
+  rooms= {location:"Habitación 1"};
   selectOptions;
+  static reservation;
   constructor(public alertCtrl: AlertController,
               public navCtrl: NavController,
               public navParams: NavParams,
@@ -36,19 +37,23 @@ export class AddEventPage {
               private databaseProvider: DatabaseProvider)
   {
 
-    this.event.startDate = navParams.get('startDate');
-
+    // this.event = this.navParams.get('modelres');
+    AddEventPage.reservation = this.event;
     this.selectOptions = {//para poder ponerle un evento al ok del alert para poner habitacionn1 como titulo
-
       mode: 'md'
     };
 
+
+
+    this.save = this.navParams.get('onSave');
+
+
   }
 
 
-  addReservation(){
-    this.databaseProvider.addReservation(this.event['startDate'], this.event['endDate'],this.event['cantAdult'], this.event['cantKid'], this.event['status']);
-  }
+  // addReservation(){
+  //   this.databaseProvider.addReservation(this.event['startDate'], this.event['endDate'],this.event['cantAdult'], this.event['cantKid'], this.event['status']);
+  // }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddEventPage');
@@ -63,10 +68,11 @@ export class AddEventPage {
   save(){
     let day = this.event.startDate;
 
-
-    this.addReservation();    //Esto es para anadirlo a la bd
-    HomePage.prueba(this.event.startDate,this.event.endDate,this.event.status);
+    // this.addReservation();    //Esto es para anadirlo a la bd
+    HomePage.pintar(this.event.startDate,this.event.endDate,this.event.status);
     this.navCtrl.pop();
 
   }
+
+
 }

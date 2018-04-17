@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {DatabaseProvider} from "../../providers/database/database";
+
+import {HomePage} from "../home/home";
+
 /**
  * Generated class for the AddRoomPage page.
  *
@@ -14,6 +17,7 @@ import {DatabaseProvider} from "../../providers/database/database";
   templateUrl: 'add-room.html',
 })
 export class AddRoomPage {
+
 
   rooms = {name: "", cant_people: 2, cant_bed_aditional: 0,  cant_bed_single: 2, cant_bed_double: 0, view_order: 1};
   selectOptions;
@@ -57,7 +61,7 @@ export class AddRoomPage {
   save(){
 
       this.databaseProvider.addRoom(this.rooms.name,this.rooms.cant_people, this.rooms.cant_bed_aditional, this.rooms.cant_bed_single, this.rooms.cant_bed_double,this.rooms.view_order);
-
+      this.navCtrl.setRoot(HomePage);
   }
 
 }

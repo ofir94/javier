@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-navbar id="navbar_evento" color="falta_pago">
+    <ion-title>Habitación 1</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="save()" >
+        <ion-icon md="md-checkbox-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-tabs>
+    <ion-tab [root]="reservaRoot" tabTitle="Reserva"  [rootParams]="{modelres:salvar_reserva,modelcli:salvar_cliente, onSave:save}" tabIcon="md-calendar" (click)="changePage()"></ion-tab>
+    <ion-tab [root]="clienteRoot" tabTitle="Cliente"  [rootParams]="{modelres:salvar_reserva,modelcli:salvar_cliente, onSave:save}"  tabIcon="person"></ion-tab>
+    <ion-tab [root]="detallesRoot"tabTitle="Detalles" [rootParams] tabIcon="md-list-box"></ion-tab>
+</ion-tabs>

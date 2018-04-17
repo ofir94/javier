@@ -1,8 +1,12 @@
 CREATE TABLE IF NOT EXISTS cleaning_object (id_cleaning_object  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,object  TEXT);
 
-CREATE TABLE IF NOT EXISTS  client (id_client  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,name  TEXT,address  TEXT,address2  TEXT,state  TEXT,postal_code  TEXT,country  TEXT,passport  TEXT,identification  TEXT,phone  TEXT,email  TEXT);
+INSERT INTO cleaning_object (id_cleaning_object,object) VALUES (1, 'Toallas');
+INSERT INTO cleaning_object (id_cleaning_object,object) VALUES (2, 'Ropa de Cama');
+INSERT INTO cleaning_object (id_cleaning_object,object) VALUES (3, 'Limpieza');
 
-CREATE TABLE IF NOT EXISTS  frequency (id_frequency  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,fixed_day  INTEGER,after_exit  INTEGER,week_day  TEXT,option  INTEGER);
+CREATE TABLE IF NOT EXISTS  frequency (id_frequency  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,fixed_day  INTEGER,after_exit  INTEGER,week_day  TEXT,id_cleaning_object  INTEGER);
+
+CREATE TABLE IF NOT EXISTS  client (id_client  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,name  TEXT,address  TEXT,address2  TEXT,state  TEXT,postal_code  TEXT,country  TEXT,passport  TEXT,identification  TEXT,phone  TEXT,email  TEXT);
 
 CREATE TABLE IF NOT EXISTS  profile (id_profile  TEXT,name_business  TEXT,country  TEXT,postal_code  TEXT,city  TEXT,street  TEXT,phone  TEXT,email  TEXT,web  TEXT,facebook  TEXT);
 

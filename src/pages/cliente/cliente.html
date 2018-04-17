@@ -1,0 +1,73 @@
+<!--
+  Generated template for the ClientePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+
+</ion-header>
+
+<ion-content padding>
+  <br>
+  <br>
+  <form>
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="client.name" name="client.name" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Dirección</ion-label>
+        <ion-input type="text" [(ngModel)]="client.address" name="client.address" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Dirección 2</ion-label>
+        <ion-input type="text" [(ngModel)]="client.address2" name="client.address2" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Código Postal</ion-label>
+        <ion-input type="text" [(ngModel)]="client.postal_code" name="client.postal_code" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>País</ion-label>
+        <ion-input type="text" [(ngModel)]="client.country" name="client.country" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Provincia</ion-label>
+        <ion-input type="text" [(ngModel)]="client.state" name="client.state" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Pasaporte</ion-label>
+        <ion-input type="text" [(ngModel)]="client.passport" name="client.passport" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Identificación</ion-label>
+        <ion-input type="text" [(ngModel)]="client.identification" name="client.identification" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Teléfono</ion-label>
+        <ion-input type="number" [(ngModel)]="client.phone" name="client.phone" >
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Correo Electrónico</ion-label>
+        <ion-input type="email" [(ngModel)]="client.email" name="client.email" >
+        </ion-input>
+      </ion-item>
+
+
+    </ion-list>
+  </form>
+</ion-content>
