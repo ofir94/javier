@@ -3,25 +3,27 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      <h6 style="text-align: left">{{currentMonth}} {{currentYear}}</h6>
-
-
+    <ion-title >
+      <div style="display: inline-block; float: left">
+      <span style="text-align: left; font-size: 16px">{{currentMonth}} {{currentYear}}</span>
+      </div>
+      <div style="display: inline-block; float: right">
+      <button  style="background: none;float: right" icon-only >
+        <ion-icon name="md-search"></ion-icon>
+      </button>
+      <button  style="background: none;float: right" icon-only >
+        <ion-icon name="md-calendar"></ion-icon>
+      </button>
+      <button  style="background: none;float: right" icon-only >
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+      </div>
     </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content >
-
-
-
-
-
-      <h6 style="text-align: left">{{currentMonth}} {{currentYear}}</h6>
-
-
-
 
   <div class="row" nowrap style="
         word-wrap: break-word;
@@ -39,17 +41,36 @@
 
           <ion-col class="fixed-col-noborder"   >
 
-          <p style="font-size:0.8em;">Filtros</p>
+          <button  style="background: none;float: left; padding-top: 15px" icon-only >
+            <ion-icon name="md-color-wand"></ion-icon>
+          </button>
           </ion-col>
 
         </ion-row>
 
         <ion-row class="row2" nowrap *ngFor="let room of rooms">
           <ion-col   class="fixed-col" >
-            <p style="font-size:0.8em;">{{room.name}}</p>
+            <ion-icon name="md-home"></ion-icon>
+            <ion-icon name="md-people"></ion-icon>
+            <p style="font-size:0.8em;">2 +1 </p>
+            <br>
+            <p style="font-size:13px;">{{room.name}}</p>
           </ion-col>
 
         </ion-row>
+
+        <!--Para pruebas-->
+      <!--  <ion-row class="row2" nowrap >
+          <ion-col   class="fixed-col" >
+            <ion-icon name="md-home"></ion-icon>
+            <ion-icon name="md-people"></ion-icon>
+            <p style="font-size:0.8em;">2 +1 </p>
+            <br>
+
+            <p style="font-size:13px;">Habitacion 1</p>
+          </ion-col>
+
+        </ion-row>-->
 
 
       </ion-grid>
@@ -81,7 +102,7 @@
           </ion-row>
 
 
-          <!--Hab 1-->
+          <!--Habitaciones BD -->
           <ion-row class="row1" nowrap *ngFor="let room of rooms">
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
                       class="calendar-col event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
@@ -95,15 +116,14 @@
           </ion-row>
 
 
-          <!--Hab 2-->
-        <!--  <ion-row class="row1" nowrap  >
+          <!--Habitacion de prueba-->
+         <!-- <ion-row class="row1" nowrap  >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
                       class="calendar-col finsemana-{{day.getDay()==0 || day.getDay()==6}}
                               today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}" id = 'hab2-{{i}}'>
             </ion-col>
-          </ion-row>
+          </ion-row>-->
 
--->
         </ion-grid>
       </div>
     </div>
