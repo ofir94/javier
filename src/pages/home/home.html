@@ -8,15 +8,17 @@
       <span style="text-align: left; font-size: 16px">{{currentMonth}} {{currentYear}}</span>
       </div>
       <div style="display: inline-block; float: right">
-      <button  style="background: none;float: right" icon-only >
-        <ion-icon name="md-search"></ion-icon>
-      </button>
+        <button  style="background: none;float: right" icon-only >
+          <ion-icon name="md-notifications"></ion-icon>
+        </button>
+
       <button  style="background: none;float: right" icon-only >
         <ion-icon name="md-calendar"></ion-icon>
       </button>
-      <button  style="background: none;float: right" icon-only >
-        <ion-icon name="md-notifications"></ion-icon>
-      </button>
+
+        <button  style="background: none;float: right" icon-only >
+          <ion-icon name="md-search"></ion-icon>
+        </button>
       </div>
     </ion-title>
   </ion-navbar>
@@ -60,7 +62,7 @@
         </ion-row>
 
         <!--Para pruebas-->
-      <!--  <ion-row class="row2" nowrap >
+        <ion-row class="row2" nowrap >
           <ion-col   class="fixed-col" >
             <ion-icon name="md-home"></ion-icon>
             <ion-icon name="md-people"></ion-icon>
@@ -70,7 +72,7 @@
             <p style="font-size:13px;">Habitacion 1</p>
           </ion-col>
 
-        </ion-row>-->
+        </ion-row>
 
 
       </ion-grid>
@@ -105,7 +107,7 @@
           <!--Habitaciones BD -->
           <ion-row class="row1" nowrap *ngFor="let room of rooms">
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
-                      class="calendar-col event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
+                      class="calendar-col-hab event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
                       (click) = "crear_evento(day)">
               <ion-row class="row3" >
               <ion-col class="" id = 'hab1-{{day.getFullYear()+"-"+day.getMonth()+"-"+day.getDate()}}'>
@@ -117,12 +119,12 @@
 
 
           <!--Habitacion de prueba-->
-         <!-- <ion-row class="row1" nowrap  >
+          <ion-row class="row1" nowrap  >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
-                      class="calendar-col finsemana-{{day.getDay()==0 || day.getDay()==6}}
+                      class="calendar-col-hab finsemana-{{day.getDay()==0 || day.getDay()==6}}
                               today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}" id = 'hab2-{{i}}'>
             </ion-col>
-          </ion-row>-->
+          </ion-row>
 
         </ion-grid>
       </div>

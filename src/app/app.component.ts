@@ -34,7 +34,7 @@ export class MyApp {
       { title: 'Añadir Habitación', component: AddRoomPage},
       { title: 'Limpieza', component: CleaningPage}
     ];
-
+    this.pages2 = new Array();
     this.pages2 = {
       HomePage: HomePage,
       AddRoomPage: AddRoomPage,

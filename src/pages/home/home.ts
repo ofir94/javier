@@ -93,7 +93,7 @@ export class HomePage {
     this.addAt = new Date(this.date.getTime()+1000*60*60*24*60);
     this.reloadView = false;
 
-    this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+    this.monthNames = ["Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio","Agos.","Sept","Octu.","Novie.","Dicie."];
     this.weekDayNames = ["Lu","Ma","Mi", "Ju","Vi","Sa","Do"];
     this.weekDayNamesDefault = ["DO","LU","MA","MI", "JU","VI","SÁ"];
 
