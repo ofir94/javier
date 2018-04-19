@@ -374,6 +374,79 @@ export class HomePage {
      // let id1 =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear()+'1';
       document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
   //    document.getElementById(id1).scrollIntoView();
+
+    var c : any = document.getElementById("hb2-75");
+
+/*
+* Inicio-Fin
+* */
+    var ctxs = c.getContext("2d");
+
+    ctxs.beginPath();
+    ctxs.moveTo(280, 0);
+    ctxs.lineTo(0,0);
+    ctxs.lineTo(0,145);
+    ctxs.fillStyle = "#996633";
+    ctxs.fill();
+
+    ctxs.beginPath();
+    ctxs.moveTo(20, 145);
+    ctxs.lineTo(300,145);
+    ctxs.lineTo(300,0);
+    ctxs.fillStyle = "#293499";
+
+    ctxs.fill();
+
+
+
+  var c1 : any = document.getElementById("hb2-76");
+
+/*
+* cuadrado
+* */
+    var ctxs1 = c1.getContext("2d");
+
+    ctxs1.beginPath();
+    ctxs1.moveTo(0, 0);
+    ctxs1.lineTo(0,145);
+    ctxs1.lineTo(145,145);
+    ctxs1.lineTo(300,145);
+    ctxs1.lineTo(300,0);
+    ctxs1.fillStyle = "#293499";
+    ctxs1.fill();
+
+
+    /*
+    * fin
+    * */
+    var c2 : any = document.getElementById("hb2-77");
+
+    var ctxs2 = c2.getContext("2d");
+
+    ctxs2.beginPath();
+    ctxs2.moveTo(280, 0);
+    ctxs2.lineTo(0,0);
+    ctxs2.lineTo(0,145);
+    ctxs2.fillStyle = "#293499";
+    ctxs2.fill();
+
+    /*
+    * Inicio
+    * */
+    var c3 : any = document.getElementById("hb2-74");
+
+    var ctxs3 = c3.getContext("2d");
+
+    ctxs3.beginPath();
+    ctxs3.moveTo(20, 145);
+    ctxs3.lineTo(300,145);
+    ctxs3.lineTo(300,0);
+    ctxs3.fillStyle = "#996633";
+
+    ctxs3.fill();
+
+
+
   }
 
   ngAfterViewChecked(){

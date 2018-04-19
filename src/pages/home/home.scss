@@ -403,4 +403,70 @@ page-home {
      p {
         display: inline;
       }
+
+
+  .triangle-up {
+    border-color: transparent red red transparent;
+    border-style: solid;
+    border-width: 38.77px 50px 38.77px 50px;
+    height: 0px;
+    width: 0px;
+z-index: 2;
+    //position: absolute;
+  }
+  .triangle-down {
+    border-color: green transparent transparent green;
+    border-style: solid;
+    border-width: 38.77px 50px 37.77px 50px;
+    height: 0px;
+    width: 0px;
+    z-index: 1;
+   // position: absolute;
+  }
+  .line {
+    width: 112px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    -webkit-transform:
+      translateY(20px)
+      translateX(5px)
+      rotate(-26deg);
+    position: relative;
+    top: -33px;
+    left: -13px;
+    z-index: 4;
+
+  }
+
+  .diagonal-container {
+    border: transparent;
+    width: 100px;
+    height: 100px;
+
+    position: relative;
+    overflow: hidden;
+    z-index: 4;
+
+  }
+
+  .diagonal-container:before {
+    border-top: 1px solid #ffffff;
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: -50%;
+    transform: rotate(45deg);
+    transform-origin: 0 0;
+  }
+
+  .to-right:before {
+    right: 0; left: -50%;
+    transform: rotate(-45deg);
+    transform-origin: 100% 0;
+  }
+  canvas{
+    min-height: 45px;
+    min-width: 38.78px;
+    max-width: 38.78px;
+    padding-top: 3px;
+  }
 }
