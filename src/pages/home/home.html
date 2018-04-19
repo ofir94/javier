@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-navbar>
+<ion-header >
+  <ion-navbar  style="min-height: 50px;line-height: 17px;background: lightgrey;">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -44,7 +44,7 @@
           <ion-col class="fixed-col-noborder"   >
 
           <button  style="background: none;float: left; padding-top: 15px" icon-only >
-            <ion-icon name="md-color-wand"></ion-icon>
+            <ion-icon name="ios-funnel"></ion-icon>
           </button>
           </ion-col>
 
@@ -52,27 +52,31 @@
 
         <ion-row class="row2" nowrap *ngFor="let room of rooms">
           <ion-col   class="fixed-col" >
-            <ion-icon name="md-home"></ion-icon>
-            <ion-icon name="md-people"></ion-icon>
-            <p style="font-size:0.8em;">2 +1 </p>
+            <ion-icon class="room-icon" name="md-home"></ion-icon>
+            <ion-icon class="room-icon" name="md-people"></ion-icon>
+            <p class="room-icon">2 +1 </p>
             <br>
-            <p style="font-size:13px;">{{room.name}}</p>
+            <p class="room-names" >{{room.name}}</p>
           </ion-col>
 
         </ion-row>
 
-        <!--Para pruebas-->
-       <!-- <ion-row class="row2" nowrap >
+        <!--Cofigo de prueba-->
+
+         <ion-row class="row2" nowrap >
           <ion-col   class="fixed-col" >
-            <ion-icon name="md-home"></ion-icon>
-            <ion-icon name="md-people"></ion-icon>
-            <p style="font-size:0.8em;">2 +1 </p>
+            <ion-icon class="room-icon" name="md-home"></ion-icon>
+            <ion-icon class="room-icon" name="md-person"></ion-icon>
+            <p class="room-icon-name">2 +1 </p>
             <br>
 
-            <p style="font-size:13px;">Habitacion 1</p>
+            <span class="room-names">Habitacion 1 </span>
           </ion-col>
 
-        </ion-row>-->
+        </ion-row>
+
+
+        <!--Fin de codigo de prueba-->
 
 
       </ion-grid>
@@ -119,12 +123,14 @@
 
 
           <!--Habitacion de prueba-->
-        <!--  <ion-row class="row1" nowrap  >
+          <ion-row class="row1" nowrap  >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
                       class="calendar-col-hab finsemana-{{day.getDay()==0 || day.getDay()==6}}
                               today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}" id = 'hab2-{{i}}'>
             </ion-col>
-          </ion-row>-->
+          </ion-row>
+
+          <!--Fin de habitacion de prueba-->
 
         </ion-grid>
       </div>
@@ -142,203 +148,11 @@
 
     </ion-item>
   </ion-list>-->
- <!-- New Test
-  <h4 style="text-align: center">{{currentMonth}} {{currentYear}}</h4>
 
-  <div class="search-results"
-       infinite-scroll
-       [scrollWindow]="false"
-       [horizontal]="true"
-       [infiniteScrollUpDistance]="2"
-       (scrolled)="addDaysAtEnds()"
-       (scrolledUp)="addDaysAtStarts()"
-      >
-    <ion-grid    style="width: 1000px">
-
-      <ion-row  class="row1" nowrap>
-        <ion-col  class="calendar-col" col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last; let third = third"
-                  id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()+'1'}}">
-          <div class="weeknames {{first}}">
-            {{weekDayNames[i]}}<br>
-          </div>
-          <div  class="days" >
-            {{day.getDate()}}
-
-          </div>
-        </ion-col>
-
-
-
-      </ion-row>
-      <ion-row class="row1" nowrap >
-        <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last"
-                  class="calendar-col event " (click) = "crear_evento($event,day,i)">
-          <ion-row class="row3" >
-            <ion-col class="" id = 'haba1-{{i}}'>
-
-            </ion-col>
-          </ion-row>
-        </ion-col>
-
-      </ion-row>
-      <ion-row class="row1" nowrap  >
-        <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index; let first = first; let last = last" class="calendar-col"
-                  id = 'haba2-{{i}}'>
-
-
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-
-  </div>
-
-
-&lt;!&ndash;
-
- <a id="start" href="#19-2">asd
-  </a>
-
-  <div class="calendar-header">
-    <ion-row class="calendar-month">
-      <ion-col col-2 (click)="goToLastMonth()"><ion-icon name="arrow-back"></ion-icon></ion-col>
-      <ion-col col-8>{{currentMonth}} {{currentYear}}</ion-col>
-      <ion-col col-2 (click)="goToNextMonth()"><ion-icon name="arrow-forward"></ion-icon></ion-col>
-    </ion-row>
-  </div>
-  <div class="calendar-body" (swipe)="swipe($event)" >
-    <ion-grid>
-      <ion-row class="calendar-weekday">
-
-        <ion-col  col-1 *ngFor="let weekDay of weekDayNames" >
-          {{weekDay}}<br>
-
-        </ion-col>
-
-      </ion-row>
-
-      <ion-row class="calendar-date" >
-        <ion-col  col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month" (click)="goToLastMonth()">{{lastDay}}</ion-col>
-        <ion-col  col-1 *ngFor="let day of daysInThisMonth"  (click)="selectDate(day)">
-          <span (ionChange)="transition($event)"class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
-          <ng-template  #otherDate class="otherDate">
-            {{day}}<br>
-            <div class="event-bullet" *ngIf="checkEvent(day)"></div>
-          </ng-template>
-        </ion-col>
-        <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month" (click)="goToNextMonth()">{{nextDay}}</ion-col>
-      </ion-row>
-
-    </ion-grid>
-  </div>
-  <div class="selected-event" *ngIf="isSelected">
-    <ion-list>
-      <ion-item *ngFor="let se of selectedEvent">
-        <ion-buttons end>
-          <button ion-button clear icon-only (click)="deleteEvent(se)">
-            <ion-icon name="close"></ion-icon>
-          </button>
-        </ion-buttons>
-        <h2>{{se.title}}</h2>
-        <h3>{{se.message}}</h3>
-        <p>Start Date: {{se.startDate}}<br>
-          Start Date: {{se.endDate}}</p>
-      </ion-item>
-    </ion-list>
-  </div>
-
-
-  <ion-list>
-
-    <ion-item>
-      <ion-label floating>Name</ion-label>
-      <ion-input type="text" [(ngModel)]="developer.name" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Skill</ion-label>
-      <ion-input type="text" [(ngModel)]="developer.skill" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Years of experience</ion-label>
-      <ion-input type="text" [(ngModel)]="developer.yearsOfExperience" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <button ion-button full (click)="addDeveloper()">Save</button>
-    </ion-item>
-    <ion-item *ngFor="let dev of developers">
-      <h2>{{dev.name}}</h2>
-      <p>{{dev.yearsOfExperience}} years of {{dev.skill}}</p>
-    </ion-item>
-  </ion-list>
-
-&ndash;&gt;
-
-  <div class="search-results"
-       infinite-scroll
-       [scrollWindow]="false"
-       [horizontal]="true"
-       [infiniteScrollDistance]="2"
-       [infiniteScrollUpDistance]="1.5"
-       [infiniteScrollThrottle]="10"
-       (scrolled)="onScrollDown()"
-       (scrolledUp)="onScrollUp('a11')"
-
-  >
-
-
-    <ion-row nowrap class="" >
-      <ion-col   class="" col-1 *ngFor="let i of array" id="a{{i}}"
-               >
-        <div class=" {{i}}">
-          {{i}}<br>
-        </div>
-        <div  class="" >
-          {{i}}
-
-        </div>
-      </ion-col>
-
-
-
-    </ion-row>
-
-  </div>
-
-asdasd
-  <div  class="search-results"
-       infinite-scroll
-       [scrollWindow]="false"
-[horizontal]="true"
-       [infiniteScrollDistance]="2"
-       [infiniteScrollUpDistance]="1.5"
-       [infiniteScrollThrottle]="10"
-       (scrolled)="onScrollDown()"
-       (scrolledUp)="onScrollUp()">
-
-    <p *ngFor="let i of array">
-      {{i}}
-    </p>
-
-
-     &lt;!&ndash; <ion-col nowrap col-1 style="display: inline;overflow: auto" *ngFor="let i of array">
-         {{i}}
-      </ion-col>&ndash;&gt;
-
-
-  </div>
-
-  <ion-scroll scrollX="true" style="width:100vw; height:50px" >
-    <ion-row nowrap class="headerChip">
-      <div *ngFor="let i of array">
-        <p  (click)="onScrollUp()">{{i}}</p>
-        <div></div>
-      </div>
-    </ion-row>
-  </ion-scroll>-->
 
   <ion-fab bottom right >
     <button  ion-fab icon-only color="add" (click) = "crear_evento(date)">
-        <ion-icon name="add"></ion-icon>
+        <ion-icon name="add" style="color:white"></ion-icon>
       </button>
   </ion-fab>
 

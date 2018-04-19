@@ -1,47 +1,134 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" >
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
+    <ion-toolbar >
+      <ion-title > <span style="color: white">Guudbed</span></ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
-    <ion-list>
+  <ion-content style="border-bottom: none;">
+    <ion-list style="border-bottom: none;" >
       <!--<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
 
         <ion-icon name={{icons[0]}}></ion-icon>{{p.title}}
       </button>-->
+
       <button menuClose ion-item icon-left (click)="nav.setRoot(pages2.HomePage)">
-        <ion-icon name="md-bookmarks"></ion-icon>
-        Inicio
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="md-bookmarks" class="menu-icon" ></ion-icon>
+            </ion-col>
+              <ion-col col-10>
+       <span class="menu-text"> Inicio </span>
+              </ion-col >
+        </ion-col>
       </button>
-      <button menuClose ion-item icon-left (click)="nav.setRoot(pages2.AddRoomPage)">
-        <ion-icon name="md-home"></ion-icon>
-        Añadir Habitación
+
+      <hr>
+      <button menuClose ion-item icon-left  (click)="nav.setRoot(pages2.AddRoomPage)">
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="md-home" class="menu-icon"></ion-icon>
+          </ion-col>
+          <ion-col col-10>
+        <span class="menu-text">Añadir Habitación</span>
+          </ion-col >
+        </ion-col>
       </button>
-      <button menuClose ion-item icon-left (click)="nav.setRoot(pages2.CleaningPage)">
-        <ion-icon name="ios-water"></ion-icon>
-        Limpieza
+      <button menuClose ion-item icon-left  (click)="nav.setRoot(pages2.CleaningPage)">
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="ios-water" class="menu-icon" ></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+        <span class="menu-text"> Limpieza</span>
+        </ion-col >
+        </ion-col>
       </button>
-      <button menuClose ion-item icon-left >
-        <ion-icon name="ios-list-box"></ion-icon>
-        Tareas
+      <button menuClose ion-item icon-left  >
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="ios-list-box" class="menu-icon"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+        <span class="menu-text"> Tareas</span>
+        </ion-col >
+        </ion-col>
       </button>
-      <button menuClose ion-item icon-left >
-        <ion-icon name="md-contacts"></ion-icon>
-        Perfil
+      <button menuClose ion-item icon-left  >
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="md-contacts" class="menu-icon"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+        <span class="menu-text"> Perfil</span>
+        </ion-col >
+        </ion-col>
       </button>
-      <button menuClose ion-item icon-left >
-        <ion-icon name="md-cash"></ion-icon>
-        Informe Financiero
+      <button menuClose ion-item icon-left  >
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="ios-download" class="menu-icon"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+        <span class="menu-text"> Exportar</span>
+        </ion-col >
+        </ion-col>
       </button>
-      <button menuClose ion-item icon-left >
-        <ion-icon name="ios-card"></ion-icon>
-        Lista de Pagos
+      <hr>
+      <button menuClose ion-item icon-left  >
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="md-cash" class="menu-icon"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+        <span class="menu-text">Informe Financiero</span>
+        </ion-col >
+        </ion-col>
       </button>
-      <button menuClose ion-item icon-left >
-        <ion-icon name="md-chatbubbles"></ion-icon>
-        Contactar
+      <button menuClose ion-item icon-left  >
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="ios-card" class="menu-icon"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+        <span class="menu-text">Lista de Pagos</span>
+        </ion-col >
+        </ion-col>
+      </button>
+
+      <hr>
+
+      <button menuClose ion-item icon-left  >
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="md-quote" class="menu-icon"></ion-icon>
+        </ion-col>
+        <ion-col col-10>
+        <span class="menu-text">Comentarios e ideas</span>
+        </ion-col >
+        </ion-col>
+      </button>
+
+      <button menuClose ion-item icon-left  >
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+            <ion-icon name="md-share" class="menu-icon"></ion-icon>
+          </ion-col>
+          <ion-col col-10>
+            <span class="menu-text">Recomendar la app</span>
+          </ion-col >
+        </ion-col>
+      </button>
+
+      <button menuClose ion-item icon-left  >
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+            <ion-icon name="md-chatbubbles" class="menu-icon"></ion-icon>
+          </ion-col>
+          <ion-col col-10>
+            <span class="menu-text">Contactar</span>
+          </ion-col >
+        </ion-col>
       </button>
     </ion-list>
   </ion-content>

@@ -14,3 +14,32 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+.menu-icon{
+  color:#5d574f;
+  min-width: 10px;
+  max-width: 10px;
+}
+
+.menu-text{
+  padding-left: 10%;
+}
+
+.menu-col-icon{
+  min-width: 10px;
+  max-width: 10px;
+}
+body > ion-app > ng-component > ion-menu > div > ion-content > div.scroll-content > ion-list.list.list-md .item-block .item-inner {
+  border-bottom: none;
+}
+body > ion-app > ng-component > ion-menu > div > ion-header > ion-toolbar > div.toolbar-background.toolbar-background-md{
+  background: #08c309;
+
+}
+
+.header-md::after{
+  background-image: none;
+  content: none;
+  line-height: 17px;
+}

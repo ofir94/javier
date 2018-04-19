@@ -1,5 +1,10 @@
 page-home {
 
+  .header-md::after{
+    background-image: none;
+    content: none;
+    line-height: 17px;
+  }
 
   [col-1] {
     -webkit-box-flex: 0;
@@ -87,14 +92,16 @@ page-home {
     border-width: thin;
 
     min-height: 1cm;
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    font-weight: 400;
     color: #000000;
     font-size: 14px;
     height: 50px;
 
     border-bottom: groove;
     border-width: thin;
-    border-color: #EEEEEE;
+    border-color: #ffffff52;
     padding: 0px;
     padding-top: 5px;
   }
@@ -113,25 +120,23 @@ page-home {
 
     border-bottom: groove;
     border-width: thin;
-    border-color: #EEEEEE;
+    border-color: #ffffff52;
     padding: 0px;
 
   }
 
   .fixed-col{
-
-
-    text-align: center;
+    text-align: left;
     min-height: 1cm;
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
     color: #5b5e5a;
-    font-size: 14px;
+    line-height: 120%;
     height: 50px;
     width: 100px;
-
+    padding-left: 5px;
     border-bottom: groove;
     border-width: thin;
-    border-color: #EEEEEE;
+    border-color: #ffffff52;
 
   }
   .fixed-col-noborder{
@@ -145,7 +150,7 @@ page-home {
     width: 100px;
     border-bottom: groove;
     border-width: thin;
-    border-color: #EEEEEE;
+    border-color: #ffffff52;
   }
 
   .row1{
@@ -161,7 +166,8 @@ page-home {
    /* border-bottom: groove;
     border-width: thin;
     border-color: #EEEEEE;*/
-    word-wrap: break-word; font-size:0.8em; font-weight:300;
+    word-wrap: break-word;
+    font-weight:300;
   }
 
   .row3{
@@ -173,10 +179,40 @@ page-home {
   }
   .days{
     font-size: 17px;
+    padding-top: 6px;
+
   }
+  .icon-md{
+    color: #7b7a79;
+  }
+  .menu-icon{
+    color:#4c4b4b
+  }
+
+  .room-names{
+    font-size:12px;
+    color: black;
+    font-family: Arial;
+    font-weight: 400;
+  }
+
+  .room-icon-name{
+    font-size:11px;
+    color:#757371;
+  }
+  .room-icon{
+    font-size:13px;
+    color: #ada49d;
+    text-align: left;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+
 
   .finsemana-true{
     background: rgba(193, 187, 193, 0.29);
+
     //background: #a7a4a41c;
   }
   .finsemana-header-true{
@@ -185,6 +221,11 @@ page-home {
     font-size: 15px;
     padding: 0px;
     padding-top: 2px;
+    font-weight: bolder;
+  }
+  .finsemana-header-false{
+    color: #615f5f;
+
   }
 
   .grid{
@@ -194,7 +235,7 @@ page-home {
   .today-header-true{
     background: #09a60a;
     color: #ffffff;
-    border-color: #000;
+    border: none;
 
   }
 
