@@ -37,7 +37,7 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Hasta</ion-label>
-        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="event.endDate" name="event.endDate" id="endDate"></ion-datetime>
+        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD/MM/YYYY" max="2118-12-31" doneText="Aceptar" cancelText="Cancelar" [(ngModel)]="event.endDate" name="event.endDate" id="endDate"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label floating>Cantidad de adultos</ion-label>
@@ -96,13 +96,20 @@
 
       <ion-item>
         <ion-label floating>Precio final</ion-label>
-        <ion-input type="number"  [(ngModel)]="event.price" name="event.price" >
+        <ion-input type="number" id="precioFinal" [(ngModel)]="event.price" name="event.price" >
         </ion-input>
+      </ion-item>
+      <ion-item>
+        <button ion-button  (click)="calcularPrecio()" full round >Calcular Precio</button>
       </ion-item>
       <ion-item>
         <ion-label floating>Depósito</ion-label>
         <ion-input type="number"  [(ngModel)]="event.deposit" name="event.deposit" >
         </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button type="submit" full round (click)="save()">Guardar</button>
       </ion-item>
 
 

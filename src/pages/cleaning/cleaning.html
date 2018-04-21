@@ -7,6 +7,12 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+
+    <ion-buttons start>
+      <button ion-button icon-only  >
+        <ion-icon md="md-checkbox-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,31 +21,35 @@
 
 
 
-  <ion-list class="cleaning-list" radio-group>
+  <ion-list class="cleaning-list" radio-group >
     <ion-list-header>
       Toallas
     </ion-list-header>
 
     <ion-item>
-      <ion-label>Cambiar cada X dias</ion-label>
-      <ion-radio value="go" (click)="hideWeekDays()" ></ion-radio>
+      <ion-label>Cambiar cada {{cleaning_toallas.fixed_day}} dias</ion-label>
+
+      <ion-radio *ngIf="cleaning_toallas.selected_option == 1" value="1" (click)="hideWeekDays() " checked="true"></ion-radio>
+      <ion-radio *ngIf="cleaning_toallas.selected_option != 1" value="1" (click)="hideWeekDays() " ></ion-radio>
     </ion-item>
 
     <ion-item id="addDays-1" style="display: none">
       <ion-grid  >
         <ion-row>
           <ion-col col-3  style="padding: 0px">
-            <ion-list><ion-item>
-              <ion-input type="number" > </ion-input>
-            </ion-item></ion-list>
+            <ion-list>
+              <ion-item>
+                <ion-input type="number" [(ngModel)]="cleaning_toallas.fixed_day" > </ion-input>
+              </ion-item>
+            </ion-list>
           </ion-col>
           <ion-col col-2  style="padding-top: 15px">
-            <button style="background: none" icon-only >
+            <button style="background: none" icon-only (click)="removeFixedDay('toalla')">
               <ion-icon name="remove-circle"></ion-icon>
             </button>
           </ion-col>
           <ion-col col-2  style="padding-top: 15px">
-            <button  style="background: none" icon-only >
+            <button  style="background: none" icon-only (click)="addFixedDay('toalla')">
               <ion-icon name="add-circle"></ion-icon>
             </button>
           </ion-col>
@@ -49,17 +59,19 @@
 
     <ion-item>
       <ion-label>Cambio tras salida</ion-label>
-      <ion-radio (click)="hideAdd()" checked="true" value="rust"></ion-radio>
+      <ion-radio *ngIf="cleaning_toallas.selected_option == 2" (click)="hideAdd()" checked="true" value="2"></ion-radio>
+      <ion-radio *ngIf="cleaning_toallas.selected_option != 2" (click)="hideAdd()"  value="1"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>Cambio los dias</ion-label>
-      <ion-radio (click)="hideAddDays()" value="python" ></ion-radio>
+      <ion-radio *ngIf="cleaning_toallas.selected_option == 3" (click)="hideAddDays()" checked="true" value="3" ></ion-radio>
+      <ion-radio *ngIf="cleaning_toallas.selected_option != 3" (click)="hideAddDays()" value="3" ></ion-radio>
     </ion-item>
 
     <ion-item id="addWeekDays-1" style="display: none">
       <ion-label>Días de la semana</ion-label>
-      <ion-select  multiple="true" cancelText="Cancelar" okText="Ok">
+      <ion-select  multiple="true" cancelText="Cancelar" okText="Ok" [(ngModel)]="cleaning_toallas.week_day">
         <ion-option value="Lunes" selected="true">Lunes</ion-option>
         <ion-option value="Martes">Martes</ion-option>
         <ion-option value="Miercoles" selected="true">Miércoles</ion-option>
@@ -70,6 +82,7 @@
 
       </ion-select>
     </ion-item>
+
   </ion-list>
 
 <br>
@@ -80,8 +93,10 @@
     </ion-list-header>
 
     <ion-item>
-      <ion-label>Cambiar cada X dias</ion-label>
-      <ion-radio value="go" (click)="hideWeekDays2()" ></ion-radio>
+      <ion-label>Cambiar cada {{cleaning_ropacama.fixed_day}} dias</ion-label>
+
+      <ion-radio *ngIf="cleaning_ropacama.selected_option == 1" value="1" (click)="hideWeekDays2()" checked="true" ></ion-radio>
+      <ion-radio *ngIf="cleaning_ropacama.selected_option != 1" value="1" (click)="hideWeekDays2()"  ></ion-radio>
     </ion-item>
 
     <ion-item id="addDays-2" style="display: none">
@@ -89,16 +104,16 @@
         <ion-row>
           <ion-col col-3  style="padding: 0px">
             <ion-list><ion-item>
-              <ion-input type="number" > </ion-input>
+              <ion-input type="number" [(ngModel)]="cleaning_ropacama.fixed_day" > </ion-input>
             </ion-item></ion-list>
           </ion-col>
           <ion-col col-2  style="padding-top: 15px">
-            <button style="background: none" icon-only >
+            <button style="background: none" icon-only (click)="removeFixedDay('ropacama')">
               <ion-icon name="remove-circle"></ion-icon>
             </button>
           </ion-col>
           <ion-col col-2  style="padding-top: 15px">
-            <button  style="background: none" icon-only >
+            <button  style="background: none" icon-only (click)="addFixedDay('ropacama')">
               <ion-icon name="add-circle"></ion-icon>
             </button>
           </ion-col>
@@ -108,17 +123,19 @@
 
     <ion-item>
       <ion-label>Cambio tras salida</ion-label>
-      <ion-radio (click)="hideAdd2()" checked="true" value="rust"></ion-radio>
+      <ion-radio *ngIf="cleaning_ropacama.selected_option == 2" (click)="hideAdd2()" checked="true" value="2"></ion-radio>
+      <ion-radio *ngIf="cleaning_ropacama.selected_option != 2" (click)="hideAdd2()"  value="2"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>Cambio los dias</ion-label>
-      <ion-radio (click)="hideAddDays2()" value="python" ></ion-radio>
+      <ion-radio *ngIf="cleaning_ropacama.selected_option == 3" (click)="hideAddDays2()" value="3" checked="true" ></ion-radio>
+      <ion-radio *ngIf="cleaning_ropacama.selected_option != 3" (click)="hideAddDays2()" value="3" ></ion-radio>
     </ion-item>
 
     <ion-item id="addWeekDays-2" style="display: none">
       <ion-label>Días de la semana</ion-label>
-      <ion-select  multiple="true" cancelText="Cancelar" okText="Ok">
+      <ion-select  multiple="true" cancelText="Cancelar" okText="Ok" [(ngModel)]="cleaning_ropacama.week_day">
         <ion-option value="Lunes" selected="true">Lunes</ion-option>
         <ion-option value="Martes">Martes</ion-option>
         <ion-option value="Miercoles" selected="true">Miércoles</ion-option>
@@ -126,22 +143,20 @@
         <ion-option value="Viernes" selected="true">Viernes</ion-option>
         <ion-option value="Sabado">Sábado</ion-option>
         <ion-option value="Domingo">Domingo</ion-option>
-        <ion-option value="pineapple">Pineapple</ion-option>
-        <ion-option value="sausage">Sausage</ion-option>
-        <ion-option value="Spinach">Spinach</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
 <br>
 <br>
-  <ion-list class="cleaning-list" radio-group>
+  <ion-list class="cleaning-list" radio-group >
     <ion-list-header>
       Limpieza
     </ion-list-header>
 
     <ion-item>
-      <ion-label>Cambiar cada X dias</ion-label>
-      <ion-radio value="go" (click)="hideWeekDays3()" ></ion-radio>
+      <ion-label>Cambiar cada {{cleaning_limpieza.fixed_day}} dias</ion-label>
+      <ion-radio *ngIf="cleaning_limpieza.selected_option == 1" value="1" (click)="hideWeekDays3()" checked="true"></ion-radio>
+      <ion-radio *ngIf="cleaning_limpieza.selected_option != 1" value="1" (click)="hideWeekDays3()" ></ion-radio>
     </ion-item>
 
     <ion-item id="addDays-3" style="display: none">
@@ -149,16 +164,16 @@
         <ion-row>
           <ion-col col-3  style="padding: 0px">
             <ion-list><ion-item>
-              <ion-input type="number" > </ion-input>
+              <ion-input type="number" [(ngModel)]="cleaning_limpieza.fixed_day"> </ion-input>
             </ion-item></ion-list>
           </ion-col>
           <ion-col col-2  style="padding-top: 15px">
-            <button style="background: none" icon-only >
+            <button style="background: none" icon-only (click)="removeFixedDay('limpieza')">
               <ion-icon name="remove-circle"></ion-icon>
             </button>
           </ion-col>
           <ion-col col-2  style="padding-top: 15px">
-            <button  style="background: none" icon-only >
+            <button  style="background: none" icon-only (click)="addFixedDay('limpieza')">
               <ion-icon name="add-circle"></ion-icon>
             </button>
           </ion-col>
@@ -168,17 +183,19 @@
 
     <ion-item>
       <ion-label>Cambio tras salida</ion-label>
-      <ion-radio (click)="hideAdd3()" checked="true" value="rust"></ion-radio>
+      <ion-radio *ngIf="cleaning_limpieza.selected_option === 2"  (click)="hideAdd3()" checked="true" value="2"></ion-radio>
+      <ion-radio *ngIf="cleaning_limpieza.selected_option != 2"  (click)="hideAdd3()"  value="2"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>Cambio los dias</ion-label>
-      <ion-radio (click)="hideAddDays3()" value="python" ></ion-radio>
+      <ion-radio *ngIf="cleaning_limpieza.selected_option == 3" (click)="hideAddDays3()" checked="true" value="3" ></ion-radio>
+      <ion-radio *ngIf="cleaning_limpieza.selected_option != 3" (click)="hideAddDays3()" value="3" ></ion-radio>
     </ion-item>
 
     <ion-item id="addWeekDays-3" style="display: none">
       <ion-label>Días de la semana</ion-label>
-      <ion-select  multiple="true" cancelText="Cancelar" okText="Ok">
+      <ion-select  multiple="true" cancelText="Cancelar" okText="Ok" [(ngModel)]="cleaning_limpieza.week_day">
         <ion-option value="Lunes" selected="true">Lunes</ion-option>
         <ion-option value="Martes">Martes</ion-option>
         <ion-option value="Miercoles" selected="true">Miércoles</ion-option>
@@ -186,10 +203,12 @@
         <ion-option value="Viernes" selected="true">Viernes</ion-option>
         <ion-option value="Sabado">Sábado</ion-option>
         <ion-option value="Domingo">Domingo</ion-option>
-        <ion-option value="pineapple">Pineapple</ion-option>
-        <ion-option value="sausage">Sausage</ion-option>
-        <ion-option value="Spinach">Spinach</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
+
+  <ion-item>
+    <button ion-button type="submit" full round (click)="save()">Guardar</button>
+  </ion-item>
+
 </ion-content>

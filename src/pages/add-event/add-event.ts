@@ -26,9 +26,10 @@ export class AddEventPage {
 
 
  startDate;
-  event = { startDate: HomePage.from_date, endDate: "", cantKid: "", cantAdult: "", location: "", status: "1", price: "",deposit: ""};
+  event = { startDate: HomePage.from_date, endDate: HomePage.to_date, cantKid: "", cantAdult: "", location: "", status: "1", price: "",deposit: ""};
   rooms= {location:"Habitación 1"};
   selectOptions;
+  static style = 'falta_pago';
   static reservation;
   constructor(public alertCtrl: AlertController,
               public navCtrl: NavController,
@@ -44,8 +45,7 @@ export class AddEventPage {
     };
 
 
-
-    this.save = this.navParams.get('onSave');
+    // this.save = this.navParams.get('onSave');
 
 
   }
@@ -62,17 +62,28 @@ export class AddEventPage {
   pintar_nav(style,value){
     $("#navbar_evento").attr('class','toolbar toolbar-md');
     $("#navbar_evento").addClass('toolbar-md-'+style);
-    this.event.status=value;
+    this.event.status = value;
+    AddEventPage.style = style;
+
   //  alert("Sltatus:"+this.event.status);
   }
-  save(){
-    let day = this.event.startDate;
+  // save(){
+  //   let day = this.event.startDate;
+  //
+  //   // this.addReservation();    //Esto es para anadirlo a la bd
+  //   HomePage.pintar(this.event.startDate,this.event.endDate,this.event.status);
+  //   this.navCtrl.pop();
+  //
+  // }
 
-    // this.addReservation();    //Esto es para anadirlo a la bd
-    HomePage.pintar(this.event.startDate,this.event.endDate,this.event.status);
-    this.navCtrl.pop();
-
+  calcularPrecio() {
+    // document.getElementById("precioFinal").setAttribute("ng-reflect-model", "5");
+    let start = new Date(new Date(this.event.startDate).getTime()+1*24*60*60*1000);
+    let end = new Date(new Date(this.event.endDate).getTime()+1*24*60*60*1000);
+    let cantNoches = end.getDate() - start.getDate();
+    let precioXNoche = 30;//Aqui tengo q hacer una consulta a la bd con el id de la habitacion pa saber cuanto cuesta la noche
+    let precioFinal = cantNoches * precioXNoche;
+    this.event.price = precioFinal.toString();
   }
-
 
 }

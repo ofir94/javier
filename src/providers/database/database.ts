@@ -74,6 +74,35 @@ export class DatabaseProvider {
     });
   }
 
+  updateCleaning(selected_option,fixed_day, after_exit, week_day, id_cleaning_object){
+    let  data = [selected_option, fixed_day, after_exit, week_day, id_cleaning_object];
+    return this.database.executeSql("UPDATE frequency SET selected_option = ?, fixed_day = ?, after_exit = ?, week_day = ? WHERE id_cleaning_object = ?",data).then( res=> {
+      return res;
+    });
+
+  }
+
+  getAllCleaning(){
+    return this.database.executeSql("SELECT * FROM frequency",[]).then(data=> {
+      let cleaning = [];
+      if (data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          cleaning.push({
+            selected_option: data.rows.item(i).selected_option,
+            fixed_day: data.rows.item(i).fixed_day,
+            after_exit: data.rows.item(i).after_exit,
+            week_day: data.rows.item(i).week_day,
+            id_cleaning_object: data.rows.item(i).id_cleaning_object,
+          });
+        }
+      }
+      return cleaning;
+    },err =>{
+      alert(err);
+      return [];
+    });
+  }
+
   getAllReservation(){
     return this.database.executeSql("SELECT * FROM reservation",[]).then(data=> {
       let reservation = [];
