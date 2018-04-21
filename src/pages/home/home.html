@@ -12,7 +12,7 @@
           <ion-icon name="md-notifications"></ion-icon>
         </button>
 
-      <button  style="background: none;float: right" icon-only >
+      <button  style="background: none;float: right" icon-only (click)="showDate()">
         <ion-icon name="md-calendar"></ion-icon>
       </button>
 
@@ -158,11 +158,8 @@
   <canvas id = 'canvas' >
   </canvas>
 
-  <button (click)="dateP1()">asd</button>
-  <button (click)="dateP2()">asd</button>
-  <button (click)="dateP3()">asd</button>
-  <button (click)="dateP4()">asd</button>
-  <button (click)="dateP5()">asd</button>
+<button (click)="exportDb()"> Export Db</button>
+
 
   <ion-fab bottom right >
     <button  ion-fab icon-only color="add" (click) = "crear_evento(date)">

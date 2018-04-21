@@ -54,6 +54,54 @@ export class DatabaseProvider {
       })
   }
 
+  /**
+   * @public
+   * @method importSQL
+   * @param sql    {String}          The SQL data to be imported
+   * @description          Imports the supplied SQL data to the application database
+   * @return {Promise}
+   */
+  importSQL(sql 	: any)
+  {
+    return new Promise((resolve, reject) =>
+    {
+      this.sqlitePorter.importSqlToDb(this.database, sql)
+        .then((data) =>
+        {
+          resolve(data);
+        })
+        .catch((e) =>
+        {
+          reject(e);
+        });
+    });
+  }
+
+  /**
+   * @public
+   * @method exportAsSQL
+   * @description          Exports SQL data from the application database
+   * @return {Promise}
+   */
+  exportAsSQL()
+  {
+    return new Promise((resolve, reject) =>
+    {
+      this.sqlitePorter
+        .exportDbToSql(this.database)
+        .then((data) =>
+        {
+          resolve(data);
+        })
+        .catch((e) =>
+        {
+          reject(e);
+        });
+    });
+  }
+
+
+
   addReservation(from_date, to_date, cant_adult, cant_kid, price, deposit,comment, cant_bed_single , cant_bed_double , id_room, status, id_client){
     let  data = [from_date, to_date, cant_adult, cant_kid, price, deposit,comment, cant_bed_single , cant_bed_double , id_room, status, id_client];
     return this.database.executeSql("INSERT INTO reservation (from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single , cant_bed_double , id_room, status, id_client) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",data).then( res=> {

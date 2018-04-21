@@ -166,59 +166,6 @@ export class HomePage {
   }
 
 
-  dateP1(){
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
-    }).then(
-      date => console.log('Got date: ', date),
-      err => console.log('Error occurred while getting date: ', err)
-    );
-
-  }  dateP2(){
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_TRADITIONAL
-    }).then(
-      date => console.log('Got date: ', date),
-      err => console.log('Error occurred while getting date: ', err)
-    );
-
-  }  dateP3(){
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT
-    }).then(
-      date => console.log('Got date: ', date),
-      err => console.log('Error occurred while getting date: ', err)
-    );
-
-  }  dateP4(){
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
-    }).then(
-      date => console.log('Got date: ', date),
-      err => console.log('Error occurred while getting date: ', err)
-    );
-
-  }  dateP5(){
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_DARK
-    }).then(
-      date => console.log('Got date: ', date),
-      err => console.log('Error occurred while getting date: ', err)
-    );
-
-  }
-
-
   addEvent() {
     let day =  this.tranformarFecha(this.date);
     this.navCtrl.push(TabPage, {'from_date':day});
@@ -473,27 +420,27 @@ export class HomePage {
     // //cuadrado
 
     //ofir
-    var c : any = document.getElementById("hb2-75");
+    var cq : any = document.getElementById("hb2-75");
 
     /*
     * Inicio-Fin
     * */
-    var ctxs = c.getContext("2d");
+    var ctxsq = cq.getContext("2d");
 
-    ctxs.beginPath();
-    ctxs.moveTo(280, 0);
-    ctxs.lineTo(0,0);
-    ctxs.lineTo(0,145);
-    ctxs.fillStyle = "#996633";
-    ctxs.fill();
+    ctxsq.beginPath();
+    ctxsq.moveTo(280, 0);
+    ctxsq.lineTo(0,0);
+    ctxsq.lineTo(0,145);
+    ctxsq.fillStyle = "#996633";
+    ctxsq.fill();
 
-    ctxs.beginPath();
-    ctxs.moveTo(20, 145);
-    ctxs.lineTo(300,145);
-    ctxs.lineTo(300,0);
-    ctxs.fillStyle = "#293499";
+    ctxsq.beginPath();
+    ctxsq.moveTo(20, 145);
+    ctxsq.lineTo(300,145);
+    ctxsq.lineTo(300,0);
+    ctxsq.fillStyle = "#293499";
 
-    ctxs.fill();
+    ctxsq.fill();
 
     /*
        * cuadrado
@@ -710,6 +657,35 @@ export class HomePage {
 
 
     return color;
+  }
+
+
+
+  showDate(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
+    }).then(
+
+
+    date => {
+      alert(date);
+      let id =+this.date.getDate()+'-'+this.date.getMonth()+'-'+this.date.getFullYear();
+      alert(id);
+      /*  alert("id reload")
+        alert(id)*/
+      document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
+    },
+      err => console.log('Error occurred while getting date: ', err)
+  );
+  }
+
+  exportDb(){
+    let db = this.databaseProvider.exportAsSQL();
+    alert(db);
+    db.then(value => alert(value));
+
   }
 
 
