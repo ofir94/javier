@@ -8,6 +8,8 @@ import { ListPage } from '../pages/list/list';
 import { AddRoomPage} from "../pages/add-room/add-room";
 import {CleaningPage} from "../pages/cleaning/cleaning";
 import {CommentsPage} from "../pages/comments/comments";
+import {RecomendationPage} from "../pages/recomendation/recomendation";
+import {EmailProvider} from "../providers/email/email";
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +25,7 @@ export class MyApp {
   constructor(public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
-
+              private _EMAIL       : EmailProvider
 ) {
     this.initializeApp();
 
@@ -41,6 +43,7 @@ export class MyApp {
       AddRoomPage: AddRoomPage,
       CleaningPage: CleaningPage,
       CommentsPage: CommentsPage,
+      RecomendationPage: RecomendationPage,
     }
 
   }
@@ -58,6 +61,21 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  recomendation(){
+
+    // Retrieve the validated form fields
+    let message = 	"Prueba la aplicación Guudbed de gestión de reservas de alojamiento, que uso a diario. URL";
+
+    // Has the user selected an attachment?
+
+    // If so call the sendEmail method of the EmailProvider service, pass in
+    // the retrieved form data and watch the magic happen! :)
+    this._EMAIL.sendEmail('', "", "", "Agilice su gestión de reservas", message);
+
+
+
   }
 
 

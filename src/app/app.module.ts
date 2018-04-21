@@ -38,6 +38,7 @@ import {HttpClientModule} from "@angular/common/http";
 
 import {EmailComposer} from "@ionic-native/email-composer";
 import { EmailProvider } from '../providers/email/email';
+import {RecomendationPage} from "../pages/recomendation/recomendation";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { EmailProvider } from '../providers/email/email';
     ClientePage,
     DetallesPage,
     TabPage,
-    CommentsPage
+    CommentsPage,
+    RecomendationPage
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,8 @@ import { EmailProvider } from '../providers/email/email';
     ClientePage,
     DetallesPage,
     TabPage,
-    CommentsPage
+    CommentsPage,
+    RecomendationPage
   ],
   providers: [
     StatusBar,

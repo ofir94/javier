@@ -14,7 +14,7 @@
     </button>
 
     <ion-buttons start>
-      <button ion-button icon-only (click)="save()"  >
+      <button ion-button icon-only  [disabled]="!form.valid" (click)="save()"  >
         <ion-icon md="md-checkbox-outline"></ion-icon>
       </button>
     </ion-buttons>
