@@ -9,7 +9,7 @@
     </button>
 
     <ion-buttons start>
-      <button ion-button icon-only  >
+      <button ion-button icon-only (click)="save()"  >
         <ion-icon md="md-checkbox-outline"></ion-icon>
       </button>
     </ion-buttons>
@@ -29,8 +29,8 @@
     <ion-item>
       <ion-label>Cambiar cada {{cleaning_toallas.fixed_day}} dias</ion-label>
 
-      <ion-radio *ngIf="cleaning_toallas.selected_option == 1" value="1" (click)="hideWeekDays() " checked="true"></ion-radio>
-      <ion-radio *ngIf="cleaning_toallas.selected_option != 1" value="1" (click)="hideWeekDays() " ></ion-radio>
+      <ion-radio  value="1" (click)="hideWeekDays() " [checked]="toallas1" ></ion-radio>
+    <!--  <ion-radio *ngIf="cleaning_toallas.selected_option != 1" value="1" (click)="hideWeekDays() " ></ion-radio>-->
     </ion-item>
 
     <ion-item id="addDays-1" style="display: none">
@@ -59,14 +59,14 @@
 
     <ion-item>
       <ion-label>Cambio tras salida</ion-label>
-      <ion-radio *ngIf="cleaning_toallas.selected_option == 2" (click)="hideAdd()" checked="true" value="2"></ion-radio>
-      <ion-radio *ngIf="cleaning_toallas.selected_option != 2" (click)="hideAdd()"  value="1"></ion-radio>
+      <ion-radio  (click)="hideAdd()"[checked]="toallas2" value="2"></ion-radio>
+      <!--<ion-radio *ngIf="cleaning_toallas.selected_option != 2" (click)="hideAdd()"  value="1"></ion-radio>-->
     </ion-item>
 
     <ion-item>
       <ion-label>Cambio los dias</ion-label>
-      <ion-radio *ngIf="cleaning_toallas.selected_option == 3" (click)="hideAddDays()" checked="true" value="3" ></ion-radio>
-      <ion-radio *ngIf="cleaning_toallas.selected_option != 3" (click)="hideAddDays()" value="3" ></ion-radio>
+      <ion-radio  (click)="hideAddDays()" [checked]="toallas3" value="3" ></ion-radio>
+      <!--<ion-radio *ngIf="cleaning_toallas.selected_option != 3" (click)="hideAddDays()" value="3" ></ion-radio>-->
     </ion-item>
 
     <ion-item id="addWeekDays-1" style="display: none">
@@ -95,8 +95,8 @@
     <ion-item>
       <ion-label>Cambiar cada {{cleaning_ropacama.fixed_day}} dias</ion-label>
 
-      <ion-radio *ngIf="cleaning_ropacama.selected_option == 1" value="1" (click)="hideWeekDays2()" checked="true" ></ion-radio>
-      <ion-radio *ngIf="cleaning_ropacama.selected_option != 1" value="1" (click)="hideWeekDays2()"  ></ion-radio>
+      <ion-radio  value="1" (click)="hideWeekDays2()"  [checked]="ropacama1" ></ion-radio>
+      <!--<ion-radio *ngIf="cleaning_ropacama.selected_option != 1" value="1" (click)="hideWeekDays2()"  ></ion-radio>-->
     </ion-item>
 
     <ion-item id="addDays-2" style="display: none">
@@ -123,14 +123,14 @@
 
     <ion-item>
       <ion-label>Cambio tras salida</ion-label>
-      <ion-radio *ngIf="cleaning_ropacama.selected_option == 2" (click)="hideAdd2()" checked="true" value="2"></ion-radio>
-      <ion-radio *ngIf="cleaning_ropacama.selected_option != 2" (click)="hideAdd2()"  value="2"></ion-radio>
+      <ion-radio  (click)="hideAdd2()" [checked]="ropacama2" value="2"></ion-radio>
+      <!--<ion-radio *ngIf="cleaning_ropacama.selected_option != 2" (click)="hideAdd2()"  value="2"></ion-radio>-->
     </ion-item>
 
     <ion-item>
       <ion-label>Cambio los dias</ion-label>
-      <ion-radio *ngIf="cleaning_ropacama.selected_option == 3" (click)="hideAddDays2()" value="3" checked="true" ></ion-radio>
-      <ion-radio *ngIf="cleaning_ropacama.selected_option != 3" (click)="hideAddDays2()" value="3" ></ion-radio>
+      <ion-radio  (click)="hideAddDays2()" value="3" [checked]="ropacama3" ></ion-radio>
+      <!--<ion-radio *ngIf="cleaning_ropacama.selected_option != 3" (click)="hideAddDays2()" value="3" ></ion-radio>-->
     </ion-item>
 
     <ion-item id="addWeekDays-2" style="display: none">
@@ -155,8 +155,8 @@
 
     <ion-item>
       <ion-label>Cambiar cada {{cleaning_limpieza.fixed_day}} dias</ion-label>
-      <ion-radio *ngIf="cleaning_limpieza.selected_option == 1" value="1" (click)="hideWeekDays3()" checked="true"></ion-radio>
-      <ion-radio *ngIf="cleaning_limpieza.selected_option != 1" value="1" (click)="hideWeekDays3()" ></ion-radio>
+      <ion-radio  value="1" (click)="hideWeekDays3()" [checked]="limpieza1"></ion-radio>
+      <!--<ion-radio *ngIf="cleaning_limpieza.selected_option != 1" value="1" (click)="hideWeekDays3()" ></ion-radio>-->
     </ion-item>
 
     <ion-item id="addDays-3" style="display: none">
@@ -183,14 +183,14 @@
 
     <ion-item>
       <ion-label>Cambio tras salida</ion-label>
-      <ion-radio *ngIf="cleaning_limpieza.selected_option === 2"  (click)="hideAdd3()" checked="true" value="2"></ion-radio>
-      <ion-radio *ngIf="cleaning_limpieza.selected_option != 2"  (click)="hideAdd3()"  value="2"></ion-radio>
+      <ion-radio  (click)="hideAdd3()" [checked]="limpieza2" value="2"></ion-radio>
+      <!--<ion-radio *ngIf="cleaning_limpieza.selected_option != 2"  (click)="hideAdd3()"  value="2"></ion-radio>-->
     </ion-item>
 
     <ion-item>
       <ion-label>Cambio los dias</ion-label>
-      <ion-radio *ngIf="cleaning_limpieza.selected_option == 3" (click)="hideAddDays3()" checked="true" value="3" ></ion-radio>
-      <ion-radio *ngIf="cleaning_limpieza.selected_option != 3" (click)="hideAddDays3()" value="3" ></ion-radio>
+      <ion-radio (click)="hideAddDays3()" [checked]="limpieza3" value="3" ></ion-radio>
+      <!--<ion-radio *ngIf="cleaning_limpieza.selected_option != 3" (click)="hideAddDays3()" value="3" ></ion-radio>-->
     </ion-item>
 
     <ion-item id="addWeekDays-3" style="display: none">

@@ -7,6 +7,10 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AddRoomPage} from "../pages/add-room/add-room";
 import {CleaningPage} from "../pages/cleaning/cleaning";
+import {ClientePage} from "../pages/cliente/cliente";
+import {DetallesPage} from "../pages/detalles/detalles";
+import {TabPage} from "../pages/tab/tab";
+import {CommentsPage} from "../pages/comments/comments";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,9 +35,8 @@ import { InfiniteListModule } from 'angular-infinite-list'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import {ServicioProvider} from "../providers/servicio/servicio";
 import {HttpClientModule} from "@angular/common/http";
-import {ClientePage} from "../pages/cliente/cliente";
-import {DetallesPage} from "../pages/detalles/detalles";
-import {TabPage} from "../pages/tab/tab";
+
+import {EmailComposer} from "@ionic-native/email-composer";
 
 
 @NgModule({
@@ -46,7 +49,8 @@ import {TabPage} from "../pages/tab/tab";
     CleaningPage,
     ClientePage,
     DetallesPage,
-    TabPage
+    TabPage,
+    CommentsPage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +73,8 @@ import {TabPage} from "../pages/tab/tab";
     CleaningPage,
     ClientePage,
     DetallesPage,
-    TabPage
+    TabPage,
+    CommentsPage
   ],
   providers: [
     StatusBar,
@@ -82,7 +87,7 @@ import {TabPage} from "../pages/tab/tab";
     NativePageTransitions,
     ViewportModule,
     ServicioProvider,
-
+    EmailComposer
 
   ]
 })

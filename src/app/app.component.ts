@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AddRoomPage} from "../pages/add-room/add-room";
 import {CleaningPage} from "../pages/cleaning/cleaning";
+import {CommentsPage} from "../pages/comments/comments";
 
 @Component({
   templateUrl: 'app.html'
@@ -39,6 +40,7 @@ export class MyApp {
       HomePage: HomePage,
       AddRoomPage: AddRoomPage,
       CleaningPage: CleaningPage,
+      CommentsPage: CommentsPage,
     }
 
   }

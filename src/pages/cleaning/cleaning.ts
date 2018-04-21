@@ -22,6 +22,17 @@ export class CleaningPage {
   cleaning_ropacama = {selected_option:2,fixed_day: 0, after_exit: 2, week_day: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']};
   cleaning_limpieza = {selected_option:2,fixed_day: 0, after_exit: 2, week_day: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']};
 
+  toallas1 = false;
+  toallas2 = false;
+  toallas3 = false;
+
+  ropacama1 = false;
+  ropacama2 = false;
+  ropacama3 = false;
+
+  limpieza1 = false;
+  limpieza2 = false;
+  limpieza3 = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams
               , private databaseProvider: DatabaseProvider) {
@@ -34,6 +45,29 @@ export class CleaningPage {
     this.databaseProvider.getDatabaseState().subscribe(rdy => {
       if(rdy){
           this.loadCleaningData();
+
+          if(this.cleaning_toallas.selected_option == 1)
+            this.toallas1 = true;
+          else if(this.cleaning_toallas.selected_option == 2)
+            this.toallas2 = true;
+          else
+            this.toallas3 = true;
+
+          if(this.cleaning_ropacama.selected_option == 1)
+            this.ropacama1 = true;
+          else if(this.cleaning_ropacama.selected_option == 2)
+            this.ropacama2 = true;
+          else
+            this.ropacama3 = true;
+
+          if(this.cleaning_limpieza.selected_option == 1)
+            this.limpieza1 = true;
+          else if(this.cleaning_limpieza.selected_option == 2)
+            this.limpieza2 = true;
+          else
+            this.limpieza3 = true;
+
+
       }
     });
 
@@ -138,27 +172,13 @@ export class CleaningPage {
   }
 
   save(){
-  /*  console.log(this.selected.toallas)
-    console.log(this.selected.ropacama)
-    console.log(this.selected.limpieza)
-    console.log(this.cleaning_toallas.week_day)*/
- /* console.log(this.cleaning_toallas.selected_option)
-  console.log(this.cleaning_limpieza.week_day)
-    let data = "";
-    for(let clean of this.cleaning_limpieza.week_day){
-        data=data+""+clean;
-    }
 
-    console.log(data)
-    console.log("DB")
-    console.log(this.cleaning_limpieza.week_day.toString())
-    console.log("back from DB")
-    console.log(this.cleaning_limpieza.week_day.toString().split(','))*/
     this.databaseProvider.updateCleaning(this.cleaning_toallas.selected_option,this.cleaning_toallas.fixed_day, this.cleaning_toallas.after_exit, this.cleaning_toallas.week_day.toString(), 1);
     this.databaseProvider.updateCleaning(this.cleaning_ropacama.selected_option,this.cleaning_ropacama.fixed_day, this.cleaning_ropacama.after_exit, this.cleaning_ropacama.week_day.toString(), 2);
     this.databaseProvider.updateCleaning(this.cleaning_limpieza.selected_option,this.cleaning_limpieza.fixed_day, this.cleaning_limpieza.after_exit, this.cleaning_limpieza.week_day.toString(), 3);
     this.navCtrl.setRoot(HomePage);
 
+    //ToDo -> Cuando carga no pone chequed el que habia guardado
   }
 
 }
