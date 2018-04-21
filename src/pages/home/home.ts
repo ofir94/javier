@@ -14,7 +14,7 @@ import * as $ from "jquery";
 import {TabPage} from "../tab/tab";
 import {style} from "@angular/core/src/animation/dsl";
 
-
+import { DatePicker } from '@ionic-native/date-picker';
 
 
 @Component({
@@ -66,22 +66,33 @@ export class HomePage {
   rooms: any;
   static from_date;
   static to_date;
+
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
               private calendar: Calendar,
               private databaseProvider: DatabaseProvider,
               public scrollService: ScrollService,
-              public loadingCtrl: LoadingController
+              public loadingCtrl: LoadingController,
+              private datePicker: DatePicker
                                  ) {
     scrollService.onScroll.subscribe(e => {
 
         // Para una de las formas
 
     });
+    var options = {
+      date: new Date(),
+      mode: 'date'
+    };
 
-    for (let i = 0; i < this.sum; ++i) {
-      this.array.push(i);
+    function onSuccess(date) {
+      alert('Selected date: ' + date);
     }
+
+    function onError(error) { // Android only
+      alert('Error: ' + error);
+    }
+
 
     this.canLess = false;
     this.asd = true;
@@ -155,6 +166,57 @@ export class HomePage {
   }
 
 
+  dateP1(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+    }).then(
+      date => console.log('Got date: ', date),
+      err => console.log('Error occurred while getting date: ', err)
+    );
+
+  }  dateP2(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_TRADITIONAL
+    }).then(
+      date => console.log('Got date: ', date),
+      err => console.log('Error occurred while getting date: ', err)
+    );
+
+  }  dateP3(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT
+    }).then(
+      date => console.log('Got date: ', date),
+      err => console.log('Error occurred while getting date: ', err)
+    );
+
+  }  dateP4(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
+    }).then(
+      date => console.log('Got date: ', date),
+      err => console.log('Error occurred while getting date: ', err)
+    );
+
+  }  dateP5(){
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_DARK
+    }).then(
+      date => console.log('Got date: ', date),
+      err => console.log('Error occurred while getting date: ', err)
+    );
+
+  }
 
 
   addEvent() {

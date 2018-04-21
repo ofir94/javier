@@ -39,6 +39,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {EmailComposer} from "@ionic-native/email-composer";
 import { EmailProvider } from '../providers/email/email';
 import {RecomendationPage} from "../pages/recomendation/recomendation";
+import {DatePicker} from "@ionic-native/date-picker";
 
 @NgModule({
   declarations: [
@@ -92,7 +93,7 @@ import {RecomendationPage} from "../pages/recomendation/recomendation";
     ServicioProvider,
     EmailComposer,
     EmailProvider,
-    EmailProvider
+    DatePicker
 
   ]
 })

@@ -68,13 +68,7 @@ export class MyApp {
     // Retrieve the validated form fields
     let message = 	"Prueba la aplicación Guudbed de gestión de reservas de alojamiento, que uso a diario. URL";
 
-    // Has the user selected an attachment?
-
-    // If so call the sendEmail method of the EmailProvider service, pass in
-    // the retrieved form data and watch the magic happen! :)
     this._EMAIL.sendEmail('', "", "", "Agilice su gestión de reservas", message);
-
-
 
   }
 
