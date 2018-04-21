@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { EmailProvider } from '../../providers/email/email';
 import {HomePage} from "../home/home";
+import {Validators, FormBuilder, FormGroup} from "@angular/forms";
 
 /**
  * Generated class for the CommentsPage page.
@@ -18,9 +19,15 @@ import {HomePage} from "../home/home";
 export class CommentsPage {
 
   comments: "";
+  public form  : FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams
-              ,private emailComposer: EmailComposer) {
+              , private _EMAIL       : EmailProvider
+              ,private _FORM	    : FormBuilder,) {
+
+    this.form = this._FORM.group({
+      "message"       : ["", Validators.required]
+    });
   }
 
   ionViewDidLoad() {
@@ -30,20 +37,14 @@ export class CommentsPage {
 
   save(){
 
-    this.emailComposer.isAvailable().then((available: boolean) =>{
-      if(available) {
-        let email = {
-          to: 'ofir4991@gmail.com',
-          subject: 'Guudbed - Comentarios e ideas',
-          body: this.comments,
-          isHtml: true
-        };
+    // Retrieve the validated form fields
+    let message 	: string		= this.form.controls["message"].value;
 
-// Send a text message using default options
-        this.emailComposer.open(email);
-        this.navCtrl.setRoot(HomePage);
-      }
-    });
+    // Has the user selected an attachment?
+
+      // If so call the sendEmail method of the EmailProvider service, pass in
+      // the retrieved form data and watch the magic happen! :)
+      this._EMAIL.sendEmail('ofir4991@gmail.com', "", "", "guudbed", message);
 
 
 

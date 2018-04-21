@@ -27,11 +27,20 @@
   <p>Si a tu aplicación Guudbed le falta funcionalidad o tienes una idea de desarrollo,
     escribenos un mensaje describiendo tus necesidades:</p>
   <br>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="save()">
   <ion-list>
     <ion-item>
-      <ion-textarea placeholder="Escriba sus ideas y sugerencias" [(ngModel)]="comments"></ion-textarea>
+      <ion-input formControlName="message" type="string" placeholder="Escriba sus ideas y sugerencias" [(ngModel)]="comments"></ion-input>
     </ion-item>
+<br>
+    <button
+      ion-button
+      color="primary"
+      text-center
+      block [disabled]="!form.valid">Enviar mensaje</button>
   </ion-list>
 
-
+  </form>
 </ion-content>

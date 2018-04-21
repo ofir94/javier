@@ -37,7 +37,7 @@ import {ServicioProvider} from "../providers/servicio/servicio";
 import {HttpClientModule} from "@angular/common/http";
 
 import {EmailComposer} from "@ionic-native/email-composer";
-
+import { EmailProvider } from '../providers/email/email';
 
 @NgModule({
   declarations: [
@@ -87,7 +87,9 @@ import {EmailComposer} from "@ionic-native/email-composer";
     NativePageTransitions,
     ViewportModule,
     ServicioProvider,
-    EmailComposer
+    EmailComposer,
+    EmailProvider,
+    EmailProvider
 
   ]
 })
