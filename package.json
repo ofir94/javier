@@ -24,6 +24,7 @@
     "@ionic-native/core": "4.4.0",
     "@ionic-native/date-picker": "^4.7.0",
     "@ionic-native/email-composer": "^4.7.0",
+    "@ionic-native/file": "^4.7.0",
     "@ionic-native/native-page-transitions": "^4.5.3",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/sqlite": "^4.5.3",
@@ -40,6 +41,7 @@
     "cordova-plugin-datepicker": "^0.9.3",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-email-composer": "^0.8.15",
+    "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -74,7 +76,8 @@
       "cordova-sqlite-storage": {},
       "com.telerik.plugins.nativepagetransitions": {},
       "cordova-plugin-email-composer": {},
-      "cordova-plugin-datepicker": {}
+      "cordova-plugin-datepicker": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "android"

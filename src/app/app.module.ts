@@ -40,7 +40,7 @@ import {EmailComposer} from "@ionic-native/email-composer";
 import { EmailProvider } from '../providers/email/email';
 import {RecomendationPage} from "../pages/recomendation/recomendation";
 import {DatePicker} from "@ionic-native/date-picker";
-
+import { File } from '@ionic-native/file';
 @NgModule({
   declarations: [
     MyApp,
@@ -93,8 +93,8 @@ import {DatePicker} from "@ionic-native/date-picker";
     ServicioProvider,
     EmailComposer,
     EmailProvider,
-    DatePicker
-
+    DatePicker,
+    File
   ]
 })
 export class AppModule {}

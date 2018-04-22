@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Content, LoadingController} from 'ionic-angular';
+import {Content, LoadingController, Platform} from 'ionic-angular';
 import { NavController, AlertController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 
@@ -13,6 +13,7 @@ import { ScrollService } from 'angular2-viewport';
 import * as $ from "jquery";
 import {TabPage} from "../tab/tab";
 import {style} from "@angular/core/src/animation/dsl";
+import {File, IWriteOptions} from '@ionic-native/file';
 
 import { DatePicker } from '@ionic-native/date-picker';
 
@@ -73,8 +74,17 @@ export class HomePage {
               private databaseProvider: DatabaseProvider,
               public scrollService: ScrollService,
               public loadingCtrl: LoadingController,
-              private datePicker: DatePicker
+              private datePicker: DatePicker,
+              public plt: Platform,
+              private file: File
                                  ) {
+
+    plt.ready()
+      .then(() => {
+        this.exportDb();
+      })
+
+
     scrollService.onScroll.subscribe(e => {
 
         // Para una de las formas
@@ -669,9 +679,9 @@ export class HomePage {
     }).then(
 
 
-    date => {
-      alert(date);
-      let id =+this.date.getDate()+'-'+this.date.getMonth()+'-'+this.date.getFullYear();
+    selectedDate => {
+      alert(selectedDate);
+      let id =+selectedDate.getDate()+'-'+selectedDate.getMonth()+'-'+selectedDate.getFullYear();
       alert(id);
       /*  alert("id reload")
         alert(id)*/
@@ -684,7 +694,16 @@ export class HomePage {
   exportDb(){
     let db = this.databaseProvider.exportAsSQL();
     alert(db);
-    db.then(value => alert(value));
+    db.then(value => {
+      alert(value);
+      const ROOT_DIRECTORY = 'file:///';
+    let result = this.file.writeFile(this.file.dataDirectory, "guudbed-ofir.sql", value.toString() );
+
+    alert("after save");
+result.then(value=>alert(value));
+
+
+    });
 
   }
 
