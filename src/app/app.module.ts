@@ -38,9 +38,10 @@ import {HttpClientModule} from "@angular/common/http";
 
 import {EmailComposer} from "@ionic-native/email-composer";
 import { EmailProvider } from '../providers/email/email';
-import {RecomendationPage} from "../pages/recomendation/recomendation";
 import {DatePicker} from "@ionic-native/date-picker";
 import { File } from '@ionic-native/file';
+import {FilterPage} from "../pages/filter/filter";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -53,7 +54,7 @@ import { File } from '@ionic-native/file';
     DetallesPage,
     TabPage,
     CommentsPage,
-    RecomendationPage
+    FilterPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +79,7 @@ import { File } from '@ionic-native/file';
     DetallesPage,
     TabPage,
     CommentsPage,
-    RecomendationPage
+    FilterPage
   ],
   providers: [
     StatusBar,

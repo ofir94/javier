@@ -542,8 +542,6 @@ export class HomePage {
 
       this.dateToRepositionView =new Date(day.getTime());
 
-      alert(this.dateToRepositionView);
-
       this.daysInThisMonth = new Array()
       this.weekDayNames = new Array();
       let calc = 1000*60*60*24;
@@ -564,6 +562,7 @@ export class HomePage {
 
       this.dateToReloadViewStart =  new Date(day.getTime()-1000*60*60*24*70);
       this.dateToReloadViewEnd =  new Date(day.getTime()+1000*60*60*24*70);
+      this.dateToReloadViewEnd.setHours()
 
   }
 

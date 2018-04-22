@@ -159,4 +159,15 @@ export class MyApp {
   }
 
 
+  alertIcon(){
+
+    let alert = this.alertCtrl.create({
+      title: 'Contactar',
+      subTitle: '<br>E-mail: lbencomo94@nauta.cu <br><br>Celular: 58236723',
+      buttons: ['Aceptar']
+    });
+    alert.present();
+
+  }
+
 }
