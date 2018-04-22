@@ -88,7 +88,7 @@ export class MyApp {
         db.then(value => {
 
           let date = new Date();
-          let today =date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear();
+          let today =date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
           let name = "guudbed-"+today+".db";
           let result = this.file.writeFile(this.file.externalRootDirectory, name, value.toString()) //ToDo -> Pasar opcion al final para sobre escribir el archivo exitente con el mismo nombre
             .then(function (success) {
@@ -116,8 +116,7 @@ export class MyApp {
                         alert(error);
                    });
 
-          alert("data");
-          result.then(data=>alert(data));
+
 
       })
   }

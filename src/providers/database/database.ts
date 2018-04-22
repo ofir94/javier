@@ -61,7 +61,7 @@ export class DatabaseProvider {
    * @description          Imports the supplied SQL data to the application database
    * @return {Promise}
    */
-  importSQL(sql 	: any)
+  importSQL(sql)
   {
     alert("importing");
     return new Promise((resolve, reject) =>
