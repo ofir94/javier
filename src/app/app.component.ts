@@ -118,15 +118,9 @@ export class MyApp {
                         alert(error);
                    });
 
-        try{
-          alert("try")
+          alert("provider")
           this.databaseProvider.importSQL(sql);
 
-        }catch (e){
-          alert("exception")
-          alert(e)
-          alert(e.message)
-        }
 
       })
   }
