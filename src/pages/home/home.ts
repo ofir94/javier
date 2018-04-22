@@ -45,21 +45,16 @@ export class HomePage {
   reloadView: boolean;
   asd: boolean;
 
-
-  developers = [];
   developer = {};
 
   loaded:   boolean = false;
   cant: number;
 
   today: any;
-  endweek: any;
-  srtarweek: any;
+
 
   array = [];
-  sum = 1000;
-  //Inicio para cargar lista de tuplas de tabla reservation
-  reserva = {};
+
   reservas = [];
   estados: any;
   //Fin para cargar lista de tuplas de tabla reservation
@@ -69,33 +64,15 @@ export class HomePage {
 
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
-              private calendar: Calendar,
               private databaseProvider: DatabaseProvider,
-              public scrollService: ScrollService,
               public loadingCtrl: LoadingController,
               private datePicker: DatePicker,
                                  ) {
 
-
-
-
-    scrollService.onScroll.subscribe(e => {
-
-        // Para una de las formas
-
-    });
     var options = {
       date: new Date(),
       mode: 'date'
     };
-
-    function onSuccess(date) {
-      alert('Selected date: ' + date);
-    }
-
-    function onError(error) { // Android only
-      alert('Error: ' + error);
-    }
 
 
     this.canLess = false;
@@ -150,9 +127,10 @@ export class HomePage {
     }
 
     this.currentMonth = this.monthNames[this.date.getMonth()];
+    this.currentYear =  this.date.getFullYear();
 
   }
-
+ /// END CONSTRUCTOR
 
   loadReservationData(){
    this.databaseProvider.getAllReservation().then(data => {
@@ -163,28 +141,11 @@ export class HomePage {
     });
   }
 
-  loadStatusData(){
-    this.databaseProvider.getAllStatus().then(data => {
-      this.estados = data;
-    });
-  }
-
 
   addEvent() {
     let day =  this.tranformarFecha(this.date);
     this.navCtrl.push(TabPage, {'from_date':day});
   }
-
-
-
-  /*swipe(event) {
-    if(event.direction === 2) {
-        this.goToNextMonth()
-    }
-    if(event.direction === 4) {
-        this.goToLastMonth()
-    }
-  }*/
 
 
 
@@ -385,116 +346,6 @@ export class HomePage {
     let id = +g.getDate() + '-' + g.getMonth() + '-' + g.getFullYear();
     // let id1 =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear()+'1';
     document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
-    //    document.getElementById(id1).scrollIntoView();
-    var c: any;
-    c = document.getElementById('canvas');
-    var ctxs = c.getContext("2d");
-// ctxs.moveTo(0, 0);
-// ctxs.lineTo(20, 0);
-// ctxs.lineTo(1000, 1000);
-// ctxs.lineTo(0, 20);
-// ctxs.moveTo(0, 0);
-// ctxs.lineTo(1000, 1000);
-//
-// ctxs.fillStyle = "#000000";
-// ctxs.fill();
-//     ctxs.beginPath();
-//     ctxs.moveTo(0, 0);
-//     ctxs.lineTo(0,700);
-//     ctxs.lineTo(700,700);
-//     ctxs.fillStyle = "#996633";
-//     ctxs.fill();
-//
-//     ctxs.beginPath();
-//     ctxs.moveTo(710, 700);
-//     ctxs.lineTo(710,0);
-//     ctxs.lineTo(10,0);
-//     ctxs.fillStyle = "#293499";
-//     ctxs.fill();
-
-    // //cuadrado
-    // ctxs.beginPath();
-    // ctxs.moveTo(0, 0);
-    // ctxs.lineTo(0,300);
-    // ctxs.lineTo(145,300);
-    // ctxs.lineTo(145,0);
-    // ctxs.fillStyle = "#996633";
-    // ctxs.fill();
-    //
-    // //cuadrado
-
-    //ofir
-    var cq : any = document.getElementById("hb2-75");
-
-    /*
-    * Inicio-Fin
-    * */
-    var ctxsq = cq.getContext("2d");
-
-    ctxsq.beginPath();
-    ctxsq.moveTo(280, 0);
-    ctxsq.lineTo(0,0);
-    ctxsq.lineTo(0,145);
-    ctxsq.fillStyle = "#996633";
-    ctxsq.fill();
-
-    ctxsq.beginPath();
-    ctxsq.moveTo(20, 145);
-    ctxsq.lineTo(300,145);
-    ctxsq.lineTo(300,0);
-    ctxsq.fillStyle = "#293499";
-
-    ctxsq.fill();
-
-    /*
-       * cuadrado
-       * */
-
-    var c1 : any = document.getElementById("hb2-76");
-
-
-    var ctxs1 = c1.getContext("2d");
-
-    ctxs1.beginPath();
-    ctxs1.moveTo(0, 0);
-    ctxs1.lineTo(0,145);
-    ctxs1.lineTo(145,145);
-    ctxs1.lineTo(300,145);
-    ctxs1.lineTo(300,0);
-    ctxs1.fillStyle = "#293499";
-    ctxs1.fill();
-
-
-    /*
-    * fin
-    * */
-    var c2 : any = document.getElementById("hb2-77");
-
-    var ctxs2 = c2.getContext("2d");
-
-    ctxs2.beginPath();
-    ctxs2.moveTo(280, 0);
-    ctxs2.lineTo(0,0);
-    ctxs2.lineTo(0,145);
-    ctxs2.fillStyle = "#293499";
-    ctxs2.fill();
-
-    /*
-    * Inicio
-    * */
-    var c3 : any = document.getElementById("hb2-74");
-
-    var ctxs3 = c3.getContext("2d");
-
-    ctxs3.beginPath();
-    ctxs3.moveTo(20, 145);
-    ctxs3.lineTo(300,145);
-    ctxs3.lineTo(300,0);
-    ctxs3.fillStyle = "#996633";
-
-    ctxs3.fill();
-
-    //ofir
 
   }
 
@@ -679,9 +530,10 @@ export class HomePage {
       alert(id);
       /*  alert("id reload")
         alert(id)*/
-      document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
+    //  document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
+     this.addmore(selectedDate)
     },
-      err => console.log('Error occurred while getting date: ', err)
+      err => alert('Error occurred while getting date: ')
   );
   }
 

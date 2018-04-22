@@ -96,23 +96,18 @@ export class MyApp {
           }
           let result = this.file.writeFile(this.file.externalRootDirectory, name, value.toString(), options)
             .then(function (success) {
-                      let alert = this.alertCtrl.create({
-                        title: 'Base de datos exportada',
-                        subTitle: 'Su base de datos ha sido exportada y guardada en la raíz de almacenamiento de su memoria',
-                        buttons: ['Aceptar']
-                      });
-                      alert.present();
+
                   }, e =>function (error) {
-                      let alert = this.alertCtrl.create({
-                        title: 'Exportación fallida',
-                        subTitle: 'Debe asignar los permisos necesarios para que Guudbed acceda a la memoria de su dispositivo',
-                        buttons: ['Aceptar']
-                      });
-                      alert.present();
+
                    });
+          let alert = this.alertCtrl.create({
+            title: 'Base de datos exportada',
+            subTitle: 'Su base de datos ha sido exportada y guardada en la raíz de almacenamiento de su memoria',
+            buttons: ['Aceptar']
+          });
+          alert.present();
         });
       })
-
   }
 
   importDataBase(){
@@ -147,6 +142,12 @@ export class MyApp {
                 f.then(value => {
 
                   this.databaseProvider.importSQL(sql);
+                  let alert = this.alertCtrl.create({
+                    title: 'Base de datos importada',
+                    subTitle: 'Su base de datos ha sido importada con éxito',
+                    buttons: ['Aceptar']
+                  });
+                  alert.present();
                 })
 
               }
