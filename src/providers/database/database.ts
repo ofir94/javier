@@ -63,6 +63,7 @@ export class DatabaseProvider {
    */
   importSQL(sql 	: any)
   {
+    alert("importing");
     return new Promise((resolve, reject) =>
     {
       this.sqlitePorter.importSqlToDb(this.database, sql)
