@@ -540,14 +540,6 @@ export class HomePage {
 
   changeToday(day){
 
-    if(!(day <= this.dateToReloadViewStart && !this.reloadView) || !(day >= this.dateToReloadViewEnd && !this.reloadView)){
-      alert('no hace falta')
-      let id =+day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear();
-      document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
-    }
-    else{
-      alert('hace falta')
-
       this.dateToRepositionView =new Date(day.getTime());
 
       alert(this.dateToRepositionView);
@@ -572,10 +564,6 @@ export class HomePage {
 
       this.dateToReloadViewStart =  new Date(day.getTime()-1000*60*60*24*70);
       this.dateToReloadViewEnd =  new Date(day.getTime()+1000*60*60*24*70);
-
-    }
-
-
 
   }
 
