@@ -107,7 +107,7 @@ export class MyApp {
       .then(() => {
 
       let sql = "";
-          this.file.readAsText(this.file.externalRootDirectory, "guudbed.db")
+         let f = this.file.readAsText(this.file.externalRootDirectory, "guudbed.db")
             .then(function (success) {
 
                   alert("success")
@@ -118,8 +118,10 @@ export class MyApp {
                         alert(error);
                    });
 
-          alert("provider")
-          this.databaseProvider.importSQL(sql);
+         f.then(value=>{
+           alert("provider")
+           this.databaseProvider.importSQL(sql);
+         })
 
 
       })
