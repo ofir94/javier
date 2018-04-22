@@ -64,7 +64,7 @@ export class DatabaseProvider {
   importSQL(sql)
   {
     alert("importing");
-    return new Promise((resolve, reject) =>
+    /*return new Promise((resolve, reject) =>
     {
       this.sqlitePorter.importSqlToDb(this.database, sql)
         .then((data) =>
@@ -75,7 +75,12 @@ export class DatabaseProvider {
         {
           reject(e);
         });
-    });
+    });*/
+    this.sqlitePorter.importSqlToDb(this.database, sql)
+      .then(data =>{
+        this.databaseReady.next(true);
+        this.storage.set('database_filled', true);
+      })
   }
 
   /**
