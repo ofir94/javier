@@ -89,10 +89,17 @@ export class MyApp {
         db.then(value => {
           alert(value);
           const ROOT_DIRECTORY = 'file:///';
-          let result = this.file.writeFile(this.file.externalRootDirectory, "guudbed-ofir.sql", value.toString() );
+          let result = this.file.writeFile(this.file.externalRootDirectory, "guudbed-ofir.sql", value.toString() ).then
+          (function (success) {
+            alert("succes");
+            alert(success);
+          }, e =>function (error) {
+              alert("error");
+              alert(error);
+          });;
 
           alert("after save");
-          alert(result)
+          alert(result);
           result.then(value=>alert(value));
 
 
