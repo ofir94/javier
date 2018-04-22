@@ -108,8 +108,9 @@ export class MyApp {
 
           let result = this.file.readAsText(this.file.externalRootDirectory, "guudbed.db")
             .then(function (success) {
+                  alert("success")
                   alert(success);
-                  this.databaseProvider.importSQL(success.toString());
+                  alert(this.databaseProvider.importSQL(success.toString()));
                   alert("imported");
                   }, e =>function (error) {
                         alert("error");
