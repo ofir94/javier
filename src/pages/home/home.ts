@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Content, LoadingController, Platform} from 'ionic-angular';
+import {Content, LoadingController} from 'ionic-angular';
 import { NavController, AlertController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 
@@ -12,8 +12,7 @@ import {DatabaseProvider} from "../../providers/database/database";
 import { ScrollService } from 'angular2-viewport';
 import * as $ from "jquery";
 import {TabPage} from "../tab/tab";
-import {style} from "@angular/core/src/animation/dsl";
-import {File, IWriteOptions} from '@ionic-native/file';
+
 
 import { DatePicker } from '@ionic-native/date-picker';
 
@@ -75,14 +74,9 @@ export class HomePage {
               public scrollService: ScrollService,
               public loadingCtrl: LoadingController,
               private datePicker: DatePicker,
-              public plt: Platform,
-              private file: File
                                  ) {
 
-    plt.ready()
-      .then(() => {
-        this.exportDb();
-      })
+
 
 
     scrollService.onScroll.subscribe(e => {
@@ -689,22 +683,6 @@ export class HomePage {
     },
       err => console.log('Error occurred while getting date: ', err)
   );
-  }
-
-  exportDb(){
-    let db = this.databaseProvider.exportAsSQL();
-    alert(db);
-    db.then(value => {
-      alert(value);
-      const ROOT_DIRECTORY = 'file:///';
-    let result = this.file.writeFile(this.file.dataDirectory, "guudbed-ofir.sql", value.toString() );
-
-    alert("after save");
-result.then(value=>alert(value));
-
-
-    });
-
   }
 
 

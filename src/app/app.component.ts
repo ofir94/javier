@@ -11,6 +11,9 @@ import {CommentsPage} from "../pages/comments/comments";
 import {RecomendationPage} from "../pages/recomendation/recomendation";
 import {EmailProvider} from "../providers/email/email";
 
+import {File, IWriteOptions} from '@ionic-native/file';
+import {DatabaseProvider} from "../providers/database/database";
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,8 +28,12 @@ export class MyApp {
   constructor(public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
-              private _EMAIL       : EmailProvider
-) {
+              private _EMAIL       : EmailProvider,
+              public plt: Platform,
+              private file: File,
+              private databaseProvider: DatabaseProvider
+
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -70,6 +77,27 @@ export class MyApp {
 
     this._EMAIL.sendEmail('', "", "", "Agilice su gestión de reservas", message);
 
+  }
+
+
+  exportDataBase(){
+
+    this.plt.ready()
+      .then(() => {
+        let db = this.databaseProvider.exportAsSQL();
+        alert(db);
+        db.then(value => {
+          alert(value);
+          const ROOT_DIRECTORY = 'file:///';
+          let result = this.file.writeFile(this.file.externalRootDirectory, "guudbed-ofir.sql", value.toString() );
+
+          alert("after save");
+          alert(result)
+          result.then(value=>alert(value));
+
+
+        });
+      })
   }
 
 
