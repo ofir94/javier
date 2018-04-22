@@ -56,10 +56,16 @@
         </ion-select>
       </ion-item>
       <ion-item>
+        <!--DONDE ESTÁTICO-->
+        <!--<ion-label floating>Donde</ion-label>-->
+        <!--<ion-select interface="popover" [(ngModel)]="event.location" name="event.location" [selectOptions]="selectOptions">-->
+          <!--<ion-option value="1" >Habitación 1</ion-option>-->
+          <!--<ion-option value="2" >Habitación 2</ion-option>-->
+        <!--</ion-select>-->
+      <!--</ion-item>-->
         <ion-label floating>Donde</ion-label>
-        <ion-select interface="popover" [(ngModel)]="event.location" name="event.location" [selectOptions]="selectOptions">
-          <ion-option value="1" >Habitación 1</ion-option>
-          <ion-option value="2" >Habitación 2</ion-option>
+        <ion-select interface="popover" [(ngModel)]="event.location" name="event.location" [selectOptions]="selectOptions" >
+          <ion-option *ngFor="let room of rooms" value="{{room.id}}" >{{room.name}}</ion-option>
         </ion-select>
       </ion-item>
 
@@ -70,27 +76,27 @@
 
         <ion-item>
           <ion-label>Falta de pago</ion-label>
-          <ion-radio value="1" color="falta_pago" checked (click)="pintar_nav('falta_pago','1')" ></ion-radio>
+          <ion-radio class="falta_pago" value="1" color="falta_pago" [checked] ="falta_pago_checked" (click)="pintar_nav('falta_pago','1')" ></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Depósito Pagado</ion-label>
-          <ion-radio value="2" color="deposito_pagado" (click)="pintar_nav('deposito_pagado','2')" ></ion-radio>
+          <ion-radio class="deposito_pagado" value="2" color="deposito_pagado" [checked] ="deposito_pagado_checked" (click)="pintar_nav('deposito_pagado','2')" ></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Totalmente pagada</ion-label>
-          <ion-radio value="3" color="secondary" (click)="pintar_nav('secondary','3')" ></ion-radio>
+          <ion-radio class="secondary" value="3" color="secondary" [checked] ="totalmente_pagado_checked" (click)="pintar_nav('secondary','3')" ></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Cancelado</ion-label>
-          <ion-radio value="4" color="cancelado" (click)="pintar_nav('cancelado','4')" ></ion-radio>
+          <ion-radio class="cancelado" value="4" color="cancelado" [checked] ="cancelado_checked" (click)="pintar_nav('cancelado','4')" ></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>No disponible</ion-label>
-          <ion-radio value="5" color="danger" (click)="pintar_nav('danger','5')" ></ion-radio>
+          <ion-radio class="danger" value="5" color="danger" [checked] ="no_disponible_checked" (click)="pintar_nav('danger','5')" ></ion-radio>
         </ion-item>
       </ion-list>
 

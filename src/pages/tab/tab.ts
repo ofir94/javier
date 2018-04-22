@@ -61,13 +61,15 @@ export class TabPage {
       AddEventPage.reservation['id_client']);
   }
   save() {
-    this.addReservation();
-    this.addClient();
-    HomePage.pintar(AddEventPage.reservation.startDate, AddEventPage.reservation.endDate,AddEventPage.reservation.status);
+    console.log(AddEventPage.reservation);
+
+    // this.addReservation();
+    // this.addClient();
+    // HomePage.pintar(AddEventPage.reservation.startDate, AddEventPage.reservation.endDate,AddEventPage.reservation.status);
+    HomePage.pintarEvento(AddEventPage.reservation.startDate, AddEventPage.reservation.endDate,AddEventPage.reservation.status, AddEventPage.reservation.location);
+
     this.navCtrl.pop();
   }
 
-  changePage() {
-    alert("Hola");
-  }
+
 }

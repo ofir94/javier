@@ -43,7 +43,7 @@
 
           <ion-col class="fixed-col-noborder"   >
 
-          <button  style="background: none;float: left; padding-top: 15px" icon-only >
+          <button  style="background: none;float: left; padding-top: 15px" icon-only (click)="filter()" >
             <ion-icon name="ios-funnel"></ion-icon>
           </button>
           </ion-col>
@@ -61,9 +61,9 @@
 
         </ion-row>
 
-        <!--Cofigo de prueba-->
+        <!--Codigo de prueba-->
 
-         <ion-row class="row2" nowrap >
+         <!--<ion-row class="row2" nowrap >
           <ion-col   class="fixed-col" >
             <ion-icon class="room-icon" name="md-home"></ion-icon>
             <ion-icon class="room-icon" name="md-person"></ion-icon>
@@ -73,8 +73,7 @@
             <span class="room-names">Habitacion 1 </span>
           </ion-col>
 
-        </ion-row>
-
+        </ion-row>-->
 
         <!--Fin de codigo de prueba-->
 
@@ -109,13 +108,13 @@
 
 
           <!--Habitaciones BD -->
-          <ion-row class="row1" nowrap *ngFor="let room of rooms">
+        <ion-row class="row1" nowrap *ngFor="let room of rooms">
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
                       class="calendar-col-hab event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
-                      (click) = "crear_evento(day)">
+                      (click) = "crear_evento(day,room.id_room)">
               <ion-row class="row3" >
-              <ion-col class="" id = 'hab11-{{day.getFullYear()+"-"+day.getMonth()+"-"+day.getDate()}}'>
-
+              <ion-col class="" id = 'hab{{room.id_room}}-{{day.getFullYear()+"-"+day.getMonth()+"-"+day.getDate()}}'>
+                <canvas id="hab{{room.id_room}}-{{i}}"  ></canvas>
               </ion-col>
               </ion-row>
             </ion-col>
@@ -123,7 +122,7 @@
 
 
           <!--Habitacion de prueba-->
-          <ion-row class="row1" nowrap  >
+          <!--<ion-row class="row1" nowrap  >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
                       class="calendar-col-hab event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
                       (click) = "crear_evento(day)">
@@ -133,7 +132,7 @@
                 </ion-col>
               </ion-row>
             </ion-col>
-          </ion-row>
+          </ion-row>-->
 
           <!--Fin de habitacion de prueba-->
 
@@ -155,21 +154,11 @@
   </ion-list>-->
 
   <ion-fab bottom right >
-    <button  ion-fab icon-only color="add" (click) = "crear_evento(date)">
-        <ion-icon name="add" style="color:white"></ion-icon>
-      </button>
+    <button  ion-fab icon-only color="add" (click)="crear_evento(day,'')">
+      <ion-icon name="add" style="color:white"></ion-icon>
+    </button>
   </ion-fab>
 
-  <ion-card>
 
-    <ion-card-header>
-      Card Header
-    </ion-card-header>
-
-    <ion-card-content>
-      <!-- Add card content here! -->
-    </ion-card-content>
-
-  </ion-card>
 
 </ion-content>

@@ -41,6 +41,7 @@ import { EmailProvider } from '../providers/email/email';
 import {DatePicker} from "@ionic-native/date-picker";
 import { File } from '@ionic-native/file';
 import {FilterPage} from "../pages/filter/filter";
+import {ProfilePage} from "../pages/profile/profile";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {FilterPage} from "../pages/filter/filter";
     DetallesPage,
     TabPage,
     CommentsPage,
-    FilterPage
+    FilterPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,8 @@ import {FilterPage} from "../pages/filter/filter";
     DetallesPage,
     TabPage,
     CommentsPage,
-    FilterPage
+    FilterPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

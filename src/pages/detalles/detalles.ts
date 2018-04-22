@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the DetallesPage page.
@@ -15,9 +16,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetallesPage {
 
-  cant_bed_single: any;
-  cant_bed_double: any;
-  detalles = {comment: "", cant_bed_single: 1, cant_bed_double: 1};
+
+  detalles = {
+    comment: HomePage.reserva.comment,
+    cant_bed_single:  HomePage.reserva.cant_bed_single,
+    cant_bed_double: HomePage.reserva.cant_bed_single
+  };
   static detail;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     DetallesPage.detail = this.detalles;

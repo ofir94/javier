@@ -11,7 +11,7 @@
 
 </ion-header>
 <ion-tabs>
-    <ion-tab [root]="reservaRoot" tabTitle="Reserva"  [rootParams]="{modelres:salvar_reserva,modelcli:salvar_cliente, onSave:save}" tabIcon="md-calendar" (click)="changePage()"></ion-tab>
+    <ion-tab [root]="reservaRoot" tabTitle="Reserva"  [rootParams]="{modelres:salvar_reserva,modelcli:salvar_cliente, onSave:save}" tabIcon="md-calendar"></ion-tab>
     <ion-tab [root]="clienteRoot" tabTitle="Cliente"  [rootParams]="{modelres:salvar_reserva,modelcli:salvar_cliente, onSave:save}"  tabIcon="person"></ion-tab>
     <ion-tab [root]="detallesRoot"tabTitle="Detalles" [rootParams] tabIcon="md-list-box"></ion-tab>
 </ion-tabs>

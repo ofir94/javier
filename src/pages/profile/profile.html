@@ -1,0 +1,83 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-title>Perfil</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-buttons start>
+      <button ion-button icon-only (click)="save()"  >
+        <ion-icon md="md-checkbox-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+
+  <p class="header_profile"> Acerca del establecimiento de alojamiento</p>
+
+  <form (ngSubmit)="save()">
+    <ion-list>
+      <ion-item >
+        <ion-label floating >Nombre del alojamiento</ion-label>
+        <ion-input [(ngModel)]="profile.name_business" name="name"> </ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label floating >País</ion-label>
+        <ion-input [(ngModel)]="profile.country" name="name"> </ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label floating >Código postal</ion-label>
+        <ion-input [(ngModel)]="profile.postal_code" name="name"> </ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label floating >Ciudad</ion-label>
+        <ion-input [(ngModel)]="profile.city" name="name"> </ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label floating >Calle</ion-label>
+        <ion-input [(ngModel)]="profile.street" name="name"> </ion-input>
+      </ion-item>
+
+      <br>
+      <p class="header_profile"> Contacto con el establecimiento de alojamiento</p>
+
+      <ion-item >
+        <ion-label floating >Teléfono</ion-label>
+        <ion-input [(ngModel)]="profile.phone" name="name"> </ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label floating >Correo Electrónico</ion-label>
+        <ion-input [(ngModel)]="profile.email" name="name"> </ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label floating >WWW</ion-label>
+        <ion-input [(ngModel)]="profile.web" name="name"> </ion-input>
+      </ion-item>
+      <br>
+    </ion-list>
+
+    <button ion-button (click)="save()" full round >Guardar</button>
+  </form>
+
+</ion-content>

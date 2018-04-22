@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the ClientePage page.
@@ -15,7 +16,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ClientePage {
 
-  client ={name: "", address: "", address2: "", postal_code: "", country: "",state: "", passport: "", identification: "", phone: "", email: ""};
+  client ={
+    name: HomePage.client.name,
+    address: HomePage.client.address,
+    address2: HomePage.client.address2,
+    postal_code: HomePage.client.postal_code,
+    country: HomePage.client.country,
+    state: HomePage.client.state,
+    passport: HomePage.client.passport,
+    identification: HomePage.client.identification,
+    phone: HomePage.client.phone,
+    email: HomePage.client.email
+  };
   static cliente;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     ClientePage.cliente = this.client;

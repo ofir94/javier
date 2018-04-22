@@ -8,7 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { AddRoomPage} from "../pages/add-room/add-room";
 import {CleaningPage} from "../pages/cleaning/cleaning";
 import {CommentsPage} from "../pages/comments/comments";
-import {RecomendationPage} from "../pages/recomendation/recomendation";
+import {ProfilePage} from "../pages/profile/profile";
 import {EmailProvider} from "../providers/email/email";
 
 import {File, IWriteOptions} from '@ionic-native/file';
@@ -51,7 +51,8 @@ export class MyApp {
       AddRoomPage: AddRoomPage,
       CleaningPage: CleaningPage,
       CommentsPage: CommentsPage,
-      RecomendationPage: RecomendationPage,
+      ProfilePage: ProfilePage,
+
     }
 
   }
