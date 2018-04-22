@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { AlertController } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AddRoomPage} from "../pages/add-room/add-room";
@@ -31,7 +31,8 @@ export class MyApp {
               private _EMAIL       : EmailProvider,
               public plt: Platform,
               private file: File,
-              private databaseProvider: DatabaseProvider
+              private databaseProvider: DatabaseProvider,
+              private alertCtrl: AlertController
 
   ) {
     this.initializeApp();
@@ -90,41 +91,70 @@ export class MyApp {
           let date = new Date();
           let today =date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
           let name = "guudbed-"+today+".db";
-          let result = this.file.writeFile(this.file.externalRootDirectory, name, value.toString()) //ToDo -> Pasar opcion al final para sobre escribir el archivo exitente con el mismo nombre
+          let options: IWriteOptions = {
+            replace: true
+          }
+          let result = this.file.writeFile(this.file.externalRootDirectory, name, value.toString(), options)
             .then(function (success) {
-                    alert("succes");
+                      let alert = this.alertCtrl.create({
+                        title: 'Base de datos exportada',
+                        subTitle: 'Su base de datos ha sido exportada y guardada en la raíz de almacenamiento de su memoria',
+                        buttons: ['Aceptar']
+                      });
+                      alert.present();
                   }, e =>function (error) {
-                        alert("error");
-                        alert(error);
+                      let alert = this.alertCtrl.create({
+                        title: 'Exportación fallida',
+                        subTitle: 'Debe asignar los permisos necesarios para que Guudbed acceda a la memoria de su dispositivo',
+                        buttons: ['Aceptar']
+                      });
+                      alert.present();
                    });
         });
       })
+
   }
 
   importDataBase(){
-    alert("importing started");
+
     this.plt.ready()
       .then(() => {
 
-      let sql = "";
-         let f = this.file.readAsText(this.file.externalRootDirectory, "guudbed.db")
-            .then(function (success) {
+        let alert = this.alertCtrl.create({
+          title: 'Confirmar',
+          message: '¿Desea importar una nueva base de datos a Guudbed? El archivo debe estar en el directorio raíz ' +
+          'de la memoria interna de su dispositivo y llamarse "guudbed.db"',
+          buttons: [
+            {
+              text: 'Cancelar',
+              role: 'cancel',
+              handler: () => {
+                console.log('Cancel clicked');
+              }
+            },
+            {
+              text: 'Aceptar',
+              handler: () => {
 
-                  alert("success")
-                  alert(success);
-                  sql = success;
-                  }, e =>function (error) {
-                        alert("error");
-                        alert(error);
-                   });
+                let sql = "";
+                let f = this.file.readAsText(this.file.externalRootDirectory, "guudbed.db")
+                  .then(function (success) {
+                    sql = success;
+                  }, e => function (error) {
 
-         f.then(value=>{
-           alert("provider")
-           this.databaseProvider.importSQL(sql);
-         })
+                  });
 
+                f.then(value => {
 
-      })
+                  this.databaseProvider.importSQL(sql);
+                })
+
+              }
+            }]
+        });
+        alert.present();
+
+   })
   }
 
 
