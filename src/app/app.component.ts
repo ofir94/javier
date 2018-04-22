@@ -106,26 +106,27 @@ export class MyApp {
     this.plt.ready()
       .then(() => {
 
-          let result = this.file.readAsText(this.file.externalRootDirectory, "guudbed.db")
+      let sql = "";
+          this.file.readAsText(this.file.externalRootDirectory, "guudbed.db")
             .then(function (success) {
+
                   alert("success")
                   alert(success);
-                  try{
-                    alert("try")
-                    this.databaseProvider.importSQL(success);
-
-                  }catch (e){
-                      alert("exception")
-                    alert(e)
-                    alert(e.message)
-              }
-                  alert("imported");
+                  sql = success;
                   }, e =>function (error) {
                         alert("error");
                         alert(error);
                    });
 
+        try{
+          alert("try")
+          this.databaseProvider.importSQL(sql);
 
+        }catch (e){
+          alert("exception")
+          alert(e)
+          alert(e.message)
+        }
 
       })
   }
