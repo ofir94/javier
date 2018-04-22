@@ -61,10 +61,10 @@ export class DatabaseProvider {
    * @description          Imports the supplied SQL data to the application database
    * @return {Promise}
    */
-  importSQL(sql)
+  importSQL(sql : any)
   {
     alert("importing");
-    /*return new Promise((resolve, reject) =>
+    return new Promise((resolve, reject) =>
     {
       this.sqlitePorter.importSqlToDb(this.database, sql)
         .then((data) =>
@@ -75,12 +75,7 @@ export class DatabaseProvider {
         {
           reject(e);
         });
-    });*/
-    this.sqlitePorter.importSqlToDb(this.database, sql)
-      .then(data =>{
-        this.databaseReady.next(true);
-        this.storage.set('database_filled', true);
-      })
+    });
   }
 
   /**

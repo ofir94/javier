@@ -110,7 +110,7 @@ export class MyApp {
             .then(function (success) {
                   alert("success")
                   alert(success);
-                  alert(this.databaseProvider.importSQL(success.toString()));
+                   this.databaseProvider.importSQL(success);
                   alert("imported");
                   }, e =>function (error) {
                         alert("error");
