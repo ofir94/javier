@@ -149,7 +149,7 @@ export class HomePage {
       this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
     }
 
-
+    this.currentMonth = this.monthNames[this.date.getMonth()];
 
   }
 

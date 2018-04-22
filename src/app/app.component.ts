@@ -85,25 +85,39 @@ export class MyApp {
     this.plt.ready()
       .then(() => {
         let db = this.databaseProvider.exportAsSQL();
-        alert(db);
         db.then(value => {
-          alert(value);
-          const ROOT_DIRECTORY = 'file:///';
-          let result = this.file.writeFile(this.file.externalRootDirectory, "guudbed-ofir.sql", value.toString() ).then
-          (function (success) {
-            alert("succes");
-            alert(success);
-          }, e =>function (error) {
-              alert("error");
-              alert(error);
-          });;
 
-          alert("after save");
-          alert(result);
-          result.then(value=>alert(value));
-
-
+          let date = new Date();
+          let today =date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear();
+          let name = "guudbed-"+today;
+          let result = this.file.writeFile(this.file.externalRootDirectory, name, value.toString() )
+            .then(function (success) {
+                    alert("succes");
+                  }, e =>function (error) {
+                        alert("error");
+                        alert(error);
+                   });
         });
+      })
+  }
+
+  importDataBase(){
+
+    this.plt.ready()
+      .then(() => {
+
+          let result = this.file.readAsText(this.file.externalRootDirectory, "guudbed")
+            .then(function (success) {
+                    alert("succes");
+                    alert(success);
+                  }, e =>function (error) {
+                        alert("error");
+                        alert(error);
+                   });
+
+          alert("data");
+          result.then(data=>alert(data));
+
       })
   }
 
