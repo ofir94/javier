@@ -89,8 +89,8 @@ export class MyApp {
 
           let date = new Date();
           let today =date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear();
-          let name = "guudbed-"+today;
-          let result = this.file.writeFile(this.file.externalRootDirectory, name, value.toString() )
+          let name = "guudbed-"+today+".db";
+          let result = this.file.writeFile(this.file.externalRootDirectory, name, value.toString()) //ToDo -> Pasar opcion al final para sobre escribir el archivo exitente con el mismo nombre
             .then(function (success) {
                     alert("succes");
                   }, e =>function (error) {
@@ -106,10 +106,10 @@ export class MyApp {
     this.plt.ready()
       .then(() => {
 
-          let result = this.file.readAsText(this.file.externalRootDirectory, "guudbed")
+          let result = this.file.readAsText(this.file.externalRootDirectory, "guudbed.db")
             .then(function (success) {
-                    alert("succes");
-                    alert(success);
+                  this.databaseProvider.importSQL(success.toString());
+                  alert("imported");
                   }, e =>function (error) {
                         alert("error");
                         alert(error);
