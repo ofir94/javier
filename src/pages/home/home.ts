@@ -525,16 +525,58 @@ export class HomePage {
 
 
     selectedDate => {
-      alert(selectedDate);
+     /* alert(selectedDate);
       let id =+selectedDate.getDate()+'-'+selectedDate.getMonth()+'-'+selectedDate.getFullYear();
-      alert(id);
+      alert(id);*/
       /*  alert("id reload")
         alert(id)*/
     //  document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
+      this.changeToday(selectedDate);
      this.addmore(selectedDate)
     },
       err => alert('Error occurred while getting date: ')
   );
+  }
+
+  changeToday(day){
+
+    if(!(day <= this.dateToReloadViewStart && !this.reloadView) || !(day >= this.dateToReloadViewEnd && !this.reloadView)){
+      alert('no hace falta')
+      let id =+day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear();
+      document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
+    }
+    else{
+      alert('hace falta')
+
+      this.dateToRepositionView =new Date(day.getTime());
+
+      alert(this.dateToRepositionView);
+
+      this.daysInThisMonth = new Array()
+      this.weekDayNames = new Array();
+      let calc = 1000*60*60*24;
+
+      //Add days at start
+      for (let i = this.cant; i > 0; i--){
+        let f = new Date(day.getTime() - calc * i);
+        this.daysInThisMonth.push(f);
+        this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+      }
+      //Add days at end
+      for (let i = 0; i < this.cant ; i++){
+
+        let f = new Date(day.getTime() + calc * i);
+        this.daysInThisMonth.push(f);
+        this.weekDayNames.push(this.weekDayNamesDefault[f.getDay()]);
+      }
+
+      this.dateToReloadViewStart =  new Date(day.getTime()-1000*60*60*24*70);
+      this.dateToReloadViewEnd =  new Date(day.getTime()+1000*60*60*24*70);
+
+    }
+
+
+
   }
 
 
