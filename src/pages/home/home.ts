@@ -369,8 +369,7 @@ export class HomePage {
       HomePage.reserva.status = '1';
       HomePage.reserva.cantKid = '';
       HomePage.reserva.cantAdult = '';
-      HomePage.reserva.location = '';
-      HomePage.reserva.status = '';
+      HomePage.reserva.location = id_room;
       HomePage.reserva.price = '';
       HomePage.reserva.deposit = '';
       HomePage.reserva.id_client = '';
@@ -799,16 +798,21 @@ export class HomePage {
     this.view = "month";
     this.changeToday(new Date())
     this.lockLandscape();
+
+
+    let id =+this.today.getDate()+'-'+this.today.getMonth()+'-'+this.today.getFullYear();
+    console.log(id);
+    document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
   }
 
   lockLandscape() {
-    alert('Orientation locked landscape.');
+    this.presentLoadingDefault();
     this.screenOrientation.lock('landscape');
   }
 
 
   unlock() {
-    alert('Orientation unlocked');
+    this.presentLoadingDefault();
     this.screenOrientation.unlock();
   }
 

@@ -111,7 +111,7 @@
           <!--Habitaciones BD -->
         <ion-row class="row1" nowrap *ngFor="let room of rooms">
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
-                      class="calendar-col-hab event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
+                      [className]="monthView(day)"
                       (click) = "crear_evento(day,room.id_room)">
               <ion-row class="row3" >
               <ion-col class="" id = 'hab{{room.id_room}}-{{day.getFullYear()+"-"+day.getMonth()+"-"+day.getDate()}}'>
@@ -123,7 +123,7 @@
 
 
           <!--Habitacion de prueba-->
-          <ion-row class="row1" nowrap  >
+         <!-- <ion-row class="row1" nowrap  >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
 
                       (click) = "crear_evento(day)" [className]="monthView(day)" >
@@ -133,7 +133,7 @@
                 </ion-col>
               </ion-row>
             </ion-col>
-          </ion-row>
+          </ion-row>-->
 
           <!--Fin de habitacion de prueba-->
 
