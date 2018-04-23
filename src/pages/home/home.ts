@@ -179,28 +179,51 @@ export class HomePage {
   loadReservationData(){
    this.databaseProvider.getAllReservation().then(data => {
       this.reservas = data;
-      for(let reserva of this.reservas){
+
+     for(let dat of data) {
+         this.reservas.startDate = dat.startDate;
+         this.reservas.endDate = dat.endDate;
+         this.reservas.cantKid = dat.cantKid;
+         this.reservas.cantAdult = dat.cantAdult;
+         this.reservas.location = dat.location;
+         this.reservas.status = dat.status;
+         this.reservas.price = dat.price;
+         this.reservas.deposit = dat.deposit;
+         this.reservas.id_client = dat.id_client;
+         this.reservas.cant_bed_single = dat.cant_bed_single ;
+         this.reservas.cant_bed_double = dat.cant_bed_double;
+         this.reservas.comment= dat.comment;
+         this.initPaint(dat.from_date,dat.to_date, dat.status,dat.id_room);
+
+     }
+
+     /* for(let reserva of this.reservas){
         this.initPaint(reserva.from_date,reserva.to_date, reserva.status,reserva.id_room);
-      }
+      }*/
     });
   }
   // BD
 
 // BD
   getClientById(id){
+    alert('client by id');
    this.databaseProvider.getClientById(id).then(data => {
-      HomePage.client.id_client = data.id_client;
-      HomePage.client.name = data.name;
-      HomePage.client.address = data.address;
-      HomePage.client.address2 = data.address2;
-      HomePage.client.state = data.state;
-      HomePage.client.postal_code = data.postal_code;
-      HomePage.client.country = data.country;
-      HomePage.client.passport = data.passport;
-      HomePage.client.identification = data.identification;
-      HomePage.client.phone = data.phone;
-      HomePage.client.email = data.email;
 
+     for(let dat of data) {
+       HomePage.client.id_client = dat.id_client;
+       HomePage.client.name = dat.name;
+       HomePage.client.address = dat.address;
+       HomePage.client.address2 = dat.address2;
+       HomePage.client.state = dat.state;
+       HomePage.client.postal_code = dat.postal_code;
+       HomePage.client.country = dat.country;
+       HomePage.client.passport = dat.passport;
+       HomePage.client.identification = dat.identification;
+       HomePage.client.phone = dat.phone;
+       HomePage.client.email = dat.email;
+
+       alert('finish for client by id')
+     }
 
     });
   }
@@ -341,6 +364,7 @@ export class HomePage {
       // alert(this.reservas[0].startDate);
       for(let reservacion of this.reservas){
         let bool = this.dateBetweenInitAndEnd(day,reservacion.startDate,reservacion.endDate);
+        alert(bool)
         if(bool){
           HomePage.reserva.startDate = reservacion.startDate;
           HomePage.reserva.endDate = reservacion.endDate;
@@ -354,7 +378,7 @@ export class HomePage {
           HomePage.reserva.cant_bed_single = reservacion.cant_bed_single;
           HomePage.reserva.cant_bed_double = reservacion.cant_bed_double;
           HomePage.reserva.comment = reservacion.comment;
-
+          alert('termino bool')
           this.getClientById(HomePage.reserva.id_client);
         }
 
@@ -487,14 +511,15 @@ export class HomePage {
     let fromDate =  new Date(from_date);
     fromDate.setHours(0,0,0,0);
     let from = fromDate.getTime() + diaMas;
-
     let toDate = new Date(to_date);
+
     toDate.setHours(0,0,0,0);
     let to = toDate.getTime() + diaMas;
-
-
-
     // alert(from);
+
+    alert(fecha >= from && fecha <= to)
+
+    alert("fecha: "+ fecha+ " fromDate: "+fromDate+" toDate: "+toDate)
     // alert("Inicio de reservacion: "+ new Date(new Date(from_date).getTime() + 1 * 24 * 60 * 60 * 1000));
     // let to = new Date(to_date).getTime() + 1 * 24 * 60 * 60 * 1000;
     // alert("Fin reservacion: " +new Date(new Date(to_date).getTime() + 1 * 24 * 60 * 60 * 1000));

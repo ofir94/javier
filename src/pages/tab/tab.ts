@@ -30,6 +30,8 @@ export class TabPage {
   }
 
   addClient(){
+      alert('add client');
+
     this.databaseProvider.addClient(
       ClientePage.cliente['name'],
       ClientePage.cliente['address'],
@@ -46,6 +48,22 @@ export class TabPage {
 
 
   addReservation(){
+
+    let clientDB = this.databaseProvider.getLastClient();
+    let clientId = 0;
+
+    clientDB.then(data =>{
+      for (let oneClient of data){
+        clientId = oneClient.id_client;
+        alert('name: '+oneClient.name)
+      }
+    });
+    alert('id antes: '+clientId);
+
+    AddEventPage.reservation['id_client'] = clientId;
+
+    alert('id despues: '+AddEventPage.reservation['id_client']);
+
     this.databaseProvider.addReservation(
       AddEventPage.reservation['startDate'],
       AddEventPage.reservation['endDate'],
