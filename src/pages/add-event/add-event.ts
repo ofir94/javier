@@ -69,6 +69,8 @@ export class AddEventPage {
       mode: 'md'
     };
 
+    alert('addevents')
+
     // if(AddEventPage.editReservation){
     //   this.event = HomePage.reserva;
     //
@@ -138,7 +140,7 @@ export class AddEventPage {
     this.databaseProvider.getRoomById(id).then(data => {
       for(let dat of data){
         this.room = dat;
-        this.event.location = this.room.name;
+        this.event.location = this.room.id_room;
       }
 
     });

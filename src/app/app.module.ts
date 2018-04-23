@@ -43,6 +43,8 @@ import { File } from '@ionic-native/file';
 import {FilterPage} from "../pages/filter/filter";
 import {ProfilePage} from "../pages/profile/profile";
 
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -98,7 +100,8 @@ import {ProfilePage} from "../pages/profile/profile";
     EmailComposer,
     EmailProvider,
     DatePicker,
-    File
+    File,
+    ScreenOrientation
   ]
 })
 export class AppModule {}

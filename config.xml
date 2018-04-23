@@ -89,4 +89,5 @@
     <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
     <plugin name="uk.co.workingedge.cordova.plugin.sqliteporter" spec="^1.0.2" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
+    <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
 </widget>

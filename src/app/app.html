@@ -23,6 +23,17 @@
         </ion-col>
       </button>
 
+      <button menuClose ion-item icon-left (click)="nav.setRoot(pages2.HomePage,{'month':true})">
+        <ion-col col-12>
+          <ion-col col-2 class="menu-col-icon">
+        <ion-icon name="md-bookmarks" class="menu-icon" ></ion-icon>
+            </ion-col>
+              <ion-col col-10>
+       <span class="menu-text"> Vista mensual </span>
+              </ion-col >
+        </ion-col>
+      </button>
+
       <hr>
       <button menuClose ion-item icon-left  (click)="nav.setRoot(pages2.AddRoomPage)">
         <ion-col col-12>

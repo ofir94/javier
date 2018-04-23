@@ -124,6 +124,46 @@ page-home {
     padding: 0px;
 
   }
+  .calendar-col-month{
+    min-width: 10.78px;
+    max-width: 17.78px;
+    border-left: groove;
+    text-align: center;
+    border-width: thin;
+
+    min-height: 1cm;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    font-weight: 400;
+    color: #000000;
+    font-size: 14px;
+    height: 50px;
+
+    border-bottom: groove;
+    border-width: thin;
+    border-color:rgba(255, 255, 255, 0.3215686274509804);
+    padding: 0px;
+    padding-top: 5px;
+  }
+ .calendar-col-hab-month{
+   min-width: 10.78px;
+   max-width: 17.78px;
+    border-left: groove;
+    text-align: center;
+    border-width: thin;
+
+    min-height: 1cm;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
+    color: #000000;
+    font-size: 14px;
+    height: 50px;
+
+    border-bottom: groove;
+    border-width: thin;
+    border-color: rgba(255, 255, 255, 0.3215686274509804);
+    padding: 0px;
+
+  }
 
   .fixed-col{
     text-align: left;
@@ -177,8 +217,16 @@ page-home {
   .weeknames{
     font-size: 10px;
   }
+  .weeknames-month{
+    font-size: 7px;
+  }
   .days{
     font-size: 17px;
+    padding-top: 6px;
+
+  }
+  .days-month{
+    font-size: 13px;
     padding-top: 6px;
 
   }
@@ -409,5 +457,10 @@ page-home {
     min-width: 38.78px;
     max-width: 38.78px;
     padding-top: 3px;
+  }
+
+  .calendar-col-month{
+    min-width: 10.78px;
+    max-width: 17.78px;
   }
 }

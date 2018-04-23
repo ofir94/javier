@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Content, LoadingController} from 'ionic-angular';
+import {Content, LoadingController, NavParams} from 'ionic-angular';
 import { NavController, AlertController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 
@@ -15,6 +15,7 @@ import {TabPage} from "../tab/tab";
 import {FilterPage} from "../filter/filter";
 
 import { DatePicker } from '@ionic-native/date-picker';
+import {ScreenOrientation} from "@ionic-native/screen-orientation";
 
 
 @Component({
@@ -72,6 +73,8 @@ export class HomePage {
   };
   reservas;
   estados: any;
+  view = 'basic';
+  monthly : any;
   //Fin para cargar lista de tuplas de tabla reservation
 
 
@@ -81,13 +84,19 @@ export class HomePage {
   //Inicio para cargar lista de tuplas de tabla client
 
   rooms: any;
-
+  private screenOrientation: ScreenOrientation;
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
               private databaseProvider: DatabaseProvider,
               public loadingCtrl: LoadingController,
               private datePicker: DatePicker,
+              screenOrientation: ScreenOrientation,
+              public navParams: NavParams,
                                  ) {
+    this.screenOrientation = screenOrientation;
+
+
+
 
     var options = {
       date: new Date(),
@@ -148,6 +157,20 @@ export class HomePage {
 
     this.currentMonth = this.monthNames[this.date.getMonth()];
     this.currentYear =  this.date.getFullYear();
+
+
+    try{
+
+      this.monthly = navParams.get('month');
+
+      if(this.monthly){
+        this.loadMonthView();
+      }
+      else{
+        this.unlock();
+      }
+    }catch (err){console.log(err)}
+
 
   }
  /// END CONSTRUCTOR
@@ -720,6 +743,74 @@ export class HomePage {
   }
 
 
+   monthView(dayClass){
+
+    let ret = '';
+
+    if(this.view == 'basic')
+      ret = 'calendar-col-hab event finsemana-'+ (dayClass.getDay() ==0 || dayClass.getDay()==6) +' today-body-'+((dayClass.getDate()+'-'+dayClass.getMonth()+'-'+dayClass.getFullYear()) == this.today);
+    else
+      ret = 'calendar-col-hab-month event finsemana-'+ (dayClass.getDay() ==0 || dayClass.getDay()==6) +' today-body-'+((dayClass.getDate()+'-'+dayClass.getMonth()+'-'+dayClass.getFullYear()) == this.today);
+
+
+
+    return ret;
+  }
+
+  monthViewHeader(dayClass){
+
+    let ret = '';
+
+    if(this.view == 'basic')
+      ret = 'calendar-col finsemana-header-'+(dayClass.getDay()==0 || dayClass.getDay()==6)+' today-header-'+((dayClass.getDate()+'-'+dayClass.getMonth()+'-'+dayClass.getFullYear()) == this.today);
+  else
+      ret = 'calendar-col-month finsemana-header-'+(dayClass.getDay()==0 || dayClass.getDay()==6)+' today-header-'+((dayClass.getDate()+'-'+dayClass.getMonth()+'-'+dayClass.getFullYear()) == this.today);
+
+
+
+    return ret;
+
+  }
+
+  monthViewDayHeader(){
+    let ret = '';
+
+    if(this.view == 'basic')
+      ret = 'days';
+    else
+      ret = 'days-month';
+
+    return ret;
+  }
+
+  monthViewWeekdayHeader(){
+    let ret = '';
+
+    if(this.view == 'basic')
+      ret = 'weeknames';
+    else
+      ret = 'weeknames-month';
+
+    return ret;
+  }
+
+  loadMonthView(){
+
+    this.view = "month";
+    this.changeToday(new Date())
+    this.lockLandscape();
+  }
+
+  lockLandscape() {
+    alert('Orientation locked landscape.');
+    this.screenOrientation.lock('landscape');
+  }
+
+
+  unlock() {
+    alert('Orientation unlocked');
+    this.screenOrientation.unlock();
+  }
 
 }
 

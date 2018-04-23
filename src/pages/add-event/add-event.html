@@ -65,7 +65,7 @@
       <!--</ion-item>-->
         <ion-label floating>Donde</ion-label>
         <ion-select interface="popover" [(ngModel)]="event.location" name="event.location" [selectOptions]="selectOptions" >
-          <ion-option *ngFor="let room of rooms" value="{{room.id}}" >{{room.name}}</ion-option>
+          <ion-option *ngFor="let room of rooms" value="{{room.id_room}}" >{{room.name}}</ion-option>
         </ion-select>
       </ion-item>
 

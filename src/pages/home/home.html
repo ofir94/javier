@@ -63,7 +63,7 @@
 
         <!--Codigo de prueba-->
 
-         <!--<ion-row class="row2" nowrap >
+         <ion-row class="row2" nowrap >
           <ion-col   class="fixed-col" >
             <ion-icon class="room-icon" name="md-home"></ion-icon>
             <ion-icon class="room-icon" name="md-person"></ion-icon>
@@ -73,7 +73,7 @@
             <span class="room-names">Habitacion 1 </span>
           </ion-col>
 
-        </ion-row>-->
+        </ion-row>
 
         <!--Fin de codigo de prueba-->
 
@@ -93,12 +93,13 @@
           <ion-row  class="row1" nowrap>
             <ion-col   col-1  *ngFor="let day of daysInThisMonth ; let i = index"
                       id="{{day.getDate()}}-{{day.getMonth()}}-{{day.getFullYear()}}"
-                       class="calendar-col finsemana-header-{{day.getDay()==0 || day.getDay()==6}} today-header-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}} ">
 
-              <div class="weeknames">
+                       [className]="monthViewHeader(day)" >
+
+              <div  [className]="monthViewWeekdayHeader()">
                 {{weekDayNames[i]}}<br>
               </div>
-              <div  class="days" (vp-in-view)="addmore(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
+              <div  [className]="monthViewDayHeader()" (vp-in-view)="addmore(day)" [vp-in-view-config]="{infinite: true, marginHorizontal: 1}" >
                 {{day.getDate()}}
 
               </div>
@@ -122,17 +123,17 @@
 
 
           <!--Habitacion de prueba-->
-          <!--<ion-row class="row1" nowrap  >
+          <ion-row class="row1" nowrap  >
             <ion-col  col-1  *ngFor="let day of daysInThisMonth ; let i = index"
-                      class="calendar-col-hab event finsemana-{{day.getDay()==0 || day.getDay()==6}} today-body-{{day.getDate()+'-'+day.getMonth()+'-'+day.getFullYear() == today}}"
-                      (click) = "crear_evento(day)">
+
+                      (click) = "crear_evento(day)" [className]="monthView(day)" >
               <ion-row class="row3" >
                 <ion-col class="" id = 'hab1-{{day.getFullYear()+"-"+day.getMonth()+"-"+day.getDate()}}'>
                   <canvas id="hb2-{{i}}"  ></canvas>
                 </ion-col>
               </ion-row>
             </ion-col>
-          </ion-row>-->
+          </ion-row>
 
           <!--Fin de habitacion de prueba-->
 
@@ -152,6 +153,10 @@
 
     </ion-item>
   </ion-list>-->
+
+  <button  (click)="loadMonthView()">
+   Month View
+  </button>
 
   <ion-fab bottom right >
     <button  ion-fab icon-only color="add" (click)="crear_evento(day,'')">
