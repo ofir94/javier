@@ -344,11 +344,18 @@ export class DatabaseProvider {
     alert(sql);
     return this.database.executeSql(sql, []).then(data => {
       let client;
+      let id;
       if (data.rows.length > 0) {
         alert('length de data');
         alert(data.rows.length);
 
+        let maxId = data.rows.item(0).id_client;
+         id =  data.rows.item(0).id_client;
         for (var i = 0; i < 1; i++) {
+
+          if(maxId<data.rows.item(i).id_client)
+             id = i;
+
           client.push({
             id_client: data.rows.item(i).id_client,
             name: data.rows.item(i).name,
@@ -364,7 +371,7 @@ export class DatabaseProvider {
           });
         } alert('id cliente DB: '+client.id_client);
       }
-      return client;
+      return client.get(id);
     }, err => {
       alert(err);
       return [];
