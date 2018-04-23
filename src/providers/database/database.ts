@@ -340,11 +340,13 @@ export class DatabaseProvider {
 
   getLastClient() {
     alert('client db');
-    let sql = "SELECT * FROM client ORDER BY id_client DESC LIMIT 1 ";
+    let sql = "SELECT *, max(id_client) FROM client";
     alert(sql);
     return this.database.executeSql(sql, []).then(data => {
       let client;
       if (data.rows.length > 0) {
+        alert('length de data');
+        alert(data.rows.length);
         for (var i = 0; i < data.rows.length; i++) {
           client.push({
             id_client: data.rows.item(i).id_client,
