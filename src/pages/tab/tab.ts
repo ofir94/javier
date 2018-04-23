@@ -32,6 +32,8 @@ export class TabPage {
   addClient(){
       alert('add client');
 
+    alert(ClientePage.cliente['name']);
+
     this.databaseProvider.addClient(
       ClientePage.cliente['name'],
       ClientePage.cliente['address'],
@@ -53,6 +55,7 @@ export class TabPage {
     let clientId = 0;
 
     clientDB.then(data =>{
+      alert(data.toString());
       for (let oneClient of data){
         clientId = oneClient.id_client;
         alert('name: '+oneClient.name)

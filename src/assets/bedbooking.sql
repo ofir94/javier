@@ -27,5 +27,5 @@ INSERT INTO reservation_status (id_status,status,color) VALUES (3, 'Totalmente P
 INSERT INTO reservation_status (id_status,status,color) VALUES (4, 'Cancelado', null);
 INSERT INTO reservation_status (id_status,status,color) VALUES (5, 'No disponible', null);
 
-CREATE TABLE IF NOT EXISTS  room (id_room  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,name  TEXT,cant_people  INTEGER,cant_bed_aditional  INTEGER,cant_bed_single  INTEGER,cant_bed_double  INTEGER,view_order  INTEGER);
+CREATE TABLE IF NOT EXISTS  room (id_room  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,name  TEXT,cant_people  INTEGER,cant_bed_aditional  INTEGER,cant_bed_single  INTEGER,cant_bed_double  INTEGER,view_order  INTEGER, price REAL);
 

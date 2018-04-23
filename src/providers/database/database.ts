@@ -103,8 +103,11 @@ export class DatabaseProvider {
   }
 
   addClient(name, address, address2, state, postal_code, country, passport, identification, phone, email) {
+    alert('add client');
     let data = [name, address, address2, state, postal_code, country, passport, identification, phone, email];
     return this.database.executeSql("INSERT INTO client (name, address, address2, state, postal_code, country, passport , identification ,phone, email) VALUES (?,?,?,?,?,?,?,?,?,?)", data).then(res => {
+      alert('rest');
+      alert(res);
       return res;
     });
   }
@@ -140,6 +143,33 @@ export class DatabaseProvider {
         }
       }
       return cleaning;
+    }, err => {
+      alert(err);
+      return [];
+    });
+  }
+
+  getAllClients() {
+    return this.database.executeSql("SELECT * FROM client", []).then(data => {
+      let clients = [];
+      if (data.rows.length > 0) {
+        for (var i = 0; i < data.rows.length; i++) {
+          clients.push({
+            id_client: data.rows.item(i).id_client,
+            name: data.rows.item(i).name,
+            address: data.rows.item(i).address,
+            address2: data.rows.item(i).address2,
+            state: data.rows.item(i).state,
+            postal_code: data.rows.item(i).postal_code,
+            country: data.rows.item(i).country,
+            passport: data.rows.item(i).passport,
+            identification: data.rows.item(i).identification,
+            phone: data.rows.item(i).phone,
+            email: data.rows.item(i).email,
+          });
+        }
+      }
+      return clients;
     }, err => {
       alert(err);
       return [];
@@ -243,7 +273,8 @@ export class DatabaseProvider {
             cant_bed_aditional: data.rows.item(i).cant_bed_aditional,
             cant_bed_single: data.rows.item(i).cant_bed_single,
             cant_bed_double: data.rows.item(i).cant_bed_double,
-            view_order: data.rows.item(i).view_order
+            view_order: data.rows.item(i).view_order,
+            price: data.rows.item(i).price
           });
         }
       }
@@ -308,7 +339,9 @@ export class DatabaseProvider {
   }
 
   getLastClient() {
-    let sql = "select * from client order by id_client desc limit 1 ";
+    alert('client db');
+    let sql = "SELECT * FROM client ORDER BY id_client DESC LIMIT 1 ";
+    alert(sql);
     return this.database.executeSql(sql, []).then(data => {
       let client;
       if (data.rows.length > 0) {
@@ -326,7 +359,7 @@ export class DatabaseProvider {
             phone: data.rows.item(i).phone,
             email: data.rows.item(i).email
           });
-        }
+        } alert('id cliente DB: '+client.id_client);
       }
       return client;
     }, err => {

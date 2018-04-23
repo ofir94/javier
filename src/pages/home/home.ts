@@ -81,9 +81,11 @@ export class HomePage {
   //Inicio para cargar lista de tuplas de tabla client
   static client = {id_client: "",name: "",address: "",address2: "",state: "",postal_code: "",country: "",passport: "",identification: "",phone: "",email: "" };
 
+  clients;
   //Inicio para cargar lista de tuplas de tabla client
 
   rooms: any;
+
   private screenOrientation: ScreenOrientation;
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController,
@@ -127,6 +129,12 @@ export class HomePage {
 
         this.getAllRooms();
         this.loadReservationData();
+
+
+        this.databaseProvider.getAllClients().then(data => {
+          this.clients = data;
+        });
+
       }
     });
 
