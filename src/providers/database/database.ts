@@ -340,7 +340,7 @@ export class DatabaseProvider {
 
   getLastClient() {
     alert('client db');
-    let sql = "SELECT * FROM client ORDER BY id_client DESC";
+    let sql = "SELECT * FROM client";
     alert(sql);
     return this.database.executeSql(sql, []).then(data => {
       let client;
@@ -371,7 +371,7 @@ export class DatabaseProvider {
           });
         } alert('id cliente DB: '+client.id_client);
       }
-      return client.get(id);
+      return client[id];
     }, err => {
       alert(err);
       return [];
