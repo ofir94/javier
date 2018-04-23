@@ -22,6 +22,7 @@ export class TabPage {
   reservaRoot = AddEventPage;
   clienteRoot = ClientePage;
   detallesRoot = DetallesPage;
+  foreign_key = true;
 
   constructor(public navCtrl: NavController,  private databaseProvider: DatabaseProvider) {
     // this.reservation = this.navParams.data;
@@ -65,6 +66,12 @@ export class TabPage {
           alert('name: '+oneClient.name)
 
         }
+      this.foreign_key = false;
+    });
+
+    do{
+
+    }while (this.foreign_key)
 
 
     alert('id antes: '+clientId);
@@ -86,9 +93,6 @@ export class TabPage {
       AddEventPage.reservation['location'],
       AddEventPage.reservation['status'],
       AddEventPage.reservation['id_client']);
-
-    });
-
   }
 
 
