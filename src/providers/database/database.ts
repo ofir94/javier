@@ -104,7 +104,7 @@ export class DatabaseProvider {
 
   addClient(name, address, address2, state, postal_code, country, passport, identification, phone, email) {
     let data = [name, address, address2, state, postal_code, country, passport, identification, phone, email];
-    return this.database.executeSql("INSERT INTO reservation (name, address, address2, state, postal_code, country, passport , identification ,phone, email) VALUES (?,?,?,?,?,?,?,?,?,?)", data).then(res => {
+    return this.database.executeSql("INSERT INTO client (name, address, address2, state, postal_code, country, passport , identification ,phone, email) VALUES (?,?,?,?,?,?,?,?,?,?)", data).then(res => {
       return res;
     });
   }
