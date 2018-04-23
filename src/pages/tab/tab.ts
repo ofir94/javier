@@ -61,6 +61,8 @@ export class TabPage {
       AddEventPage.reservation['id_client']);
   }
   save() {
+
+    alert('save')
     console.log(AddEventPage.reservation);
 
     // this.addReservation();

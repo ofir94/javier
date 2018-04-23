@@ -505,6 +505,11 @@ export class HomePage {
 
 	static pintarEvento(startDate,endDate,status,id_room){
 
+    alert('pintar evento')
+    alert('id room: '+id_room)
+    alert('startDate: '+startDate)
+    alert('endDate: '+endDate)
+
     let start = new Date(new Date(startDate).getTime()+1*24*60*60*1000);
     let end = new Date(new Date(endDate).getTime()+1*24*60*60*1000);
     let idStart = start.getFullYear()+"-"+start.getMonth()+"-"+start.getDate();
@@ -516,10 +521,12 @@ export class HomePage {
    // console.log($("#hab1-" + idStart).children('canvas').attr('idCanvas'))
    //  idCanvas = $("#hab1-" + idStart).children('canvas').attr('idCanvas');
    //  HomePage.pintarTrianguloInicio(status,idCanvas);
+    alert( $(habitacion +"-"+ idStart))
     for(let i = 0; i < cantDias+1;i++){
 
       if( i == 0 ){
 
+        alert( $(habitacion +"-"+ idStart))
        // alert(habitacion + idStart);
        idCanvas = $(habitacion +"-"+ idStart).children('canvas').attr('id');
        $(habitacion +"-"+ idStart).attr('reservado','reservado');

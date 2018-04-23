@@ -39,7 +39,7 @@ export class AddEventPage {
             cant_bed_double: HomePage.reserva.cant_bed_double,
             comment: HomePage.reserva.comment
   };
-  room: any;
+  room = {id_room : '',name : '',cant_people: 0,cant_bed_aditional: 0,cant_bed_single: 0,cant_bed_double : 0,view_order:0}
   rooms = [];
   selectOptions;
   static style = 'falta_pago';
@@ -132,15 +132,22 @@ export class AddEventPage {
 
   //BD
   getRoomById(id){
+
+    alert('room by id '+id)
+
     this.databaseProvider.getRoomById(id).then(data => {
-      this.room = data;
-      this.event.location = this.room.name;
+      for(let dat of data){
+        this.room = dat;
+        this.event.location = this.room.name;
+      }
+
     });
   }
   //BD
 
   // BD
   getAllRooms(){
+    alert('get all rooms')
     this.databaseProvider.getAllRooms().then(data => {
       this.rooms = data;
     });
