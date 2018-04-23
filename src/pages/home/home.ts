@@ -133,6 +133,20 @@ export class HomePage {
 
         this.databaseProvider.getAllClients().then(data => {
           this.clients = data;
+
+          for(let dat of data) {
+            this.clients.id_client = dat.id_client;
+            this.clients.name = dat.name;
+            this.clients.address = dat.address;
+            this.clients.address2 = dat.address2;
+            this.clients.state = dat.state;
+            this.clients.postal_code = dat.postal_code;
+            this.clients.country = dat.country;
+            this.clients.passport = dat.passport;
+            this.clients.phone = dat.phone;
+            this.clients.email = dat.email;
+
+          }
         });
 
       }
@@ -188,7 +202,7 @@ export class HomePage {
    this.databaseProvider.getAllReservation().then(data => {
       this.reservas = data;
 
-     for(let dat of data) {
+   /*  for(let dat of data) {
          this.reservas.startDate = dat.startDate;
          this.reservas.endDate = dat.endDate;
          this.reservas.cantKid = dat.cantKid;
@@ -203,11 +217,11 @@ export class HomePage {
          this.reservas.comment= dat.comment;
          this.initPaint(dat.from_date,dat.to_date, dat.status,dat.id_room);
 
-     }
+     }*/
 
-     /* for(let reserva of this.reservas){
+     for(let reserva of this.reservas){
         this.initPaint(reserva.from_date,reserva.to_date, reserva.status,reserva.id_room);
-      }*/
+      }
     });
   }
   // BD

@@ -54,8 +54,6 @@ export class TabPage {
     let clientDB = this.databaseProvider.getLastClient();
     let clientId = 0;
 
-
-
     clientDB.then(data =>{
       alert(data.toString());
       for (let oneClient of data){
