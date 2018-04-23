@@ -51,16 +51,22 @@ export class TabPage {
 
   addReservation(){
 
-    let clientDB = this.databaseProvider.getLastClient();
-    let clientId = 0;
+    let clientId;
 
-    clientDB.then(data =>{
-      alert(data.toString());
-      for (let oneClient of data){
-        clientId = oneClient.id_client;
-        alert('name: '+oneClient.name)
-      }
-    });
+    alert('entrar a la perdicion');
+
+    this.databaseProvider.getLastClient().then(data => {
+
+        alert(data.toString());
+
+        for (let oneClient of data){
+          clientId = oneClient.id_client;
+          alert('id: '+clientId);
+          alert('name: '+oneClient.name)
+
+        }
+
+
     alert('id antes: '+clientId);
 
     AddEventPage.reservation['id_client'] = clientId;
@@ -80,7 +86,12 @@ export class TabPage {
       AddEventPage.reservation['location'],
       AddEventPage.reservation['status'],
       AddEventPage.reservation['id_client']);
+
+    });
+
   }
+
+
   save() {
 
     alert('save')
