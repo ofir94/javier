@@ -381,6 +381,7 @@ export class HomePage {
       alert('cant reservas: '+this.reservas.length);
 
       for(let reservacion of this.reservas){
+            alert(reservacion.toString())
             alert(reservacion.startDate)
             alert(reservacion.endDate)
         let bool = this.dateBetweenInitAndEnd(day,reservacion.startDate,reservacion.endDate);

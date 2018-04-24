@@ -17,9 +17,11 @@ CREATE TABLE IF NOT EXISTS  profile (id_profile  INTEGER PRIMARY KEY AUTOINCREME
 
 INSERT INTO profile (id_profile,name_business,country,postal_code,city,street,phone,email,web,facebook) VALUES (1,'','','','','','','','','');
 
-CREATE TABLE IF NOT EXISTS  reservation (id_reservation  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,from_date  TEXT,to_date  TEXT,cant_adult  INTEGER,cant_kid  INTEGER,price  REAL,deposit  REAL,comment  TEXT,cant_bed_single INTEGER, cant_bed_double INTEGER,id_room  INTEGER,status  INTEGER,id_client  TEXT,CONSTRAINT fkey0 FOREIGN KEY (id_room) REFERENCES room (id_room) ON DELETE CASCADE ON UPDATE CASCADE,CONSTRAINT fkey1 FOREIGN KEY (status) REFERENCES reservation_status (id_status),FOREIGN KEY (id_client) REFERENCES client (id_client));
+CREATE TABLE IF NOT EXISTS  room (id_room  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,name  TEXT,cant_people  INTEGER,cant_bed_aditional  INTEGER,cant_bed_single  INTEGER,cant_bed_double  INTEGER,view_order  INTEGER, price REAL);
 
 CREATE TABLE IF NOT EXISTS  reservation_status (id_status  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,status  TEXT,color  TEXT);
+
+CREATE TABLE IF NOT EXISTS  reservation (id_reservation  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,from_date  TEXT,to_date  TEXT,cant_adult  INTEGER,cant_kid  INTEGER,price  REAL,deposit  REAL,comment  TEXT,cant_bed_single INTEGER, cant_bed_double INTEGER,id_room  INTEGER,status  INTEGER,id_client  TEXT);
 
 INSERT INTO reservation_status (id_status,status,color) VALUES (1, 'Falta de Pago', null);
 INSERT INTO reservation_status (id_status,status,color) VALUES (2, 'Depósito Pagado', null);
@@ -27,5 +29,4 @@ INSERT INTO reservation_status (id_status,status,color) VALUES (3, 'Totalmente P
 INSERT INTO reservation_status (id_status,status,color) VALUES (4, 'Cancelado', null);
 INSERT INTO reservation_status (id_status,status,color) VALUES (5, 'No disponible', null);
 
-CREATE TABLE IF NOT EXISTS  room (id_room  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,name  TEXT,cant_people  INTEGER,cant_bed_aditional  INTEGER,cant_bed_single  INTEGER,cant_bed_double  INTEGER,view_order  INTEGER, price REAL);
 

@@ -134,7 +134,7 @@ export class TabPage {
 
     this.addClient();
     this.addReservation();
-
+ // ToDo -> Esta reservaci'on que se pinta no se guarda en la variable reservas de Home, hay que guardarla.
     HomePage.pintarEvento(AddEventPage.reservation.startDate, AddEventPage.reservation.endDate,AddEventPage.reservation.status, AddEventPage.reservation.location);
 
 
