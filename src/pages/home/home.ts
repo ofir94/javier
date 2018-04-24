@@ -382,15 +382,15 @@ export class HomePage {
 
       for(let reservacion of this.reservas){
             alert(reservacion.toString())
-            alert(reservacion.startDate)
-            alert(reservacion.endDate)
-        let bool = this.dateBetweenInitAndEnd(day,reservacion.startDate,reservacion.endDate);
+            alert(reservacion.from_date)
+            alert(reservacion.to_date)
+        let bool = this.dateBetweenInitAndEnd(day,reservacion.from_date,reservacion.to_date);
         alert(bool)
         if(bool){
-          HomePage.reserva.startDate = reservacion.startDate;
-          HomePage.reserva.endDate = reservacion.endDate;
-          HomePage.reserva.cantKid = reservacion.cantKid;
-          HomePage.reserva.cantAdult = reservacion.cantAdult;
+          HomePage.reserva.startDate = reservacion.from_date;
+          HomePage.reserva.endDate = reservacion.to_date;
+          HomePage.reserva.cantKid = reservacion.cant_kid;
+          HomePage.reserva.cantAdult = reservacion.cant_adult;
           HomePage.reserva.location = reservacion.id_room;
           HomePage.reserva.status = reservacion.status;
           HomePage.reserva.price = reservacion.price;
