@@ -1,7 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {Content, LoadingController, NavParams} from 'ionic-angular';
 import { NavController, AlertController } from 'ionic-angular';
-import { Calendar } from '@ionic-native/calendar';
 
 import { AddEventPage } from '../add-event/add-event';
 
@@ -9,14 +8,12 @@ import {DatabaseProvider} from "../../providers/database/database";
 
 
 
-import { ScrollService } from 'angular2-viewport';
 import * as $ from "jquery";
 import {TabPage} from "../tab/tab";
 import {FilterPage} from "../filter/filter";
 
 import { DatePicker } from '@ionic-native/date-picker';
 import {ScreenOrientation} from "@ionic-native/screen-orientation";
-import { UUID } from 'angular2-uuid';
 
 
 @Component({
@@ -289,11 +286,7 @@ export class HomePage {
   // }
   // ESTATICO
 
-  loadStatusData(){
-    this.databaseProvider.getAllStatus().then(data => {
-      this.estados = data;
-    });
-  }
+
 
 
 
