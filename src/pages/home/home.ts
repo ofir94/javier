@@ -227,28 +227,36 @@ export class HomePage {
 // BD
    getClientById(id){
     alert('client by id');
-    alert(id)
-    this.databaseProvider.getClientById(id).then(data => {
-      alert('client found');
-     for(let dat of data) {
-       alert(dat.toString());
-       HomePage.client.id_client = dat.id_client;
-       HomePage.client.name = dat.name;
-       HomePage.client.address = dat.address;
-       HomePage.client.address2 = dat.address2;
-       HomePage.client.state = dat.state;
-       HomePage.client.postal_code = dat.postal_code;
-       HomePage.client.country = dat.country;
-       HomePage.client.passport = dat.passport;
-       HomePage.client.identification = dat.identification;
-       HomePage.client.phone = dat.phone;
-       HomePage.client.email = dat.email;
+    alert(id);
 
-       alert('finish for client by id')
+     try {
+       this.databaseProvider.getClientById(id).then(data => {
+         alert('client found');
+         for (let dat of data) {
+           alert(dat.toString());
+           HomePage.client.id_client = dat.id_client;
+           HomePage.client.name = dat.name;
+           HomePage.client.address = dat.address;
+           HomePage.client.address2 = dat.address2;
+           HomePage.client.state = dat.state;
+           HomePage.client.postal_code = dat.postal_code;
+           HomePage.client.country = dat.country;
+           HomePage.client.passport = dat.passport;
+           HomePage.client.identification = dat.identification;
+           HomePage.client.phone = dat.phone;
+           HomePage.client.email = dat.email;
+
+           alert('finish for client by id')
+         }
+
+       });
+     }catch (err){
+       alert(err)
+       alert(err.message)
      }
-
-    });
   }
+
+
   // BD
 // ESTATICO
   // getClientById(id){
