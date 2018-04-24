@@ -120,6 +120,7 @@ export class DatabaseProvider {
     this.getLastClient().then(client=>{
 
       alert('last client');
+      alert(client.toString());
 
       for (let cliente of client){
         alert(cliente)
