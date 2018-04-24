@@ -7,6 +7,8 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject"; //En el video usan import 
 import {Storage} from "@ionic/storage"; // en el video usan  import {IonicStorage} from "@ionic/storage";
 import 'rxjs/add/operator/map';
 import {Platform} from "ionic-angular";
+import {AddEventPage} from "../../pages/add-event/add-event";
+import {HomePage} from "../../pages/home/home";
 
 
 /*
@@ -100,6 +102,32 @@ export class DatabaseProvider {
     return this.database.executeSql("INSERT INTO reservation (from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single , cant_bed_double , id_room, status, id_client) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", data).then(res => {
       return res;
     });
+  }
+  addReservationWithClient(from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single, cant_bed_double, id_room, status,
+                           name, address, address2, state, postal_code, country, passport, identification, phone, email) {
+
+    let dataClient = [name, address, address2, state, postal_code, country, passport, identification, phone, email];
+    this.database.executeSql("INSERT INTO client (name, address, address2, state, postal_code, country, passport , identification ,phone, email) VALUES (?,?,?,?,?,?,?,?,?,?)", dataClient).then(res => {
+      alert('rest');
+      alert(res);
+    let clientId;
+      for (let client of res){
+        clientId = client.id_client;
+      }
+      alert('id cliente database '+clientId);
+          let dataReserv = [from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single, cant_bed_double, id_room, status, clientId];
+          this.database.executeSql("INSERT INTO reservation (from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single , cant_bed_double , id_room, status, id_client) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", dataReserv).then(reserva => {
+           alert('reserva created')
+           alert(reserva)
+          });
+
+      AddEventPage.reservation['id_client'] = clientId;
+      HomePage.pintarEvento(AddEventPage.reservation.startDate, AddEventPage.reservation.endDate,AddEventPage.reservation.status, AddEventPage.reservation.location);
+      return clientId;
+    });
+
+
+
   }
 
   addClient(name, address, address2, state, postal_code, country, passport, identification, phone, email) {
