@@ -132,7 +132,7 @@ export class HomePage {
         this.databaseProvider.getAllClients().then(data => {
           this.clients = data;
 
-          for(let dat of data) {
+         /* for(let dat of data) {
             this.clients.id_client = dat.id_client;
             this.clients.name = dat.name;
             this.clients.address = dat.address;
@@ -144,7 +144,7 @@ export class HomePage {
             this.clients.phone = dat.phone;
             this.clients.email = dat.email;
 
-          }
+          }*/
         });
 
       }
@@ -225,9 +225,10 @@ export class HomePage {
   // BD
 
 // BD
-  getClientById(id){
+   getClientById(id){
     alert('client by id');
-   this.databaseProvider.getClientById(id).then(data => {
+    alert(id)
+    this.databaseProvider.getClientById(id).then(data => {
 
      for(let dat of data) {
        HomePage.client.id_client = dat.id_client;

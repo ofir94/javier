@@ -361,7 +361,7 @@ export class DatabaseProvider {
 
 
   getClientById(id) {
-    let sql = "SELECT * FROM client WHERE id_client =" + id;
+    let sql = "SELECT * FROM client WHERE id_client = '" + id + "'";
     return this.database.executeSql(sql, []).then(data => {
       let client;
       if (data.rows.length > 0) {

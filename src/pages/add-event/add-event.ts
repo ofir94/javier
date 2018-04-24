@@ -26,6 +26,7 @@ export class AddEventPage {
 
 
  startDate;
+ //TODO Event modificarlo para que guarde tambien el id de la reserva para si esta lleno entonces es un update, sino es un insert
   event = { startDate: HomePage.reserva.startDate,
             endDate: HomePage.reserva.endDate,
             cantKid: HomePage.reserva.cantKid,
