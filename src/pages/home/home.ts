@@ -225,29 +225,39 @@ export class HomePage {
   // BD
 
 // BD
-   getClientById(id){
-    alert('client by id');
-    alert(id)
-        this.databaseProvider.getClientById(id).then(data => {
-          alert('client found');
-         for(let dat of data) {
-           alert(dat.toString());
-           HomePage.client.id_client = dat.id_client;
-           HomePage.client.name = dat.name;
-           HomePage.client.address = dat.address;
-           HomePage.client.address2 = dat.address2;
-           HomePage.client.state = dat.state;
-           HomePage.client.postal_code = dat.postal_code;
-           HomePage.client.country = dat.country;
-           HomePage.client.passport = dat.passport;
-           HomePage.client.identification = dat.identification;
-           HomePage.client.phone = dat.phone;
-           HomePage.client.email = dat.email;
+  async getClientById(id){
+   /* alert('client by id');
+    alert(id)*/
 
-           alert('finish for client by id')
-         }
+        try{
+     //     alert('one client 2 start')
 
-        });
+
+          let dats = await this.databaseProvider.getClientByIdAsync(id);
+
+    /*      alert(dats)
+          alert(dats.length)*/
+
+          HomePage.client.id_client = dats[0].id_client;
+          HomePage.client.name = dats[0].name;
+          HomePage.client.address = dats[0].address;
+          HomePage.client.address2 = dats[0].address2;
+          HomePage.client.state = dats[0].state;
+          HomePage.client.postal_code = dats[0].postal_code;
+          HomePage.client.country = dats[0].country;
+          HomePage.client.passport = dats[0].passport;
+          HomePage.client.identification = dats[0].identification;
+          HomePage.client.phone = dats[0].phone;
+          HomePage.client.email = dats[0].email;
+
+      /*    alert(HomePage.client)
+
+          alert('one client 2 end')*/
+        }catch (err){
+          alert(err.message)
+        }
+     // alert('finish for client by id')
+
   }
   // BD
 // ESTATICO
@@ -356,11 +366,9 @@ export class HomePage {
     }
   }
 
-  crear_evento(day, id_room){
+ async crear_evento(day, id_room){
 
-    // if( $("#hab1-" + day)){
-    //
-    // }
+
     if(id_room == ''){
       id_room = this.rooms[0].id_room;
     }
@@ -370,7 +378,7 @@ export class HomePage {
     let inicio = $(idRoom +'-'+fecha_id).attr('inicio');
     let fin = $(idRoom +'-'+fecha_id).attr('fin');
     let fecha = $(idRoom +'-'+fecha_id).attr('fecha');
-    // alert(idRoom +'-'+fecha_id);
+
     if(reservado == 'reservado') {
 
     alert(reservado);
@@ -383,11 +391,9 @@ export class HomePage {
       alert('cant reservas: '+this.reservas.length);
 
       for(let reservacion of this.reservas){
-            alert(reservacion.toString())
-            alert(reservacion.from_date)
-            alert(reservacion.to_date)
+
         let bool = this.dateBetweenInitAndEnd(day,reservacion.from_date,reservacion.to_date);
-        alert(bool)
+        // alert(bool)
         if(bool){
           HomePage.reserva.startDate = reservacion.from_date;
           HomePage.reserva.endDate = reservacion.to_date;
@@ -401,8 +407,9 @@ export class HomePage {
           HomePage.reserva.cant_bed_single = reservacion.cant_bed_single;
           HomePage.reserva.cant_bed_double = reservacion.cant_bed_double;
           HomePage.reserva.comment = reservacion.comment;
-          alert('termino bool')
-          this.getClientById(HomePage.reserva.id_client);
+
+          await this.getClientById(HomePage.reserva.id_client);
+          // alert('termino de home')
         }
 
       }
@@ -423,6 +430,18 @@ export class HomePage {
       HomePage.reserva.cant_bed_single = 0;
       HomePage.reserva.cant_bed_double = 0;
       HomePage.reserva.comment = '';
+
+      HomePage.client.id_client = '';
+      HomePage.client.name = '';
+      HomePage.client.address = '';
+      HomePage.client.address2 = '';
+      HomePage.client.state = '';
+      HomePage.client.postal_code = '';
+      HomePage.client.country = '';
+      HomePage.client.passport = '';
+      HomePage.client.identification = '';
+      HomePage.client.phone = '';
+      HomePage.client.email = '';
 
       this.navCtrl.push(TabPage);
 
@@ -525,7 +544,7 @@ export class HomePage {
 
 	dateBetweenInitAndEnd(day,from_date,to_date){
 
-    alert("datebettweninit and end")
+
     let diaMas = (1 * 24 * 60 * 60 * 1000);
 
     day.setHours(0,0,0,0);
@@ -533,23 +552,21 @@ export class HomePage {
 
     // alert("Dia clickeado: " + day);
     let fromDate =  new Date(from_date);
-    alert(fromDate)
+
     fromDate.setHours(0,0,0,0);
     let from = (fromDate.getTime() + diaMas);
-    alert(from)
+
     let toDate = new Date(to_date);
-    alert(toDate)
+
     toDate.setHours(0,0,0,0);
     let to = (toDate.getTime() + diaMas);
-    alert(to)
+
     // alert(from);
 
-    alert(fecha >= from && fecha <= to)
+    // alert(fecha >= from && fecha <= to)
 
     alert("fecha: "+ fecha+ " fromDate: "+from+" toDate: "+to)
-    // alert("Inicio de reservacion: "+ new Date(new Date(from_date).getTime() + 1 * 24 * 60 * 60 * 1000));
-    // let to = new Date(to_date).getTime() + 1 * 24 * 60 * 60 * 1000;
-    // alert("Fin reservacion: " +new Date(new Date(to_date).getTime() + 1 * 24 * 60 * 60 * 1000));
+
     if(fecha >= from && fecha <= to){
       return true;
     }
@@ -557,6 +574,8 @@ export class HomePage {
       return false;
     }
   }
+
+
   tranformarFechaAStringStart(day){
    let fecha = new Date(new Date(day).getTime()).toISOString();
    let split = fecha.toString().split('T')[0];

@@ -390,38 +390,41 @@ export class DatabaseProvider {
     });
   }
 
- async getOneClient(id){
-    alert('client by id DB');
+
+  async getClientByIdAsync(id){
+//    alert('get one client 2');
     let sql = "SELECT * FROM client WHERE id_client = '" + id + "'";
-    alert(sql)
-    let clientDB = await this.database.executeSql(sql, []);
+ //   alert(sql)
+   let client = [];
+    let data = await this.database.executeSql(sql, []);
+/*alert(data)
+    alert(data.toString())*/
+           if (data.rows.length > 0) {
+             for (var i = 0; i < data.rows.length; i++) {
+               alert(data.rows.item(i).id_client)
+               client.push({
+                 id_client: data.rows.item(i).id_client,
+                 name: data.rows.item(i).name,
+                 address: data.rows.item(i).address,
+                 address2: data.rows.item(i).address2,
+                 state: data.rows.item(i).state,
+                 postal_code: data.rows.item(i).postal_code,
+                 country: data.rows.item(i).country,
+                 passport: data.rows.item(i).passport,
+                 identification: data.rows.item(i).identification,
+                 phone: data.rows.item(i).phone,
+                 email: data.rows.item(i).email
+               });
+             }
+           /*  alert('client')
+             alert(client)
+             alert(client.toString())*/
+           }
 
 
-      .then(data => {
-      let client;
-      if (data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
-          client.push({
-            id_client: data.rows.item(i).id_client,
-            name: data.rows.item(i).name,
-            address: data.rows.item(i).address,
-            address2: data.rows.item(i).address2,
-            state: data.rows.item(i).state,
-            postal_code: data.rows.item(i).postal_code,
-            country: data.rows.item(i).country,
-            passport: data.rows.item(i).passport,
-            identification: data.rows.item(i).identification,
-            phone: data.rows.item(i).phone,
-            email: data.rows.item(i).email
-          });
-        }
-      }
-      return client;
-    }, err => {
-      alert(err);
-      return [];
-    });
+   return client;
   }
+
 
   getLastClient() {
     alert('client db');
