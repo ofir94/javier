@@ -225,10 +225,10 @@ export class HomePage {
   // BD
 
 // BD
-  async getClientById(id){
+   getClientById(id){
     alert('client by id');
     alert(id)
-       await this.databaseProvider.getClientById(id).then(data => {
+        this.databaseProvider.getClientById(id).then(data => {
           alert('client found');
          for(let dat of data) {
            alert(dat.toString());

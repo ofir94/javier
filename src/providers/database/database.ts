@@ -360,11 +360,11 @@ export class DatabaseProvider {
   }
 
 
-  getClientById(id) {
+  async getClientById(id) {
     alert('client by id DB');
     let sql = "SELECT * FROM client WHERE id_client = '" + id + "'";
     alert(sql)
-    return this.database.executeSql(sql, []).then(data => {
+    return await this.database.executeSql(sql, []).then(data => {
       let client;
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
