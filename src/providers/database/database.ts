@@ -8,6 +8,7 @@ import {Storage} from "@ionic/storage"; // en el video usan  import {IonicStorag
 import 'rxjs/add/operator/map';
 import {Platform} from "ionic-angular";
 import {AddEventPage} from "../../pages/add-event/add-event";
+
 import {HomePage} from "../../pages/home/home";
 
 
@@ -152,8 +153,8 @@ export class DatabaseProvider {
     alert('add client');
     let data = [name, address, address2, state, postal_code, country, passport, identification, phone, email,id_client];
     return this.database.executeSql("INSERT INTO client (name, address, address2, state, postal_code, country, passport , identification ,phone, email,id_client) VALUES (?,?,?,?,?,?,?,?,?,?,?)", data).then(res => {
-      alert('rest');
-      alert(res);
+     /* alert('rest');
+      alert(res);*/
       return res;
     });
   }

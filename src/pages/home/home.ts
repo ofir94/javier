@@ -377,15 +377,19 @@ export class HomePage {
     let fecha = $(idRoom +'-'+fecha_id).attr('fecha');
     // alert(idRoom +'-'+fecha_id);
     if(reservado == 'reservado') {
-      if(inicio == "inicio" && fin == "fin"){
-        alert("que reservacion desea ver");
 
-
-      }
+    alert(reservado);
+          if(inicio == "inicio" && fin == "fin"){
+            alert("que reservacion desea ver");
+          }
      // HomePage.reserva =  {startDate: '', endDate: '', cantKid: "", cantAdult: "", location: "", status: "1", price: "",deposit: ""};
 
       // alert(this.reservas[0].startDate);
+      alert('cant reservas: '+this.reservas.length);
+
       for(let reservacion of this.reservas){
+            alert(reservacion.startDate)
+            alert(reservacion.endDate)
         let bool = this.dateBetweenInitAndEnd(day,reservacion.startDate,reservacion.endDate);
         alert(bool)
         if(bool){
@@ -434,7 +438,7 @@ export class HomePage {
 
   }
 
-    initPaint(startDate,endDate,status,id_room){//OFIR NO BORRES ESTA FUNCION!!!!
+    initPaint(startDate,endDate,status,id_room){
     let start = new Date(new Date(startDate).getTime()+1*24*60*60*1000);
     let end = new Date(new Date(endDate).getTime()+1*24*60*60*1000);
     let idStart = start.getFullYear()+"-"+start.getMonth()+"-"+start.getDate();
@@ -491,7 +495,7 @@ export class HomePage {
 
   presentLoadingDefault() {
     let loading = this.loadingCtrl.create({
-      content: 'Cargando más...'
+      content: 'Cargando...'
     });
 
     loading.present();
@@ -508,10 +512,6 @@ export class HomePage {
     let id = +g.getDate() + '-' + g.getMonth() + '-' + g.getFullYear();
     // let id1 =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear()+'1';
     document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
-
-    let uuid = UUID.UUID();
-
-    console.log(uuid);
   }
 
   ngAfterViewChecked(){
@@ -528,24 +528,29 @@ export class HomePage {
   }
 
 	dateBetweenInitAndEnd(day,from_date,to_date){
-    let diaMas = 1 * 24 * 60 * 60 * 1000;
+
+    alert("datebettweninit and end")
+    let diaMas = (1 * 24 * 60 * 60 * 1000);
 
     day.setHours(0,0,0,0);
     let fecha = day.getTime();
 
     // alert("Dia clickeado: " + day);
     let fromDate =  new Date(from_date);
+    alert(fromDate)
     fromDate.setHours(0,0,0,0);
-    let from = fromDate.getTime() + diaMas;
+    let from = (fromDate.getTime() + diaMas);
+    alert(from)
     let toDate = new Date(to_date);
-
+    alert(toDate)
     toDate.setHours(0,0,0,0);
-    let to = toDate.getTime() + diaMas;
+    let to = (toDate.getTime() + diaMas);
+    alert(to)
     // alert(from);
 
     alert(fecha >= from && fecha <= to)
 
-    alert("fecha: "+ fecha+ " fromDate: "+fromDate+" toDate: "+toDate)
+    alert("fecha: "+ fecha+ " fromDate: "+from+" toDate: "+to)
     // alert("Inicio de reservacion: "+ new Date(new Date(from_date).getTime() + 1 * 24 * 60 * 60 * 1000));
     // let to = new Date(to_date).getTime() + 1 * 24 * 60 * 60 * 1000;
     // alert("Fin reservacion: " +new Date(new Date(to_date).getTime() + 1 * 24 * 60 * 60 * 1000));
@@ -743,19 +748,12 @@ export class HomePage {
       mode: 'date',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(
-
-
     selectedDate => {
-     /* alert(selectedDate);
-      let id =+selectedDate.getDate()+'-'+selectedDate.getMonth()+'-'+selectedDate.getFullYear();
-      alert(id);*/
-      /*  alert("id reload")
-        alert(id)*/
-    //  document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
+
       this.changeToday(selectedDate);
-     this.addmore(selectedDate)
+   //  this.addmore(selectedDate)
     },
-      err => alert('Error occurred while getting date: ')
+      err => console.log('Error occurred while getting date: ')
   );
   }
 
@@ -783,8 +781,9 @@ export class HomePage {
 
       this.dateToReloadViewStart =  new Date(day.getTime()-1000*60*60*24*70);
       this.dateToReloadViewEnd =  new Date(day.getTime()+1000*60*60*24*70);
-      this.dateToReloadViewEnd.setHours()
 
+      this.currentMonth = this.monthNames[day.getMonth()];
+      this.currentYear = day.getFullYear();
   }
 
 
@@ -801,8 +800,6 @@ export class HomePage {
       ret = 'calendar-col-hab event finsemana-'+ (dayClass.getDay() ==0 || dayClass.getDay()==6) +' today-body-'+((dayClass.getDate()+'-'+dayClass.getMonth()+'-'+dayClass.getFullYear()) == this.today);
     else
       ret = 'calendar-col-hab-month event finsemana-'+ (dayClass.getDay() ==0 || dayClass.getDay()==6) +' today-body-'+((dayClass.getDate()+'-'+dayClass.getMonth()+'-'+dayClass.getFullYear()) == this.today);
-
-
 
     return ret;
   }
@@ -847,8 +844,8 @@ export class HomePage {
   loadMonthView(){
 
     this.view = "month";
-    this.changeToday(new Date())
     this.lockLandscape();
+    this.changeToday(new Date())
 
 
     let id =+this.today.getDate()+'-'+this.today.getMonth()+'-'+this.today.getFullYear();
