@@ -20,7 +20,7 @@ export class DetallesPage {
   detalles = {
     comment: HomePage.reserva.comment,
     cant_bed_single:  HomePage.reserva.cant_bed_single,
-    cant_bed_double: HomePage.reserva.cant_bed_single
+    cant_bed_double: HomePage.reserva.cant_bed_double
   };
   static detail;
   constructor(public navCtrl: NavController, public navParams: NavParams) {

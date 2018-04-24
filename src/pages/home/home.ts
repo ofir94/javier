@@ -229,8 +229,9 @@ export class HomePage {
     alert('client by id');
     alert(id)
     this.databaseProvider.getClientById(id).then(data => {
-
+      alert('client found');
      for(let dat of data) {
+       alert(dat.toString());
        HomePage.client.id_client = dat.id_client;
        HomePage.client.name = dat.name;
        HomePage.client.address = dat.address;

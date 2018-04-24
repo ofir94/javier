@@ -81,6 +81,9 @@ export class TabPage {
     alert('id ante: '+this.uuid);
 
     AddEventPage.reservation['id_client'] = this.uuid;
+    AddEventPage.reservation['comment'] = DetallesPage.detail.comment;
+    AddEventPage.reservation['cant_bed_single'] = DetallesPage.detail.cant_bed_double;
+    AddEventPage.reservation['cant_bed_double'] = DetallesPage.detail.cant_bed_single;
 
     alert('id despues: '+AddEventPage.reservation['id_client']);
 
