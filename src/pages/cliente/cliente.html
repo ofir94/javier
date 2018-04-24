@@ -18,52 +18,52 @@
 
       <ion-item>
         <ion-label floating>Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="client.name" name="client.name" >
+        <ion-input type="text" [(ngModel)]="client.name | async" name="client.name" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Dirección</ion-label>
-        <ion-input type="text" [(ngModel)]="client.address" name="client.address" >
+        <ion-input type="text" [(ngModel)]="client.address | async" name="client.address" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Dirección 2</ion-label>
-        <ion-input type="text" [(ngModel)]="client.address2" name="client.address2" >
+        <ion-input type="text" [(ngModel)]="client.address2 | async" name="client.address2" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Código Postal</ion-label>
-        <ion-input type="text" [(ngModel)]="client.postal_code" name="client.postal_code" >
+        <ion-input type="text" [(ngModel)]="client.postal_code | async" name="client.postal_code" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>País</ion-label>
-        <ion-input type="text" [(ngModel)]="client.country" name="client.country" >
+        <ion-input type="text" [(ngModel)]="client.country | async" name="client.country" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Provincia</ion-label>
-        <ion-input type="text" [(ngModel)]="client.state" name="client.state" >
+        <ion-input type="text" [(ngModel)]="client.state | async" name="client.state" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Pasaporte</ion-label>
-        <ion-input type="text" [(ngModel)]="client.passport" name="client.passport" >
+        <ion-input type="text" [(ngModel)]="client.passport | async" name="client.passport" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Identificación</ion-label>
-        <ion-input type="text" [(ngModel)]="client.identification" name="client.identification" >
+        <ion-input type="text" [(ngModel)]="client.identification | async" name="client.identification" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Teléfono</ion-label>
-        <ion-input type="number" [(ngModel)]="client.phone" name="client.phone" >
+        <ion-input type="number" [(ngModel)]="client.phone | async" name="client.phone" >
         </ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Correo Electrónico</ion-label>
-        <ion-input type="email" [(ngModel)]="client.email" name="client.email" >
+        <ion-input type="email" [(ngModel)]="client.email | async" name="client.email" >
         </ion-input>
       </ion-item>
 

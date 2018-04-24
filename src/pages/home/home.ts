@@ -225,7 +225,7 @@ export class HomePage {
   // BD
 
 // BD
-  async  getClientById(id){
+  async getClientById(id){
     alert('client by id');
     alert(id)
        await this.databaseProvider.getClientById(id).then(data => {
@@ -639,6 +639,7 @@ export class HomePage {
 
     // alert(HomePage.reservasionCreada.startDate);
     // alert(HomePage.reservasionCreada.endDate);
+
 
   }
 
