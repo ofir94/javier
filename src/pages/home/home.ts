@@ -16,6 +16,7 @@ import {FilterPage} from "../filter/filter";
 
 import { DatePicker } from '@ionic-native/date-picker';
 import {ScreenOrientation} from "@ionic-native/screen-orientation";
+import { UUID } from 'angular2-uuid';
 
 
 @Component({
@@ -508,6 +509,9 @@ export class HomePage {
     // let id1 =+g.getDate()+'-'+g.getMonth()+'-'+g.getFullYear()+'1';
     document.getElementById(id).scrollIntoView(({block: "end", behavior: "instant"}));
 
+    let uuid = UUID.UUID();
+
+    console.log(uuid);
   }
 
   ngAfterViewChecked(){

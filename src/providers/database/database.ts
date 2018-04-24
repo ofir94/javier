@@ -148,10 +148,10 @@ export class DatabaseProvider {
 
   }
 
-  addClient(name, address, address2, state, postal_code, country, passport, identification, phone, email) {
+  addClient(name, address, address2, state, postal_code, country, passport, identification, phone, email, id_client) {
     alert('add client');
-    let data = [name, address, address2, state, postal_code, country, passport, identification, phone, email];
-    return this.database.executeSql("INSERT INTO client (name, address, address2, state, postal_code, country, passport , identification ,phone, email) VALUES (?,?,?,?,?,?,?,?,?,?)", data).then(res => {
+    let data = [name, address, address2, state, postal_code, country, passport, identification, phone, email,id_client];
+    return this.database.executeSql("INSERT INTO client (name, address, address2, state, postal_code, country, passport , identification ,phone, email,id_client) VALUES (?,?,?,?,?,?,?,?,?,?,?)", data).then(res => {
       alert('rest');
       alert(res);
       return res;
@@ -415,7 +415,8 @@ export class DatabaseProvider {
             phone: data.rows.item(i).phone,
             email: data.rows.item(i).email
           });
-        } alert('id cliente DB: '+client.id_client);
+        }
+        alert('id cliente DB: '+client.id_client);
       }
       return client[id];
     }, err => {

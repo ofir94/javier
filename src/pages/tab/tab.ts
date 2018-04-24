@@ -5,6 +5,8 @@ import {ClientePage} from "../cliente/cliente";
 import {DetallesPage} from "../detalles/detalles";
 import {HomePage} from "../home/home";
 import {DatabaseProvider} from "../../providers/database/database";
+import { UUID } from 'angular2-uuid';
+import {unescapeIdentifier} from "@angular/compiler";
 
 
 /**
@@ -24,9 +26,12 @@ export class TabPage {
   clienteRoot = ClientePage;
   detallesRoot = DetallesPage;
   foreign_key = true;
+  uuid;
 
   constructor(public navCtrl: NavController,  private databaseProvider: DatabaseProvider) {
     // this.reservation = this.navParams.data;
+
+    this.uuid = UUID.UUID();
 
 
   }
@@ -47,6 +52,7 @@ export class TabPage {
       ClientePage.cliente['identification'],
       ClientePage.cliente['phone'],
       ClientePage.cliente['email'],
+      this.uuid
     );
   }
 
@@ -57,7 +63,7 @@ export class TabPage {
 
     alert('entrar a la perdicion');
 
-    this.databaseProvider.getLastClient().then(data => {
+ /*   this.databaseProvider.getLastClient().then(data => {
 
         alert(data.toString());
 
@@ -70,14 +76,11 @@ export class TabPage {
       this.foreign_key = false;
     });
 
-    do{
 
-    }while (this.foreign_key)
+*/
+    alert('id ante: '+this.uuid);
 
-
-    alert('id antes: '+clientId);
-
-    AddEventPage.reservation['id_client'] = clientId;
+    AddEventPage.reservation['id_client'] = this.uuid;
 
     alert('id despues: '+AddEventPage.reservation['id_client']);
 
@@ -102,7 +105,7 @@ export class TabPage {
 
     alert('save')
     console.log(AddEventPage.reservation);
-    let asd = this.databaseProvider.addReservationWithClient( AddEventPage.reservation['startDate'],
+    /*let asd = this.databaseProvider.addReservationWithClient( AddEventPage.reservation['startDate'],
                                                               AddEventPage.reservation['endDate'],
                                                               AddEventPage.reservation['cantAdult'],
                                                               AddEventPage.reservation['cantKid'],
@@ -127,12 +130,13 @@ export class TabPage {
 
 
    alert(asd);
-/*
+   */
+
     this.addClient();
     this.addReservation();
 
     HomePage.pintarEvento(AddEventPage.reservation.startDate, AddEventPage.reservation.endDate,AddEventPage.reservation.status, AddEventPage.reservation.location);
-*/
+
 
     this.navCtrl.pop();
   }
