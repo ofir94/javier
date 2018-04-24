@@ -111,19 +111,36 @@ export class DatabaseProvider {
       alert('rest');
       alert(res);
     let clientId;
+
       for (let client of res){
+        alert(client)
         clientId = client.id_client;
       }
-      alert('id cliente database '+clientId);
-          let dataReserv = [from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single, cant_bed_double, id_room, status, clientId];
-          this.database.executeSql("INSERT INTO reservation (from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single , cant_bed_double , id_room, status, id_client) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", dataReserv).then(reserva => {
-           alert('reserva created')
-           alert(reserva)
-          });
 
-      AddEventPage.reservation['id_client'] = clientId;
-      HomePage.pintarEvento(AddEventPage.reservation.startDate, AddEventPage.reservation.endDate,AddEventPage.reservation.status, AddEventPage.reservation.location);
-      return clientId;
+    this.getLastClient().then(client=>{
+
+      alert('last client');
+
+      for (let cliente of client){
+        alert(cliente)
+        clientId = cliente.id_client;
+      }
+      alert('id cliente database '+clientId);
+      let dataReserv = [from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single, cant_bed_double, id_room, status, clientId];
+      this.database.executeSql("INSERT INTO reservation (from_date, to_date, cant_adult, cant_kid, price, deposit, comment, cant_bed_single , cant_bed_double , id_room, status, id_client) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", dataReserv).then(reserva => {
+        alert('reserva created')
+        alert(reserva)
+
+        AddEventPage.reservation['id_client'] = clientId;
+        HomePage.pintarEvento(AddEventPage.reservation.startDate, AddEventPage.reservation.endDate,AddEventPage.reservation.status, AddEventPage.reservation.location);
+        return clientId;
+
+      });
+
+
+    })
+
+
     });
 
 
